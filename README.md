@@ -3,14 +3,15 @@ Welcome to this tutorial! Here, we will walk you through the process of setting 
 But that's not all! We will also demonstrate how to run a simple ROS2 talker and listener scenario on this cluster. This will serve as a practical example of inter-node communication within the cluster.
 This guide is designed to be comprehensive and easy to follow. Whether you're a seasoned Kubernetes user or a beginner, you'll find valuable insights and knowledge here. So, let's get started!
 
-# Table of Contents
+## Table of Contents
 
 - [Deploying ROS2 Talker and Listener Nodes on a Kubernetes Cluster with Vagrant: A Step-by-Step Guide](#deploying-ros2-talker-and-listener-nodes-on-a-kubernetes-cluster-with-vagrant-a-step-by-step-guide)
-- [Table of Contents](#table-of-contents)
+  - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
     - [Installation of VirtualBox](#installation-of-virtualbox)
     - [Installation of Vagrant](#installation-of-vagrant)
   - [Creating VMs and Setting up the Kubernetes Cluster](#creating-vms-and-setting-up-the-kubernetes-cluster)
+    - [Kubeadm](#kubeadm)
   - [Container Network Interface Plugin](#container-network-interface-plugin)
   - [ROS2 Talker and Listener Nodes](#ros2-talker-and-listener-nodes)
     - [Deploying the ROS2 Nodes](#deploying-the-ros2-nodes)
@@ -77,6 +78,14 @@ vagrant up
 This command will read the ``Vagrantfile`` in your current directory and create the VMs as specified. It will also execute the provisioning scripts defined in the ``Vagrantfile`` to install necessary packages, set up the Kubernetes cluster, and join the worker nodes to the cluster.
 
 After running this command, you should have a fully functional Kubernetes cluster ready for use!
+
+### Kubeadm
+
+The Kubernetes cluster in this project is set up using `kubeadm`. The `kubeadm` tool is used in the `create_cluster.sh` script to initialize the control plane node with the command `sudo kubeadm init --apiserver-advertise-address=192.168.56.10 --pod-network-cidr=10.244.0.0/16`.
+
+After the control plane node is initialized, a join command is generated with `kubeadm token create --print-join-command` and saved to `/vagrant/join-command.sh`. This command is used to join the worker nodes to the cluster.
+
+The `kubeadm` tool is also installed on all nodes as part of the provisioning process defined in the `Vagrantfile` and the `kubeadm_kubelet_kubectl.sh` script.
 
 ## Container Network Interface Plugin
 
