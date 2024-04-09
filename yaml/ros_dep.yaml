@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ros
+  name: ros
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ros
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ros
+    spec:
+      containers:
+        - image: docker.io/osrf/ros:foxy-desktop
+          name: ros
+          command:
+            - /bin/bash
+            - '-c'
+          args:
+            - source /opt/ros/foxy/setup.bash && sleep 3600
+          resources: {}
+status: {}
