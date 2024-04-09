@@ -33,6 +33,7 @@ sudo apt install virtualbox -y
 or use the following link to download the VirtualBox:
 
 https://www.virtualbox.org/wiki/Linux_Downloads
+
 https://download.virtualbox.org/virtualbox/7.0.14/virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
 
 ### Installation of Vagrant
