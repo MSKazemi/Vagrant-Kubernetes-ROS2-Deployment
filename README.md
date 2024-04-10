@@ -143,7 +143,7 @@ This section will guide you through deploying ROS2 Talker and Listener nodes on 
 2. Scale the deployment to create multiple replicas of the ROS2 nodes:
 
     ```bash
-    kubectl scale deployment ros-dep --replicas=3
+    kubectl scale deployment ros --replicas=3
     ```
 
 ### Testing the ROS2 Nodes
@@ -171,8 +171,13 @@ This section will guide you through deploying ROS2 Talker and Listener nodes on 
 
     ```bash
     kubectl exec -it <another-pod-name> -- /bin/bash
+    ```
+    
+    ```bash
     source /opt/ros/foxy/setup.bash
     ros2 run demo_nodes_cpp listener
     ```
 
 You should see the talker node publishing messages and the listener node receiving them. This confirms that the communication between the nodes is functioning correctly.
+
+![Architecture Diagram](./images/cmd.png)
