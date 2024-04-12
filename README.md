@@ -24,7 +24,12 @@ This guide is designed to be comprehensive and easy to follow. Whether you're a 
     - [Install Metrics Server](#install-metrics-server)
     - [Install Kubernetes Dashboard](#install-kubernetes-dashboard)
     - [Kubernetes Dashboard Access](#kubernetes-dashboard-access)
+    - [Helm](#helm)
     - [Prometheus](#prometheus)
+      - [Add the Prometheus Helm Chart Repository](#add-the-prometheus-helm-chart-repository)
+      - [kubectl create namespace prometheus](#kubectl-create-namespace-prometheus)
+      - [Install Prometheus using Helm](#install-prometheus-using-helm)
+      - [Access Prometheus](#access-prometheus)
     - [Grafana](#grafana)
 
 ## Prerequisites
@@ -251,8 +256,54 @@ https://192.168.56.10:30664/#/login
 
 ![Architecture Diagram](./images/k8s2.png)
 
+### Helm
+
+https://helm.sh/docs/intro/install/
+
+
+```shell
+vagrant ssh controlplane
+curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
+sudo apt-get install apt-transport-https --yes
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+```
 
 ### Prometheus
+
+#### Add the Prometheus Helm Chart Repository
+
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+```
+#### kubectl create namespace prometheus
+
+```bash
+kubectl create namespace prometheus
+```
+
+#### Install Prometheus using Helm
+
+```bash
+helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus
+```
+
+```bash
+kubectl get pods -n prometheus
+```
+
+```bash
+kubectl get svc -n prometheus
+```
+
+```bash
+kubectl -n prometheus edit service prometheus-kube-prometheus-prometheus
+```
+In the editor, change type: ClusterIP to type: **NodePort** or type: LoadBalancer. Save and exit.
+
+#### Access Prometheus
 
 http://192.168.56.10:31334
 
