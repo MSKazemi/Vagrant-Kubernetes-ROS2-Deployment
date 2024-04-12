@@ -16,6 +16,16 @@ This guide is designed to be comprehensive and easy to follow. Whether you're a 
   - [ROS2 Talker and Listener Nodes](#ros2-talker-and-listener-nodes)
     - [Deploying the ROS2 Nodes](#deploying-the-ros2-nodes)
     - [Testing the ROS2 Nodes](#testing-the-ros2-nodes)
+  - [Cluster](#cluster)
+    - [Shutdown the Cluster](#shutdown-the-cluster)
+    - [Restart the Cluster](#restart-the-cluster)
+    - [Destroy the Cluster](#destroy-the-cluster)
+  - [Monitoring](#monitoring)
+    - [Install Metrics Server](#install-metrics-server)
+    - [Install Kubernetes Dashboard](#install-kubernetes-dashboard)
+    - [Kubernetes Dashboard Access](#kubernetes-dashboard-access)
+    - [Prometheus](#prometheus)
+    - [Grafana](#grafana)
 
 ## Prerequisites
 - VirtualBox
@@ -73,6 +83,8 @@ You can adjust these settings to suit your needs.
 To create the VMs and set up the Kubernetes cluster, run the following command in your terminal:
 
 ```sh
+git clone git@github.com:MSKazemi/Vagrant-Kubernetes-ROS2-Deployment.git
+cd Vagrant-Kubernetes-ROS2-Deployment
 vagrant up
 ```
 
@@ -105,7 +117,6 @@ After setting up the Kubernetes cluster, you need to connect to the control plan
     ```sh
     kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
     ```
-
 
 After installing the Weave Net plugin, you should verify that all nodes and pods in your Kubernetes cluster are running correctly:
 
@@ -181,3 +192,86 @@ This section will guide you through deploying ROS2 Talker and Listener nodes on 
 You should see the talker node publishing messages and the listener node receiving them. This confirms that the communication between the nodes is functioning correctly.
 
 ![Architecture Diagram](./images/cmd.png)
+
+## Cluster
+
+### Shutdown the Cluster
+
+```shell
+vagrant halt
+```
+
+### Restart the Cluster
+
+```shell
+vagrant up
+```
+
+### Destroy the Cluster
+
+```shell
+vagrant destroy -f
+```
+
+## Monitoring
+
+### Install Metrics Server
+
+```shell
+vagrant ssh controlplane
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+
+or
+
+```shell
+vagrant ssh controlplane
+kubectl apply -f https://raw.githubusercontent.com/techiescamp/kubeadm-scripts/main/manifests/metrics-server.yaml
+```
+
+### Install Kubernetes Dashboard
+
+```shell
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+```
+
+### Kubernetes Dashboard Access
+
+Make the dashboard accessible:
+```shell
+vagrant ssh controlplane
+kubectl proxy
+```
+
+Open the site in your browser:
+
+https://192.168.56.10:30664/#/login
+
+![Architecture Diagram](./images/k8s1.png)
+
+![Architecture Diagram](./images/k8s2.png)
+
+
+### Prometheus
+
+http://192.168.56.10:31334
+
+### Grafana
+
+http://192.168.56.10:30400
+
+![Architecture Diagram](./images/g1.png)
+
+![Architecture Diagram](./images/g2.png)
+
+![Architecture Diagram](./images/g3.png)
+
+![Architecture Diagram](./images/g4.png)
+
+![Architecture Diagram](./images/g5.png)
+
+![Architecture Diagram](./images/g6.png)
+
+![Architecture Diagram](./images/g7.png)
+
+![Architecture Diagram](./images/g8.png)
