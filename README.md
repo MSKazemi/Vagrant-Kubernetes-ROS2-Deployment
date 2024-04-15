@@ -307,6 +307,10 @@ In the editor, change type: ClusterIP to type: **NodePort** or type: LoadBalance
 
 http://192.168.56.10:31334
 
+Username: admin
+
+Password: prom-operator
+
 ### Grafana
 
 http://192.168.56.10:30400

@@ -6,7 +6,7 @@ metadata:
     app: ros
   name: ros
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: ros
