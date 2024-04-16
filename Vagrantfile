@@ -29,8 +29,8 @@ Vagrant.configure("2") do |config|
     cp.vm.hostname = vm_name_cp  # This sets the internal hostname of the VM
     cp.vm.provider "virtualbox" do |vb|
       vb.name = vm_name_cp # This sets the name displayed in VirtualBox
-      vb.memory = "10240" # This sets the amount of memory for the VM
-      vb.cpus = 8 # This sets the number of CPUs for the VM
+      vb.memory = "18240" # This sets the amount of memory for the VM
+      vb.cpus = 14 # This sets the number of CPUs for the VM
     end
     cp.vm.provision "shell", path: "./KubernetesClusterSetup/create_cluster.sh"
   end
