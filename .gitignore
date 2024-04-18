@@ -10,6 +10,7 @@ join-command.sh
 *.key
 *.pub
 token
+vagrant.log
 # C extensions
 *.so
 

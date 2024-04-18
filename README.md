@@ -20,7 +20,8 @@ This guide is designed to be comprehensive and easy to follow. Whether you're a 
     - [Shutdown the Cluster](#shutdown-the-cluster)
     - [Restart the Cluster](#restart-the-cluster)
     - [Destroy the Cluster](#destroy-the-cluster)
-  - [Monitoring](#monitoring)
+- [Monitoring System](#monitoring-system)
+  - [Monitoring System](#monitoring-system-1)
     - [Install Metrics Server](#install-metrics-server)
     - [Install Kubernetes Dashboard](#install-kubernetes-dashboard)
     - [Kubernetes Dashboard Access](#kubernetes-dashboard-access)
@@ -33,6 +34,7 @@ This guide is designed to be comprehensive and easy to follow. Whether you're a 
     - [Grafana](#grafana)
 
 ## Prerequisites
+
 - VirtualBox
 - Vagrant
 
@@ -90,7 +92,7 @@ To create the VMs and set up the Kubernetes cluster, run the following command i
 ```sh
 git clone git@github.com:MSKazemi/Vagrant-Kubernetes-ROS2-Deployment.git
 cd Vagrant-Kubernetes-ROS2-Deployment
-vagrant up
+vagrant up | tee vagrant.log
 ```
 
 This command will read the ``Vagrantfile`` in your current directory and create the VMs as specified. It will also execute the provisioning scripts defined in the ``Vagrantfile`` to install necessary packages, set up the Kubernetes cluster, and join the worker nodes to the cluster.
@@ -217,8 +219,9 @@ vagrant up
 ```shell
 vagrant destroy -f
 ```
+# Monitoring System
 
-## Monitoring
+## [Monitoring System](./monitoring_system/Monitoring.md)
 
 ### Install Metrics Server
 

@@ -12,7 +12,7 @@ metadata:
   name: pv1
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
@@ -27,7 +27,7 @@ spec:
           - key: kubernetes.io/hostname
             operator: In
             values:
-              - cp
+              - controlplane
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -35,9 +35,11 @@ metadata:
   name: pv2
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
+  volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
     path: /mnt/data2
@@ -48,8 +50,7 @@ spec:
           - key: kubernetes.io/hostname
             operator: In
             values:
-              - cp
-
+              - controlplane
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -57,7 +58,7 @@ metadata:
   name: pv3
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
@@ -72,8 +73,7 @@ spec:
           - key: kubernetes.io/hostname
             operator: In
             values:
-              - cp
-  
+              - controlplane
 ---
 apiVersion: v1
 kind: PersistentVolume
@@ -81,7 +81,7 @@ metadata:
   name: pv4
 spec:
   capacity:
-    storage: 5Gi
+    storage: 10Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
@@ -96,7 +96,32 @@ spec:
           - key: kubernetes.io/hostname
             operator: In
             values:
-              - cp
+              - controlplane
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv5
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-storage
+  local:
+    path: /mnt/data5
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+              - controlplane
+
+
 # ---
 # apiVersion: v1
 # kind: PersistentVolume

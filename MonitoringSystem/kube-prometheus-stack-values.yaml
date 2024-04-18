@@ -754,7 +754,7 @@ alertmanager:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 1Gi
+            storage: 10Gi
         selector: {}
 
 
@@ -1018,7 +1018,7 @@ grafana:
     storageClassName: "local-storage"
     accessModes:
       - ReadWriteOnce
-    size: 2Gi
+    size: 10Gi
     finalizers:
       - kubernetes.io/pvc-protection
 
@@ -3678,7 +3678,7 @@ prometheus:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 1Gi
+            storage: 10Gi
       selector: {}
 
     ## Using tmpfs volume
@@ -4402,7 +4402,7 @@ thanosRuler:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 1Gi
+            storage: 10Gi
       selector: {}
 
     ## AlertmanagerConfig define configuration for connecting to alertmanager.

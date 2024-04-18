@@ -1,14 +1,13 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vm_name_cp = "cp"
-vm_name_w1 = "w1"
-vm_name_w2 = "w2"
+vm_name_cp = "controlplane"
+vm_name_w1 = "worker1"
+vm_name_w2 = "worker2"
 
 vm_ip_cp = "192.168.56.10"
 vm_ip_w1 = "192.168.56.11"
 vm_ip_w2 = "192.168.56.12"
-
 
 
 Vagrant.configure("2") do |config|
@@ -32,7 +31,25 @@ Vagrant.configure("2") do |config|
       vb.memory = "18240" # This sets the amount of memory for the VM
       vb.cpus = 14 # This sets the number of CPUs for the VM
     end
+
+    # cluster setup
     cp.vm.provision "shell", path: "./KubernetesClusterSetup/create_cluster.sh"
+    
+    # Inline shell to perform a check or another sleep
+    cp.vm.provision "shell", inline: <<-SHELL
+      echo "Waiting for the cluster setup to stabilize..."
+      sleep 20
+    SHELL
+
+    cp.vm.provision "shell", path: "./Network/network_plugin.sh"
+    
+    # Inline shell to perform a check or another sleep
+    cp.vm.provision "shell", inline: <<-SHELL
+      echo "Waiting for the network plugin setup to stabilize..."
+      sleep 20
+    SHELL
+    
+    cp.vm.provision "shell", path: "./MonitoringSystem/monitoring.sh"
   end
 
   # Worker Node 1 Configuration
@@ -44,7 +61,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "6096" # This sets the amount of memory for the VM
       vb.cpus = 2 # This sets the number of CPUs for the VM
     end
-    w1.vm.provision "shell", inline: "bash /vagrant/join-command.sh"
+    w1.vm.provision "shell", inline: "bash /home/vagrant/codes/join-command.sh"
   end
 
 
@@ -57,7 +74,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "6096" # This sets the amount of memory for the VM
       vb.cpus = 2 # This sets the number of CPUs for the VM
     end
-    w2.vm.provision "shell", inline: "bash /vagrant/join-command.sh"
+    w2.vm.provision "shell", inline: "bash /home/vagrant/codes/join-command.sh"
   end
 
 

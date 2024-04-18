@@ -15,11 +15,19 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 # Save the join command to a shared location
-kubeadm token create --print-join-command > /vagrant/join-command.sh
+kubeadm token create --print-join-command > /home/vagrant/codes/join-command.sh
+
+# Untaint the controlpane node to allow pods to be scheduled on it
+# kubernets dashboard
+# metrcis server
+# prometheus
+kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-  
+
 
 # Auto-completion for kubectl
 sudo apt-get update
 sudo apt-get -y install bash-completion
-kubectl completion bash > ~/.kube/kubectl_bash_completion
-echo "source /home/vagrant/.kube/kubectl_bash_completion" >> ~/.bashrc
-source /home/vagrant/.bashrc
+
+# Add kubectl completion to bash
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+echo 'source <(kubectl completion bash)' >> /home/vagrant/.bashrc
