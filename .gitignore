@@ -9,7 +9,7 @@ join-command.sh
 *.pem
 *.key
 *.pub
-
+token
 # C extensions
 *.so
 

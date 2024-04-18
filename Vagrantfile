@@ -1,9 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-vm_name_cp = "controlplane"
-vm_name_w1 = "worker1"
-vm_name_w2 = "worker2"
+vm_name_cp = "cp"
+vm_name_w1 = "w1"
+vm_name_w2 = "w2"
 
 vm_ip_cp = "192.168.56.10"
 vm_ip_w1 = "192.168.56.11"
@@ -13,7 +13,7 @@ vm_ip_w2 = "192.168.56.12"
 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/jammy64"
-  config.vm.synced_folder "./yaml", "/home/vagrant/yaml"
+  config.vm.synced_folder "./", "/home/vagrant/codes/"
   config.vm.provision "shell", path: "./KubernetesClusterSetup/provision_all.sh"
   config.vm.provision "shell", path: "./KubernetesClusterSetup/CRI_DockerEng_containerd.sh"
   config.vm.provision "shell", path: "./KubernetesClusterSetup/kubeadm_kubelet_kubectl.sh"

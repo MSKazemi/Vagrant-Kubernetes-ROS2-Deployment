@@ -248,6 +248,15 @@ vagrant ssh controlplane
 kubectl proxy
 ```
 
+```bash
+kubectl apply -f ./yaml/admin-user.yaml
+kubectl -n kubernetes-dashboard get secret/admin-user -o go-template="{{.data.token | base64decode}}" >> "token"
+```
+Or
+```bash
+kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+```
+
 Open the site in your browser:
 
 https://192.168.56.10:30664/#/login
@@ -298,10 +307,20 @@ kubectl get pods -n prometheus
 kubectl get svc -n prometheus
 ```
 
+if you want to access the Prometheus dashboard, you can port-forward the Prometheus pod to your local machine:
+```bash
+kubectl --namespace prometheus port-forward deploy/prometheus-kube-prometheus-prometheus 9090
+```
+Now, you can access the Prometheus dashboard by navigating to http://localhost:9090 in your web browser.
+
+Or you can change the service type to NodePort or LoadBalancer:
 ```bash
 kubectl -n prometheus edit service prometheus-kube-prometheus-prometheus
 ```
 In the editor, change type: ClusterIP to type: **NodePort** or type: LoadBalancer. Save and exit.
+For remote server, you can use the LoadBalancer type.
+
+
 
 #### Access Prometheus
 

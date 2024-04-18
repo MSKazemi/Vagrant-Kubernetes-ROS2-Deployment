@@ -742,20 +742,20 @@ alertmanager:
     ## Time duration Alertmanager shall retain data for. Default is '120h', and must match the regular expression
     ## [0-9]+(ms|s|m|h) (milliseconds seconds minutes hours).
     ##
-    retention: 1200h
+    retention: 120h
 
     ## Storage is the definition of how storage will be used by the Alertmanager instances.
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
     storage: {}
-    volumeClaimTemplate:
-      spec:
-        storageClassName: local-storage
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 1Gi
-        selector: {}
+    # volumeClaimTemplate:
+    #   spec:
+    #     storageClassName: gluster
+    #     accessModes: ["ReadWriteOnce"]
+    #     resources:
+    #       requests:
+    #         storage: 50Gi
+    #     selector: {}
 
 
     ## The external URL the Alertmanager instances will be available under. This is necessary to generate correct URLs. This is necessary if Alertmanager is not served from root of a DNS name. string  false
@@ -1010,17 +1010,17 @@ grafana:
     #   hosts:
     #   - grafana.example.com
 
-  # To make Grafana persistent (Using Statefulset)
-  #
-  persistence:
-    enabled: true
-    type: sts
-    storageClassName: "local-storage"
-    accessModes:
-      - ReadWriteOnce
-    size: 2Gi
-    finalizers:
-      - kubernetes.io/pvc-protection
+  # # To make Grafana persistent (Using Statefulset)
+  # #
+  # persistence:
+  #   enabled: true
+  #   type: sts
+  #   storageClassName: "storageClassName"
+  #   accessModes:
+  #     - ReadWriteOnce
+  #   size: 20Gi
+  #   finalizers:
+  #     - kubernetes.io/pvc-protection
 
   serviceAccount:
     create: true
@@ -1120,8 +1120,6 @@ grafana:
   ##
   service:
     portName: http-web
-    type: NodePort # Updated by Mohsen
-    nodePort: 30000 # Updated by Mohsen
 
   serviceMonitor:
     # If true, a ServiceMonitor CRD is created for a prometheus operator
@@ -3015,8 +3013,7 @@ prometheus:
 
     ## Service type
     ##
-    # type: ClusterIP => Default
-    type: NodePort
+    type: ClusterIP
 
     ## Additional ports to open for Prometheus service
     ##
@@ -3564,7 +3561,7 @@ prometheus:
 
     ## How long to retain metrics
     ##
-    retention: 1y
+    retention: 10d
 
     ## Maximum size of metrics
     ##
@@ -3670,16 +3667,16 @@ prometheus:
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
     storageSpec: {}
-    # Using PersistentVolumeClaim
-    #
-    volumeClaimTemplate:
-      spec:
-        storageClassName: local-storage
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 1Gi
-      selector: {}
+    ## Using PersistentVolumeClaim
+    ##
+    #  volumeClaimTemplate:
+    #    spec:
+    #      storageClassName: gluster
+    #      accessModes: ["ReadWriteOnce"]
+    #      resources:
+    #        requests:
+    #          storage: 50Gi
+    #    selector: {}
 
     ## Using tmpfs volume
     ##
@@ -4386,7 +4383,7 @@ thanosRuler:
     ## Time duration ThanosRuler shall retain data for. Default is '24h', and must match the regular expression
     ## [0-9]+(ms|s|m|h) (milliseconds seconds minutes hours).
     ##
-    retention: 240h
+    retention: 24h
 
     ## Interval between consecutive evaluations.
     ##
@@ -4396,14 +4393,14 @@ thanosRuler:
     ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/storage.md
     ##
     storage: {}
-    volumeClaimTemplate:
-      spec:
-        storageClassName: local-storage
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 1Gi
-      selector: {}
+    # volumeClaimTemplate:
+    #   spec:
+    #     storageClassName: gluster
+    #     accessModes: ["ReadWriteOnce"]
+    #     resources:
+    #       requests:
+    #         storage: 50Gi
+    #   selector: {}
 
     ## AlertmanagerConfig define configuration for connecting to alertmanager.
     ## Only available with Thanos v0.10.0 and higher. Maps to the alertmanagers.config Thanos Ruler arg.
