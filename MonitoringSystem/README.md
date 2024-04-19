@@ -84,7 +84,19 @@ sudo apt-get install helm
 
 #### Prometheus and Grafana Setup
 
-Prometheus, a powerful monitoring and alerting toolkit, is integrated into the system using Helm. The script includes commands to add the Prometheus Helm chart repository, update it, and install Prometheus with custom configurations to adjust its default settings, like changing the service type to NodePort to allow external access.
+Prometheus, a powerful monitoring and alerting toolkit, is integrated into the system using Helm. The script includes commands to add the Prometheus Helm chart repository, update it, and install Prometheus with custom configurations (`--values /home/vagrant/codes/MonitoringSystem/kube-prometheus-stack-values.yaml`) to adjust its default settings, like changing the service type to `NodePort` to allow external access.
+
+Configuration changes:
+
+- Grafana:
+  - service type: from `ClusterIP` to `NodePort`
+  - `PersistentVolumeClaim`
+
+- Prometheus:
+  - service type: from `ClusterIP` to `NodePort`
+  - `PersistentVolumeClaim`
+  - Retention: How long to retain metrics `retention: 1y` 
+
 
 ##### Add the Prometheus Helm Chart Repository
 
