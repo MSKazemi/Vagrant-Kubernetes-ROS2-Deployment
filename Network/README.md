@@ -1,9 +1,21 @@
 # README for Network Setup
 
+## Table of Contents
+
+- [README for Network Setup](#readme-for-network-setup)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Network Configuration](#network-configuration)
+    - [VMs/Nodes Network Configuration](#vmsnodes-network-configuration)
+    - [Kubernetes Network Plugin](#kubernetes-network-plugin)
+      - [Weave Net for Docker and Kubernetes](#weave-net-for-docker-and-kubernetes)
+      - [Configuration](#configuration)
+      - [Weave Net Installation Command](#weave-net-installation-command)
+    - [Further Information](#further-information)
+
 ## Overview
 
 This project utilizes Vagrant to automatically create and configure virtual machines (VMs) in VirtualBox. These VMs act as the nodes for our Kubernetes cluster. Detailed network configurations are provided to support customization for specific use cases beyond the local workstation and Vagrant environments.
-
 I should emphasize that the following commands are not necessary for creating a network. Everything will be configured by the Vagrantfile and other scripts of the project. The information below is simply to introduce some parts of the codes.
 
 ## Network Configuration
@@ -41,7 +53,3 @@ kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/we
 ### Further Information
 For more details on the network setup, please refer to the Vagrantfile and `./Network/network_plugin.sh` script.
 This README serves as a quick guide for setting up the network components of our Kubernetes cluster using Weave Net. Modify configurations as necessary to fit the specific needs of your deployment environment.
-
-
-
-

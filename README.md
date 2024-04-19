@@ -337,18 +337,4 @@ Password: prom-operator
 
 http://192.168.56.10:30400
 
-![Architecture Diagram](./images/g1.png)
-
-![Architecture Diagram](./images/g2.png)
-
-![Architecture Diagram](./images/g3.png)
-
-![Architecture Diagram](./images/g4.png)
-
-![Architecture Diagram](./images/g5.png)
-
-![Architecture Diagram](./images/g6.png)
-
-![Architecture Diagram](./images/g7.png)
-
 ![Architecture Diagram](./images/g8.png)
