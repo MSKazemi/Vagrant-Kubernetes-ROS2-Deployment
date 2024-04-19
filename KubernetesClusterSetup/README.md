@@ -74,7 +74,7 @@ cd Vagrant-Kubernetes-ROS2-Deployment
 vagrant up | tee vagrant.log
 ```
 
-The `vagrant up` command will read the `Vagrantfile` in your current directory and create the VMs as specified. It will also execute the provisioning scripts defined in the `Vagrantfile` to install necessary packages, set up the Kubernetes cluster, and join the worker nodes to the cluster. So it is not necessary to run any thing else. And following is the explanation of the `Vagrantfile` and the `kubeadm` tool.
+The `vagrant up` command will read the `Vagrantfile` in your current directory and create the VMs as specified. It will also execute the provisioning scripts defined in the `Vagrantfile` to install necessary packages, set up the Kubernetes cluster, and join the worker nodes to the cluster. So it is not necessary to run any thing else. And following is the explanation of the `Vagrantfile` and the `kubeadm` tool. The command `vagrant up | tee vagrant.log` not only creates a cluster, but also generates a log file. This log file contains important information and a token necessary for logging into the Kubernetes dashboard.
 
 ### Clsuter Verification
   
