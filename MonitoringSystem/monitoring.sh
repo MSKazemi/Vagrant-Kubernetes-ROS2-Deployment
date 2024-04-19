@@ -10,6 +10,7 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 # Install Kubernetes Dashboard
 echo "Installing Kubernetes Dashboard"
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
+# kubectl apply -f https://raw.githubusercontent.com/techiescamp/kubeadm-scripts/main/manifests/metrics-server.yaml
 
 
 echo "Creating admin-user for dashboard"
