@@ -13,10 +13,30 @@ Welcome to the Vagrant-Kubernetes-ROS2 Deployment repository, an integrated envi
       - [Installation of Vagrant](#installation-of-vagrant)
   - [Project Structure](#project-structure)
     - [Kubernetes Cluster Setup](#kubernetes-cluster-setup)
+        - [Deploying a Kubernetes Cluster Using Vagrant and VirtualBox](#deploying-a-kubernetes-cluster-using-vagrant-and-virtualbox)
+        - [Pre-requisites and Dependencies](#pre-requisites-and-dependencies)
+        - [Cluster VM's Lifecycle Commands](#cluster-vms-lifecycle-commands)
+        - [Technical Details (Vagrantfile, Kubeadm, Kubectl, Kubelet, Container Network Interface Plugin)](#technical-details-vagrantfile-kubeadm-kubectl-kubelet-container-network-interface-plugin)
     - [Network Configuration](#network-configuration)
+        - [VMs/Nodes Network Configuration](#vmsnodes-network-configuration)
+        - [Kubernetes Network Plugin - CNI Plugin Configuration](#kubernetes-network-plugin---cni-plugin-configuration)
     - [Monitoring System](#monitoring-system)
+        - [Metrics Server](#metrics-server)
+        - [Kubernetes Dashboard](#kubernetes-dashboard)
+        - [Dashboard Access and Security](#dashboard-access-and-security)
+        - [Prometheus and Grafana](#prometheus-and-grafana)
+        - [Helm](#helm)
+        - [Persistent Volume Configuration](#persistent-volume-configuration)
+        - [GUI Access URLs and Credentials](#gui-access-urls-and-credentials)
     - [ROS2 Deployment](#ros2-deployment)
+        - [ROS2 (Robot Operating System 2)](#ros2-robot-operating-system-2)
+        - [ROS2 Nodes vs. Kubernetes Nodes](#ros2-nodes-vs-kubernetes-nodes)
+        - [ROS2 Talker and Listener Nodes](#ros2-talker-and-listener-nodes)
+        - [Deploying the ROS2 Nodes](#deploying-the-ros2-nodes)
+        - [Testing the ROS2 Nodes](#testing-the-ros2-nodes)
     - [Data Analysis Tools](#data-analysis-tools)
+        - [Data Extraction From Prometheus TSDB Databases](#data-extraction-from-prometheus-tsdb-databases)
+        - [Using Python and Jupyter for Data Analysis](#using-python-and-jupyter-for-data-analysis)
   - [Citation](#citation)
     - [License](#license)
   - [Contributing](#contributing)
@@ -77,47 +97,47 @@ Follow the specific details provided in each subcomponent's README for detailed 
 ### Kubernetes Cluster Setup
 Scripts and configurations to initialize a Kubernetes cluster. [More Details](./KubernetesClusterSetup/README.md)
 
-- [Deploying a Kubernetes Cluster Using Vagrant and VirtualBox](./KubernetesClusterSetup/README.md#introduction)
-- [Pre-requisites and Dependencies](./KubernetesClusterSetup/README.md#pre-requisites)
-- [Cluster VM's Lifecycle Commands](./KubernetesClusterSetup/README.md)
-- [Technical Details (Vagrantfile, Kubeadm, Kubectl, Kubelet, Container Network Interface Plugin)](./KubernetesClusterSetup/README.md)
+##### [Deploying a Kubernetes Cluster Using Vagrant and VirtualBox](./KubernetesClusterSetup/README.md#introduction)
+##### [Pre-requisites and Dependencies](./KubernetesClusterSetup/README.md#pre-requisites)
+##### [Cluster VM's Lifecycle Commands](./KubernetesClusterSetup/README.md)
+##### [Technical Details (Vagrantfile, Kubeadm, Kubectl, Kubelet, Container Network Interface Plugin)](./KubernetesClusterSetup/README.md)
 
 ### Network Configuration
 
 Scripts to configure the network using CNI plugins like Weave Net. [More Details](./Network/README.md)
 
-- [VMs/Nodes Network Configuration](./Network/README.md)
-- [Kubernetes Network Plugin - CNI Plugin Configuration](./Network/README.md)
+##### [VMs/Nodes Network Configuration](./Network/README.md)
+##### [Kubernetes Network Plugin - CNI Plugin Configuration](./Network/README.md)
 
 ### Monitoring System 
 
 Configuration files and scripts for setting up Prometheus, Grafana, and Kubernetes monitoring tools. [More Details](./MonitoringSystem/README.md)
 
-- [Metrics Server](./MonitoringSystem/README.md)
-- [Kubernetes Dashboard](./MonitoringSystem/README.md)
-- [Dashboard Access and Security](./MonitoringSystem/README.md)
-- [Prometheus and Grafana](./MonitoringSystem/README.md)
-- [Helm](./MonitoringSystem/README.md)
-- [Persistent Volume Configuration](./MonitoringSystem/README.md)
-- [GUI Access URLs and Credentials](./MonitoringSystem/README.md)
+##### [Metrics Server](./MonitoringSystem/README.md)
+##### [Kubernetes Dashboard](./MonitoringSystem/README.md)
+##### [Dashboard Access and Security](./MonitoringSystem/README.md)
+##### [Prometheus and Grafana](./MonitoringSystem/README.md)
+##### [Helm](./MonitoringSystem/README.md)
+##### [Persistent Volume Configuration](./MonitoringSystem/README.md)
+##### [GUI Access URLs and Credentials](./MonitoringSystem/README.md)
 
 ### ROS2 Deployment
 
 Deployment instructions and configurations for ROS2 Talker and Listener nodes. [More Details](./ROS2/README.md)
 
-- [ROS2 (Robot Operating System 2)](./ROS2/README.md)
-- [ROS2 Nodes vs. Kubernetes Nodes](./ROS2/README.md)
-- [ROS2 Talker and Listener Nodes](./ROS2/README.md)
-- [Deploying the ROS2 Nodes](./ROS2/README.md)
-- [Testing the ROS2 Nodes](./ROS2/README.md)
+##### [ROS2 (Robot Operating System 2)](./ROS2/README.md)
+##### [ROS2 Nodes vs. Kubernetes Nodes](./ROS2/README.md)
+##### [ROS2 Talker and Listener Nodes](./ROS2/README.md)
+##### [Deploying the ROS2 Nodes](./ROS2/README.md)
+##### [Testing the ROS2 Nodes](./ROS2/README.md)
 
 
 ### Data Analysis Tools
 
 Python and Jupyter Notebook setups for analyzing data collected from the environment. [More Details](./DataAnalysis/README.md)
 
-- [Data Extraction From Prometheus TSDB Databases](./DataAnalysis/README.md)
-- [Using Python and Jupyter for Data Analysis](./DataAnalysis/README.md)
+##### [Data Extraction From Prometheus TSDB Databases](./DataAnalysis/README.md)
+##### [Using Python and Jupyter for Data Analysis](./DataAnalysis/README.md)
 
 ## Citation
 If you use this project or its components in your research or in developing software, we kindly request that you cite it. Here's a suggested citation format:
