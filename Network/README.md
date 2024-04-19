@@ -11,6 +11,7 @@
       - [Weave Net for Docker and Kubernetes](#weave-net-for-docker-and-kubernetes)
       - [Configuration](#configuration)
       - [Weave Net Installation Command](#weave-net-installation-command)
+      - [Verification of Network Setup](#verification-of-network-setup)
     - [Further Information](#further-information)
 
 ## Overview
@@ -50,6 +51,26 @@ This script sets up the Container Network Interface (CNI) plugin, with specific 
 ```bash
 kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 ```
+#### Verification of Network Setup
+
+After installing the Weave Net plugin, you should verify that all nodes and pods in your Kubernetes cluster are running correctly:
+
+1. Check the status of all nodes in the cluster:
+
+    ```sh
+    kubectl get nodes -o wide
+    ```
+
+    All nodes should be in the `Ready` state.
+
+2. Check the status of all pods in the cluster:
+
+    ```sh
+    kubectl get pods -A -o wide
+    ```
+
+    All pods should be in the `Running` state, and there should be no errors.
+
 ### Further Information
 For more details on the network setup, please refer to the Vagrantfile and `./Network/network_plugin.sh` script.
 This README serves as a quick guide for setting up the network components of our Kubernetes cluster using Weave Net. Modify configurations as necessary to fit the specific needs of your deployment environment.
