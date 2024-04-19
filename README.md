@@ -128,8 +128,7 @@ If you use this project or its components in your research or in developing soft
   title = {Vagrant-Kubernetes-ROS2 Deployment},
   year = {2024},
   publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/yourgithub/Vagrant-Kubernetes-ROS2-Deployment}}
+  howpublished = {\url{https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment}}
 }
 ```
 
