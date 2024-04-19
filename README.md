@@ -1,61 +1,73 @@
-# Deploying ROS2 Talker and Listener Nodes on a Kubernetes Cluster with Vagrant: A Step-by-Step Guide
-Welcome to this tutorial! Here, we will walk you through the process of setting up a Kubernetes cluster with one control plane node and two worker nodes. We will be using Ubuntu 22.04 as the host operating system.
-But that's not all! We will also demonstrate how to run a simple ROS2 talker and listener scenario on this cluster. This will serve as a practical example of inter-node communication within the cluster.
-This guide is designed to be comprehensive and easy to follow. Whether you're a seasoned Kubernetes user or a beginner, you'll find valuable insights and knowledge here. So, let's get started!
+# Vagrant-Kubernetes-ROS2 Deployment
+
+Welcome to the Vagrant-Kubernetes-ROS2 Deployment repository, an integrated environment designed for robust Kubernetes cluster management, ROS2 applications, and advanced monitoring systems using Vagrant and VirtualBox. This setup provides a comprehensive toolkit for developing, monitoring, and analyzing robotic systems and data.
 
 ## Table of Contents
 
-- [Deploying ROS2 Talker and Listener Nodes on a Kubernetes Cluster with Vagrant: A Step-by-Step Guide](#deploying-ros2-talker-and-listener-nodes-on-a-kubernetes-cluster-with-vagrant-a-step-by-step-guide)
+- [Vagrant-Kubernetes-ROS2 Deployment](#vagrant-kubernetes-ros2-deployment)
   - [Table of Contents](#table-of-contents)
-  - [Prerequisites](#prerequisites)
-    - [Installation of VirtualBox](#installation-of-virtualbox)
-    - [Installation of Vagrant](#installation-of-vagrant)
-  - [Creating VMs and Setting up the Kubernetes Cluster](#creating-vms-and-setting-up-the-kubernetes-cluster)
-    - [Kubeadm](#kubeadm)
-  - [Container Network Interface Plugin](#container-network-interface-plugin)
-  - [ROS2 Talker and Listener Nodes](#ros2-talker-and-listener-nodes)
-    - [Deploying the ROS2 Nodes](#deploying-the-ros2-nodes)
-    - [Testing the ROS2 Nodes](#testing-the-ros2-nodes)
-  - [Cluster](#cluster)
-    - [Shutdown the Cluster](#shutdown-the-cluster)
-    - [Restart the Cluster](#restart-the-cluster)
-    - [Destroy the Cluster](#destroy-the-cluster)
-- [Monitoring System](#monitoring-system)
-  - [Monitoring System](#monitoring-system-1)
-    - [Install Metrics Server](#install-metrics-server)
-    - [Install Kubernetes Dashboard](#install-kubernetes-dashboard)
-    - [Kubernetes Dashboard Access](#kubernetes-dashboard-access)
-    - [Helm](#helm)
-    - [Prometheus](#prometheus)
-      - [Add the Prometheus Helm Chart Repository](#add-the-prometheus-helm-chart-repository)
-      - [kubectl create namespace prometheus](#kubectl-create-namespace-prometheus)
-      - [Install Prometheus using Helm](#install-prometheus-using-helm)
-      - [Access Prometheus](#access-prometheus)
-    - [Grafana](#grafana)
+  - [Overview](#overview)
+  - [Installation and Usage](#installation-and-usage)
+    - [Prerequisites](#prerequisites)
+      - [Installation of VirtualBox](#installation-of-virtualbox)
+      - [Installation of Vagrant](#installation-of-vagrant)
+  - [Project Structure](#project-structure)
+    - [Kubernetes Cluster Setup](#kubernetes-cluster-setup)
+        - [Deploying a Kubernetes Cluster Using Vagrant and VirtualBox](#deploying-a-kubernetes-cluster-using-vagrant-and-virtualbox)
+        - [Pre-requisites and Dependencies](#pre-requisites-and-dependencies)
+        - [Cluster VM's Lifecycle Commands](#cluster-vms-lifecycle-commands)
+        - [Technical Details (Vagrantfile, Kubeadm, Kubectl, Kubelet, Container Network Interface Plugin)](#technical-details-vagrantfile-kubeadm-kubectl-kubelet-container-network-interface-plugin)
+    - [Network Configuration](#network-configuration)
+        - [VMs/Nodes Network Configuration](#vmsnodes-network-configuration)
+        - [Kubernetes Network Plugin - CNI Plugin Configuration](#kubernetes-network-plugin---cni-plugin-configuration)
+    - [Monitoring System](#monitoring-system)
+        - [Metrics Server](#metrics-server)
+        - [Kubernetes Dashboard](#kubernetes-dashboard)
+        - [Dashboard Access and Security](#dashboard-access-and-security)
+        - [Prometheus and Grafana](#prometheus-and-grafana)
+        - [Helm](#helm)
+        - [Persistent Volume Configuration](#persistent-volume-configuration)
+        - [GUI Access URLs and Credentials](#gui-access-urls-and-credentials)
+    - [ROS2 Deployment](#ros2-deployment)
+        - [ROS2 (Robot Operating System 2)](#ros2-robot-operating-system-2)
+        - [ROS2 Nodes vs. Kubernetes Nodes](#ros2-nodes-vs-kubernetes-nodes)
+        - [ROS2 Talker and Listener Nodes](#ros2-talker-and-listener-nodes)
+        - [Deploying the ROS2 Nodes](#deploying-the-ros2-nodes)
+        - [Testing the ROS2 Nodes](#testing-the-ros2-nodes)
+    - [Data Analysis Tools](#data-analysis-tools)
+        - [Data Extraction From Prometheus TSDB Databases](#data-extraction-from-prometheus-tsdb-databases)
+        - [Using Python and Jupyter for Data Analysis](#using-python-and-jupyter-for-data-analysis)
+  - [Citation](#citation)
+    - [License](#license)
+  - [Contributing](#contributing)
+  - [Acknowledgments](#acknowledgments)
 
-## Prerequisites
+## Overview
 
-- VirtualBox
-- Vagrant
+This project leverages Vagrant to automate the deployment of a Kubernetes cluster, configuring VirtualBox virtual machines, and setting up an extensive monitoring system. It is tailored for both development and educational purposes, particularly in robotic systems where ROS2 applications are prevalent.
 
-### Installation of VirtualBox
+## Installation and Usage
 
-For installing the VirtualBox use the following commands:
+### Prerequisites
+
+Before beginning, ensure you have VirtualBox and Vagrant installed on your machine.
+
+#### Installation of VirtualBox
+
+To install VirtualBox, run the following commands:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install virtualbox -y
 ```
 
-or use the following link to download the VirtualBox:
+Alternatively, you can download and install VirtualBox from the following link:
+- https://www.virtualbox.org/wiki/Linux_Downloads
+- https://download.virtualbox.org/virtualbox/7.0.14/virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
 
-https://www.virtualbox.org/wiki/Linux_Downloads
+#### Installation of Vagrant
 
-https://download.virtualbox.org/virtualbox/7.0.14/virtualbox-7.0_7.0.14-161095~Ubuntu~jammy_amd64.deb
-
-### Installation of Vagrant
-
-For installing the Vagrant use the following commands:
+Install Vagrant with these commands:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -64,277 +76,98 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://
 sudo apt update && sudo apt install vagrant
 ```
 
-Verify the Installation
+Verify the installation:
 
 ```bash
 vagrant --version
 ```
 
-## Creating VMs and Setting up the Kubernetes Cluster
+To create the VMs and set up the Kubernetes cluster, clone the repository and execute the following:
 
-This project uses Vagrant to automatically create and configure three virtual machines (VMs) in VirtualBox. These VMs will serve as the nodes for our Kubernetes cluster:
-
-1. `controlplane`: This is the control plane node of the Kubernetes cluster. It manages the state of the cluster, such as which nodes are part of the cluster, what applications are running, and their desired state.
-2. `worker1` and `worker2`: These are the worker nodes where your applications will be deployed.
-
-The configuration for these VMs is specified in the [`Vagrantfile`](Vagrantfile). For each VM, we have defined the following settings:
-
-- `vm.network`: The private network IP address of the VM.
-- `vm.hostname`: The internal hostname of the VM.
-- `vb.name`: The name of the VM as displayed in VirtualBox.
-- `vb.memory`: The amount of memory (in MB) allocated to the VM.
-- `vb.cpus`: The number of CPUs allocated to the VM.
-
-You can adjust these settings to suit your needs.
-
-To create the VMs and set up the Kubernetes cluster, run the following command in your terminal:
-
-```sh
+```bash
 git clone git@github.com:MSKazemi/Vagrant-Kubernetes-ROS2-Deployment.git
 cd Vagrant-Kubernetes-ROS2-Deployment
 vagrant up | tee vagrant.log
 ```
 
-This command will read the ``Vagrantfile`` in your current directory and create the VMs as specified. It will also execute the provisioning scripts defined in the ``Vagrantfile`` to install necessary packages, set up the Kubernetes cluster, and join the worker nodes to the cluster.
+Follow the specific details provided in each subcomponent's README for detailed setup and usage guidelines.
 
-After running this command, you should have a fully functional Kubernetes cluster ready for use!
+## Project Structure
 
-### Kubeadm
+### Kubernetes Cluster Setup
+Scripts and configurations to initialize a Kubernetes cluster. [More Details](./KubernetesClusterSetup/README.md)
 
-The Kubernetes cluster in this project is set up using `kubeadm`. The `kubeadm` tool is used in the `create_cluster.sh` script to initialize the control plane node with the command `sudo kubeadm init --apiserver-advertise-address=192.168.56.10 --pod-network-cidr=10.244.0.0/16`.
+##### [Deploying a Kubernetes Cluster Using Vagrant and VirtualBox](./KubernetesClusterSetup/README.md#introduction)
+##### [Pre-requisites and Dependencies](./KubernetesClusterSetup/README.md#pre-requisites)
+##### [Cluster VM's Lifecycle Commands](./KubernetesClusterSetup/README.md)
+##### [Technical Details (Vagrantfile, Kubeadm, Kubectl, Kubelet, Container Network Interface Plugin)](./KubernetesClusterSetup/README.md)
 
-After the control plane node is initialized, a join command is generated with `kubeadm token create --print-join-command` and saved to `/vagrant/join-command.sh`. This command is used to join the worker nodes to the cluster.
+### Network Configuration
 
-The `kubeadm` tool is also installed on all nodes as part of the provisioning process defined in the `Vagrantfile` and the `kubeadm_kubelet_kubectl.sh` script.
+Scripts to configure the network using CNI plugins like Weave Net. [More Details](./Network/README.md)
 
-## Container Network Interface Plugin
+##### [VMs/Nodes Network Configuration](./Network/README.md)
+##### [Kubernetes Network Plugin - CNI Plugin Configuration](./Network/README.md)
 
-In this project, we use Weave Net as our Container Network Interface (CNI) plugin. Weave Net is a powerful cloud native networking toolkit for Kubernetes. It provides a simple and efficient way to connect PODs across Kubernetes clusters.
+### Monitoring System 
 
-After setting up the Kubernetes cluster, you need to connect to the control plane node and install the Weave Net plugin. Here are the steps:
+Configuration files and scripts for setting up Prometheus, Grafana, and Kubernetes monitoring tools. [More Details](./MonitoringSystem/README.md)
 
-1. Connect to the control plane node using Vagrant:
+##### [Metrics Server](./MonitoringSystem/README.md)
+##### [Kubernetes Dashboard](./MonitoringSystem/README.md)
+##### [Dashboard Access and Security](./MonitoringSystem/README.md)
+##### [Prometheus and Grafana](./MonitoringSystem/README.md)
+##### [Helm](./MonitoringSystem/README.md)
+##### [Persistent Volume Configuration](./MonitoringSystem/README.md)
+##### [GUI Access URLs and Credentials](./MonitoringSystem/README.md)
 
-    ```sh
-    vagrant ssh controlplane
-    ```
+### ROS2 Deployment
 
-2. Install the Weave Net plugin. This command will download and apply the Weave Net Kubernetes CNI YAML file:
+Deployment instructions and configurations for ROS2 Talker and Listener nodes. [More Details](./ROS2/README.md)
 
-    ```sh
-    kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
-    ```
+##### [ROS2 (Robot Operating System 2)](./ROS2/README.md)
+##### [ROS2 Nodes vs. Kubernetes Nodes](./ROS2/README.md)
+##### [ROS2 Talker and Listener Nodes](./ROS2/README.md)
+##### [Deploying the ROS2 Nodes](./ROS2/README.md)
+##### [Testing the ROS2 Nodes](./ROS2/README.md)
 
-After installing the Weave Net plugin, you should verify that all nodes and pods in your Kubernetes cluster are running correctly:
 
-1. Check the status of all nodes in the cluster:
+### Data Analysis Tools
 
-    ```sh
-    kubectl get nodes -o wide
-    ```
+Python and Jupyter Notebook setups for analyzing data collected from the environment. [More Details](./DataAnalysis/README.md)
 
-    All nodes should be in the `Ready` state.
+##### [Data Extraction From Prometheus TSDB Databases](./DataAnalysis/README.md)
+##### [Using Python and Jupyter for Data Analysis](./DataAnalysis/README.md)
 
-2. Check the status of all pods in the cluster:
+## Citation
+If you use this project or its components in your research or in developing software, we kindly request that you cite it. Here's a suggested citation format:
 
-    ```sh
-    kubectl get pods -A -o wide
-    ```
-
-    All pods should be in the `Running` state, and there should be no errors.
-
-By following these steps, you can ensure that your Kubernetes cluster is correctly networked and ready for deploying applications.
-
-## ROS2 Talker and Listener Nodes
-
-This section will guide you through deploying ROS2 Talker and Listener nodes on the Kubernetes cluster. These nodes will allow you to test inter-node communication within the cluster.
-
-### Deploying the ROS2 Nodes
-
-1. Navigate to the `yaml` directory and apply the `ros_dep.yaml` file to create a deployment:
-
-    ```bash
-    cd ./yaml
-    kubectl apply -f ros_dep.yaml
-    ```
-
-2. Scale the deployment to create multiple replicas of the ROS2 nodes:
-
-    ```bash
-    kubectl scale deployment ros --replicas=3
-    ```
-
-### Testing the ROS2 Nodes
-
-1. Check the names of the pods running the ROS2 nodes:
-
-    ```bash
-    kubectl get pods
-    ```
-
-2. Attach to one of the pods:
-
-    ```bash
-    kubectl exec -it <pod-name> -- /bin/bash
-    ```
-
-3. Once inside the pod, source the ROS2 environment and start the talker node:
-
-    ```bash
-    source /opt/ros/foxy/setup.bash
-    ros2 run demo_nodes_cpp talker
-    ```
-
-4. In a separate terminal, attach to another pod and start the listener node:
-
-    ```bash
-    kubectl exec -it <another-pod-name> -- /bin/bash
-    ```
-    
-    ```bash
-    source /opt/ros/foxy/setup.bash
-    ros2 run demo_nodes_cpp listener
-    ```
-
-You should see the talker node publishing messages and the listener node receiving them. This confirms that the communication between the nodes is functioning correctly.
-
-![Architecture Diagram](./images/cmd.png)
-
-## Cluster
-
-### Shutdown the Cluster
-
-```shell
-vagrant halt
+```bibtex
+@misc{Vagrant-Kubernetes-ROS2,
+  author = {Mohsen Seyedkazemi Ardebili},
+  title = {Vagrant-Kubernetes-ROS2 Deployment},
+  year = {2024},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/yourgithub/Vagrant-Kubernetes-ROS2-Deployment}}
+}
 ```
 
-### Restart the Cluster
+### License
 
-```shell
-vagrant up
-```
+Distributed under the MIT License. See LICENSE for more information.
 
-### Destroy the Cluster
+## Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-```shell
-vagrant destroy -f
-```
-# Monitoring System
+Please refer to the `CONTRIBUTING.md` for more information.
 
-## [Monitoring System](./monitoring_system/Monitoring.md)
+## Acknowledgments
+- Kubernetes
+- Vagrant
+- VirtualBox
+- Prometheus
+- Grafana
+- ROS2
 
-### Install Metrics Server
-
-```shell
-vagrant ssh controlplane
-kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
-```
-
-or
-
-```shell
-vagrant ssh controlplane
-kubectl apply -f https://raw.githubusercontent.com/techiescamp/kubeadm-scripts/main/manifests/metrics-server.yaml
-```
-
-### Install Kubernetes Dashboard
-
-```shell
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-```
-
-### Kubernetes Dashboard Access
-
-Make the dashboard accessible:
-```shell
-vagrant ssh controlplane
-kubectl proxy
-```
-
-```bash
-kubectl apply -f ./yaml/admin-user.yaml
-kubectl -n kubernetes-dashboard get secret/admin-user -o go-template="{{.data.token | base64decode}}" >> "token"
-```
-Or
-```bash
-kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
-```
-
-Open the site in your browser:
-
-https://192.168.56.10:30664/#/login
-
-![Architecture Diagram](./images/k8s1.png)
-
-![Architecture Diagram](./images/k8s2.png)
-
-### Helm
-
-https://helm.sh/docs/intro/install/
-
-
-```shell
-vagrant ssh controlplane
-curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
-sudo apt-get install apt-transport-https --yes
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
-sudo apt-get update
-sudo apt-get install helm
-```
-
-### Prometheus
-
-#### Add the Prometheus Helm Chart Repository
-
-```bash
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-helm repo update
-```
-#### kubectl create namespace prometheus
-
-```bash
-kubectl create namespace prometheus
-```
-
-#### Install Prometheus using Helm
-
-```bash
-helm install prometheus prometheus-community/kube-prometheus-stack -n prometheus
-```
-
-```bash
-kubectl get pods -n prometheus
-```
-
-```bash
-kubectl get svc -n prometheus
-```
-
-if you want to access the Prometheus dashboard, you can port-forward the Prometheus pod to your local machine:
-```bash
-kubectl --namespace prometheus port-forward deploy/prometheus-kube-prometheus-prometheus 9090
-```
-Now, you can access the Prometheus dashboard by navigating to http://localhost:9090 in your web browser.
-
-Or you can change the service type to NodePort or LoadBalancer:
-```bash
-kubectl -n prometheus edit service prometheus-kube-prometheus-prometheus
-```
-In the editor, change type: ClusterIP to type: **NodePort** or type: LoadBalancer. Save and exit.
-For remote server, you can use the LoadBalancer type.
-
-
-
-#### Access Prometheus
-
-http://192.168.56.10:31334
-
-Username: admin
-
-Password: prom-operator
-
-### Grafana
-
-http://192.168.56.10:30400
-
-![Architecture Diagram](./images/g8.png)
+Thank you for exploring our Vagrant-Kubernetes-ROS2 Deployment repository. Dive into each component for a deeper understanding and more detailed documentation!
