@@ -1,0 +1,9 @@
+{
+    "default": [],
+    "kube-node-lease": [],
+    "kube-public": [],
+    "kube-system": [],
+    "kubernetes-dashboard": [],
+    "prometheus": [],
+    "ros": []
+}

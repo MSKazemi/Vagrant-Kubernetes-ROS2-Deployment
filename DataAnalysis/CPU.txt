@@ -1,0 +1,1218 @@
+instance:node_cpu_utilisation:rate5m.json
+cluster:node_cpu:ratio.json
+process_cpu_seconds_total.json
+namespace_cpu:kube_pod_container_resource_requests:sum.json
+node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate.json
+go_cpu_classes_gc_mark_idle_cpu_seconds_total.json
+go_cpu_classes_scavenge_total_cpu_seconds_total.json
+node_pressure_cpu_waiting_seconds_total.json
+instance:node_cpu:ratio.json
+node_memory_Percpu_bytes.json
+go_cpu_classes_gc_mark_assist_cpu_seconds_total.json
+go_cpu_classes_gc_mark_dedicated_cpu_seconds_total.json
+go_cpu_classes_gc_pause_cpu_seconds_total.json
+machine_cpu_physical_cores.json
+cluster:node_cpu:ratio_rate5m.json
+node_softnet_cpu_collision_total.json
+go_cpu_classes_user_cpu_seconds_total.json
+instance:node_cpu:rate:sum.json
+cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests.json
+kubelet_cpu_manager_pinning_errors_total.json
+node_cpu_guest_seconds_total.json
+go_cpu_classes_idle_cpu_seconds_total.json
+node:node_num_cpu:sum.json
+node:node_cpu_utilization:ratio_rate5m.json
+machine_cpu_sockets.json
+container_cpu_usage_seconds_total.json
+node_cpu_seconds_total.json
+instance:node_num_cpu:sum.json
+cluster:node_cpu:sum_rate5m.json
+go_cpu_classes_gc_total_cpu_seconds_total.json
+instance:node_load1_per_cpu:ratio.json
+go_cpu_classes_scavenge_background_cpu_seconds_total.json
+kubelet_cpu_manager_pinning_requests_total.json
+go_cpu_classes_scavenge_assist_cpu_seconds_total.json
+machine_cpu_cores.json
+go_cpu_classes_total_cpu_seconds_total.json
+
+
+
+instance:node_cpu_utilisation:rate5m.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/instance:node_cpu_utilisation:rate5m.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'endpoint', 'instance', 'job', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['instance:node_cpu_utilisation:rate5m']
+metric.container: ['node-exporter']
+metric.endpoint: ['http-metrics']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+metric.job: ['node-exporter']
+metric.namespace: ['prometheus']
+metric.pod: ['prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9']
+metric.service: ['prometheus-prometheus-node-exporter']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+cluster:node_cpu:ratio.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/cluster:node_cpu:ratio.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['cluster:node_cpu:ratio']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+process_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/process_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'endpoint', 'instance', 'job', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['process_cpu_seconds_total']
+metric.container: ['alertmanager' 'config-reloader' 'coredns' 'kube-prometheus-stack'
+ 'node-exporter' 'prometheus' nan]
+metric.endpoint: ['http-web' 'reloader-web' 'http-metrics' 'https' 'https-metrics']
+metric.instance: ['10.32.0.9:9093' '10.32.0.11:8080' '10.32.0.9:8080' '10.32.0.2:9153'
+ '10.32.0.3:9153' '10.32.0.4:9153' '10.32.0.13:10250' '10.32.0.7:10250'
+ '192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100'
+ '10.32.0.11:9090' '192.168.56.10:6443' '192.168.56.10:10250'
+ '192.168.56.11:10250' '192.168.56.12:10250']
+metric.job: ['prometheus-kube-prometheus-alertmanager'
+ 'prometheus-kube-prometheus-prometheus' 'coredns'
+ 'prometheus-kube-prometheus-operator' 'node-exporter' 'apiserver'
+ 'kubelet']
+metric.namespace: ['prometheus' 'kube-system' 'default']
+metric.pod: ['alertmanager-prometheus-kube-prometheus-alertmanager-0'
+ 'prometheus-prometheus-kube-prometheus-prometheus-0'
+ 'coredns-76f75df574-l6wj7' 'coredns-76f75df574-2ptm6'
+ 'prometheus-kube-prometheus-operator-db64fb7cd-wxpv8'
+ 'prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9' nan]
+metric.service: ['prometheus-kube-prometheus-alertmanager'
+ 'prometheus-kube-prometheus-prometheus'
+ 'prometheus-kube-prometheus-coredns'
+ 'prometheus-kube-prometheus-operator'
+ 'prometheus-prometheus-node-exporter' 'kubernetes'
+ 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+namespace_cpu:kube_pod_container_resource_requests:sum.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/namespace_cpu:kube_pod_container_resource_requests:sum.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'namespace'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['namespace_cpu:kube_pod_container_resource_requests:sum']
+metric.namespace: ['kube-system']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'namespace', 'node', 'pod'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['node_namespace_pod_container:container_cpu_usage_seconds_total:sum_irate']
+metric.container: ['alertmanager' 'config-reloader' 'coredns' 'dashboard-metrics-scraper'
+ 'etcd' 'grafana' 'grafana-sc-dashboard' 'grafana-sc-datasources'
+ 'kube-apiserver' 'kube-controller-manager' 'kube-prometheus-stack'
+ 'kube-proxy' 'kube-scheduler' 'kube-state-metrics' 'kubernetes-dashboard'
+ 'metrics-server' 'node-exporter' 'prometheus' 'ros' 'weave' 'weave-npc'
+ nan]
+metric.namespace: ['prometheus' 'kube-system' 'kubernetes-dashboard' 'default' 'ros']
+metric.node: ['controlplane' 'worker1' 'worker2']
+metric.pod: ['alertmanager-prometheus-kube-prometheus-alertmanager-0'
+ 'prometheus-prometheus-kube-prometheus-prometheus-0'
+ 'coredns-76f75df574-2ptm6' 'coredns-76f75df574-l6wj7'
+ 'dashboard-metrics-scraper-5657497c4c-7c475' 'etcd-controlplane'
+ 'prometheus-grafana-0' 'kube-apiserver-controlplane'
+ 'kube-controller-manager-controlplane'
+ 'prometheus-kube-prometheus-operator-db64fb7cd-wxpv8' 'kube-proxy-fw582'
+ 'kube-proxy-dq9gl' 'kube-proxy-t925l' 'kube-scheduler-controlplane'
+ 'prometheus-kube-state-metrics-c8f945cbb-d96cb'
+ 'kubernetes-dashboard-78f87ddfc-tk2pd' 'metrics-server-6d94bc8694-t5lll'
+ 'prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9' 'ros-5b5657bd98-mkn49'
+ 'ros-5b5657bd98-kmztg' 'ros-5b5657bd98-fx2vq' 'ros-5b5657bd98-866bf'
+ 'ros-5b5657bd98-m6d94' 'ros-5b5657bd98-knggl' 'ros-5b5657bd98-tds5p'
+ 'weave-net-g64n2' 'weave-net-jxsx9' 'weave-net-clpnr']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_gc_mark_idle_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_gc_mark_idle_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_gc_mark_idle_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_scavenge_total_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_scavenge_total_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_scavenge_total_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+node_pressure_cpu_waiting_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/node_pressure_cpu_waiting_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'endpoint', 'instance', 'job', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['node_pressure_cpu_waiting_seconds_total']
+metric.container: ['node-exporter']
+metric.endpoint: ['http-metrics']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+metric.job: ['node-exporter']
+metric.namespace: ['prometheus']
+metric.pod: ['prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9']
+metric.service: ['prometheus-prometheus-node-exporter']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+instance:node_cpu:ratio.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/instance:node_cpu:ratio.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'endpoint', 'instance', 'job', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['instance:node_cpu:ratio']
+metric.container: ['node-exporter']
+metric.endpoint: ['http-metrics']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+metric.job: ['node-exporter']
+metric.namespace: ['prometheus']
+metric.pod: ['prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9']
+metric.service: ['prometheus-prometheus-node-exporter']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+node_memory_Percpu_bytes.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/node_memory_Percpu_bytes.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'endpoint', 'instance', 'job', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['node_memory_Percpu_bytes']
+metric.container: ['node-exporter']
+metric.endpoint: ['http-metrics']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+metric.job: ['node-exporter']
+metric.namespace: ['prometheus']
+metric.pod: ['prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9']
+metric.service: ['prometheus-prometheus-node-exporter']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_gc_mark_assist_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_gc_mark_assist_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_gc_mark_assist_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_gc_mark_dedicated_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_gc_mark_dedicated_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_gc_mark_dedicated_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_gc_pause_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_gc_pause_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_gc_pause_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+machine_cpu_physical_cores.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/machine_cpu_physical_cores.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'boot_id', 'endpoint', 'instance', 'job', 'machine_id', 'metrics_path', 'namespace', 'node', 'service', 'system_uuid'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['machine_cpu_physical_cores']
+metric.boot_id: ['5214c690-7f2a-470e-8b9b-5c09c27239b8'
+ '55266312-6e6a-408f-9e44-8eae64effe49'
+ '5ba4e34a-1935-4516-95a8-5f6dad976db2'
+ '6bb47ecc-5eb1-4f22-b023-a08949f9bc15'
+ 'a0d63b71-2f06-4e5a-a87f-7ae579f13808'
+ 'd64076f3-0614-41c0-8948-e6ca7a8c3f2d']
+metric.endpoint: ['https-metrics']
+metric.instance: ['192.168.56.11:10250' '192.168.56.12:10250' '192.168.56.10:10250']
+metric.job: ['kubelet']
+metric.machine_id: ['f4cc8717efb94800b24836294764680f' '589cd681adbc4d7aa95025b9c5c3cfda'
+ '0043a0e58fb24a29a24708e5ad6ec40d']
+metric.metrics_path: ['/metrics/cadvisor']
+metric.namespace: ['kube-system']
+metric.node: ['worker1' 'worker2' 'controlplane']
+metric.service: ['prometheus-kube-prometheus-kubelet']
+metric.system_uuid: ['c45e03a4-b81a-b145-8784-88f527b6a5ad'
+ 'a2022650-e178-ff49-b168-80f2e13f5a2f'
+ '5ceaff9c-0db5-3742-bb28-722191cda936']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+cluster:node_cpu:ratio_rate5m.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/cluster:node_cpu:ratio_rate5m.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['cluster:node_cpu:ratio_rate5m']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+node_softnet_cpu_collision_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/node_softnet_cpu_collision_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'cpu', 'endpoint', 'instance', 'job', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['node_softnet_cpu_collision_total']
+metric.container: ['node-exporter']
+metric.cpu: ['0' '1' '10' '11' '12' '13' '2' '3' '4' '5' '6' '7' '8' '9']
+metric.endpoint: ['http-metrics']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+metric.job: ['node-exporter']
+metric.namespace: ['prometheus']
+metric.pod: ['prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9']
+metric.service: ['prometheus-prometheus-node-exporter']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_user_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_user_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_user_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+instance:node_cpu:rate:sum.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/instance:node_cpu:rate:sum.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'instance'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['instance:node_cpu:rate:sum']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'endpoint', 'instance', 'job', 'namespace', 'node', 'pod', 'resource', 'service', 'uid', 'unit'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['cluster:namespace:pod_cpu:active:kube_pod_container_resource_requests']
+metric.container: ['coredns' 'etcd' 'kube-apiserver' 'kube-controller-manager'
+ 'kube-scheduler' 'metrics-server' 'weave' 'weave-npc']
+metric.endpoint: ['http']
+metric.instance: ['10.32.0.8:8080']
+metric.job: ['kube-state-metrics']
+metric.namespace: ['kube-system']
+metric.node: ['controlplane' 'worker1' 'worker2']
+metric.pod: ['coredns-76f75df574-2ptm6' 'coredns-76f75df574-l6wj7' 'etcd-controlplane'
+ 'kube-apiserver-controlplane' 'kube-controller-manager-controlplane'
+ 'kube-scheduler-controlplane' 'metrics-server-6d94bc8694-t5lll'
+ 'weave-net-g64n2' 'weave-net-jxsx9' 'weave-net-clpnr']
+metric.resource: ['cpu']
+metric.service: ['prometheus-kube-state-metrics']
+metric.uid: ['43107209-8207-437d-a6e1-6f0166081f00'
+ 'fe774154-f770-44e0-9539-0c245518b5d2'
+ 'e9d6584e-0fb8-49ef-a2ec-0b36ca9227cf'
+ '74933a69-bf53-4b9e-9e63-4cb34003bf9c'
+ 'b5589486-7f86-4a80-8611-72a3c393cd23'
+ 'bd78d596-3418-4c08-9974-5e802a76745e'
+ 'a4ce1eaa-d176-41f1-955d-aa6eb3c1c5b9'
+ '602e0e67-77d9-43e8-9b16-ab62e9f4d5a0'
+ '76b18d34-1b00-4bbc-ad65-6086c45dc75a'
+ '7b90c760-b49f-4f2a-9a7b-65bfb285ae74']
+metric.unit: ['core']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+kubelet_cpu_manager_pinning_errors_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/kubelet_cpu_manager_pinning_errors_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'metrics_path', 'namespace', 'node', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['kubelet_cpu_manager_pinning_errors_total']
+metric.endpoint: ['https-metrics']
+metric.instance: ['192.168.56.10:10250' '192.168.56.11:10250' '192.168.56.12:10250']
+metric.job: ['kubelet']
+metric.metrics_path: ['/metrics']
+metric.namespace: ['kube-system']
+metric.node: ['controlplane' 'worker1' 'worker2']
+metric.service: ['prometheus-kube-prometheus-kubelet']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+node_cpu_guest_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/node_cpu_guest_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'cpu', 'endpoint', 'instance', 'job', 'mode', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['node_cpu_guest_seconds_total']
+metric.container: ['node-exporter']
+metric.cpu: ['0' '1' '10' '11' '12' '13' '2' '3' '4' '5' '6' '7' '8' '9']
+metric.endpoint: ['http-metrics']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+metric.job: ['node-exporter']
+metric.mode: ['nice' 'user']
+metric.namespace: ['prometheus']
+metric.pod: ['prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9']
+metric.service: ['prometheus-prometheus-node-exporter']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_idle_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_idle_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_idle_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+node:node_num_cpu:sum.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/node:node_num_cpu:sum.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'node'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['node:node_num_cpu:sum']
+metric.node: ['controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+node:node_cpu_utilization:ratio_rate5m.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/node:node_cpu_utilization:ratio_rate5m.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['node:node_cpu_utilization:ratio_rate5m']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+machine_cpu_sockets.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/machine_cpu_sockets.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'boot_id', 'endpoint', 'instance', 'job', 'machine_id', 'metrics_path', 'namespace', 'node', 'service', 'system_uuid'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['machine_cpu_sockets']
+metric.boot_id: ['5214c690-7f2a-470e-8b9b-5c09c27239b8'
+ '55266312-6e6a-408f-9e44-8eae64effe49'
+ '5ba4e34a-1935-4516-95a8-5f6dad976db2'
+ '6bb47ecc-5eb1-4f22-b023-a08949f9bc15'
+ 'a0d63b71-2f06-4e5a-a87f-7ae579f13808'
+ 'd64076f3-0614-41c0-8948-e6ca7a8c3f2d']
+metric.endpoint: ['https-metrics']
+metric.instance: ['192.168.56.11:10250' '192.168.56.12:10250' '192.168.56.10:10250']
+metric.job: ['kubelet']
+metric.machine_id: ['f4cc8717efb94800b24836294764680f' '589cd681adbc4d7aa95025b9c5c3cfda'
+ '0043a0e58fb24a29a24708e5ad6ec40d']
+metric.metrics_path: ['/metrics/cadvisor']
+metric.namespace: ['kube-system']
+metric.node: ['worker1' 'worker2' 'controlplane']
+metric.service: ['prometheus-kube-prometheus-kubelet']
+metric.system_uuid: ['c45e03a4-b81a-b145-8784-88f527b6a5ad'
+ 'a2022650-e178-ff49-b168-80f2e13f5a2f'
+ '5ceaff9c-0db5-3742-bb28-722191cda936']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+container_cpu_usage_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/container_cpu_usage_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'cpu', 'endpoint', 'id', 'image', 'instance', 'job', 'metrics_path', 'name', 'namespace', 'node', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['container_cpu_usage_seconds_total']
+metric.container: ['alertmanager' 'config-reloader' 'coredns' 'dashboard-metrics-scraper'
+ 'etcd' 'grafana' 'grafana-sc-dashboard' 'grafana-sc-datasources'
+ 'kube-apiserver' 'kube-controller-manager' 'kube-prometheus-stack'
+ 'kube-proxy' 'kube-scheduler' 'kube-state-metrics' 'kubernetes-dashboard'
+ 'metrics-server' 'node-exporter' 'prometheus' 'ros' 'weave' 'weave-npc'
+ nan]
+metric.cpu: ['total']
+metric.endpoint: ['https-metrics']
+metric.id: ['/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod65737b8a_1b1f_4825_857e_aa637e0a0f27.slice/cri-containerd-b17e796a466776e917b6a5b5ca1405f32a05cea42d7ff6fac304a8b36744289a.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod65737b8a_1b1f_4825_857e_aa637e0a0f27.slice/cri-containerd-fea0cf82961b16a82268234a6f1e6794328173e76251c2acb61ba74799f936fe.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod55b34a87_b404_4c0a_9b14_e1b60bf651da.slice/cri-containerd-477519c2a44fb4ed08aedb00e80c70ad3b19ea7d453b31b25418a7584ab05b84.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod55b34a87_b404_4c0a_9b14_e1b60bf651da.slice/cri-containerd-5a3a203069116e7a4d8a7b6755486f9cdda6e64cddec6b6851b41442d71dbaaa.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod65737b8a_1b1f_4825_857e_aa637e0a0f27.slice/cri-containerd-95b11e9336631b22eafbade27f44684178369cc54aa733532d88c60f82bb7bc5.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod65737b8a_1b1f_4825_857e_aa637e0a0f27.slice/cri-containerd-dcfd4b95d76305a21b5891b54a69fd5029e264ad56f77b5c6107ee96a95b6006.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod43107209_8207_437d_a6e1_6f0166081f00.slice/cri-containerd-18962077170365fc50d0dad60b4891ec98d18cf9607eacb394197c7ec4b560f6.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod43107209_8207_437d_a6e1_6f0166081f00.slice/cri-containerd-4d8f6d911003956a23f84315b5124850f420906dd66744871ce8fedff1836941.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podfe774154_f770_44e0_9539_0c245518b5d2.slice/cri-containerd-4d093e9fdf742000e56d933e8983326e28787d9bcaa03e0b47ffee8a7465ec9d.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podfe774154_f770_44e0_9539_0c245518b5d2.slice/cri-containerd-a144ff29ca255d143b5f13e1bc54ce74d72245e5e531fc55222e1e7480abf566.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podc8c14d4c_3889_4f93_88b6_96959ae69a1b.slice/cri-containerd-635bd1ca9735f59559e0f128482f3b06d6fe4d6ca06bddfd9186e7a1d089a4c1.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podc8c14d4c_3889_4f93_88b6_96959ae69a1b.slice/cri-containerd-698864b3df7c89902ae1d41432b14ccd95788d041172c0f0219f83ddb7d7de8e.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod58346d8733102b557e5a16ca745f0b14.slice/cri-containerd-21b9c01a84566834b81de6d7e6dad0885d9c2accb6c8197de34f7620f1477e9f.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod58346d8733102b557e5a16ca745f0b14.slice/cri-containerd-9e42be0f3927b49dedf90c87a16822961924271c02d54b0d789eece8b6c3df99.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd60b53be_d4c0_468e_928e_1aa2505cd742.slice/cri-containerd-19cc33ebf145c94511df12f50f32bf9a8e8922c1262af2f864119cabe34e73ee.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd60b53be_d4c0_468e_928e_1aa2505cd742.slice/cri-containerd-462f2cea4cfb954eccb7f8832dd3551e9b30230f5398928d6e922680ffcfa653.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd60b53be_d4c0_468e_928e_1aa2505cd742.slice/cri-containerd-3feb57f53d239db6325103f5bb2f56cd877976927ba4b3aa41a906d8543b22b9.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd60b53be_d4c0_468e_928e_1aa2505cd742.slice/cri-containerd-4a4d9ad20ffba541def7634b2927e6f6c893666b7228c0b0772fd695529821a0.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd60b53be_d4c0_468e_928e_1aa2505cd742.slice/cri-containerd-2b619488bfa69377e1112a2acf3cfa90fb37846ad2bfe5589c5a0b0d144cd9a6.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd60b53be_d4c0_468e_928e_1aa2505cd742.slice/cri-containerd-66dc447f3532e4921e24c462643ba5954dabe83233fa32e2124c07e01bebc5bd.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podd312e211aa868cb3debadd997301982e.slice/cri-containerd-63e3d788e04d69a738a6228da920679fb545df73b034712c43345f630c8116a8.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podd312e211aa868cb3debadd997301982e.slice/cri-containerd-89de86bde3cff9ddca58fac955996919248d53f92af686e8551dcd14cee6089a.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod41daa86675959b82b5951caecd9fea23.slice/cri-containerd-3aeeef1e32f2eedcb4eeb6994d2b47bac7108b8f37f56f416d1a6f5e7fe669bf.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod41daa86675959b82b5951caecd9fea23.slice/cri-containerd-6b5e5f7f8ecaa422abb450eaae147c8c0f973f68de73abe0feabe3bc4f2d99ca.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod7155f404_2bad_4f63_a826_22e9cdf8d270.slice/cri-containerd-300baee2533c1a5990393c32d2efb753cad18facb7db62b8f563a2f3a5aebb63.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod7155f404_2bad_4f63_a826_22e9cdf8d270.slice/cri-containerd-4038d1e872dcc45cb813f8cbcf0d0c592331a89111b2d5f903f939e77fcb1df9.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5de15cb4_7074_4810_ba1d_5a9a9e2e4030.slice/cri-containerd-df509be55d05ac3797502d3785f659d3ae579ba46547da187e070244d1ff8ce0.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5de15cb4_7074_4810_ba1d_5a9a9e2e4030.slice/cri-containerd-f66afd580afda2ef76f7ffb5927356223ec9099e36f80fbb3b3623788a80b2f1.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod73e9cc1c_930c_49ee_bf6c_701fd6115321.slice/cri-containerd-0b2b4339a8dbfabf9fda726eca12fd358d37ea25f50ae5f9092f0011bac14b4d.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod73e9cc1c_930c_49ee_bf6c_701fd6115321.slice/cri-containerd-cf1af4dcd95e2157f4e06c748bded17f6961852c38b930509a0a9d0620a9fbed.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf9acc9aa_627c_4945_a96f_b9943d70ab6f.slice/cri-containerd-2ca147db3063ba60d193ed3133afa0ee763c95946113f93fc916fc2ac9bbd82f.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf9acc9aa_627c_4945_a96f_b9943d70ab6f.slice/cri-containerd-f17e03a421861f0bc8021cd8a074d6c72363b01f5af3095ab39b20447f321f4d.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod98fa8c4ac3c8360b0d88ae027d691e99.slice/cri-containerd-b51c92f5a30513c4d953a9cb8226d3f397c440d3ae5f50273696efa41514f2d3.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod98fa8c4ac3c8360b0d88ae027d691e99.slice/cri-containerd-d7b420fcee81032657ee2ffea334703b740322a1133899c8685a72ed1ee16c30.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod192424b5_fe88_4621_bf61_b4cb95434ce7.slice/cri-containerd-87f797e8581e9f0dd79024789724373d05b4bf6073e9c788229453874f4e5f9b.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod192424b5_fe88_4621_bf61_b4cb95434ce7.slice/cri-containerd-e6db7e4f2785d8241ffceedb62bd02a9b94192f87415b863127b970781dae5a6.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podefa1db32_21f3_4d06_bde5_ebfddaa49997.slice/cri-containerd-0b469e45df64ff0c8ff0b3725be24537264d3af7691b2051ad4b4ea363fc6e03.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podefa1db32_21f3_4d06_bde5_ebfddaa49997.slice/cri-containerd-9ad94e2450e35bd64e890a2fca1c6baa5be4c54c1104424a9085a56b58a123b0.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-poda4ce1eaa_d176_41f1_955d_aa6eb3c1c5b9.slice/cri-containerd-78a6677a73f4dfd96922afc858cb7420136924a54b1e76824e8d5a3500cdf2f3.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-poda4ce1eaa_d176_41f1_955d_aa6eb3c1c5b9.slice/cri-containerd-952d6f07fbead0feac77919c83ea5d98a3c730559af0860f7c5041edb4b6f102.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod3075e105_26ba_4a1c_bfeb_079485da80da.slice/cri-containerd-4d2e0ee921473e454c1756c525c230f679b89375760f18edb7f3eb2a870e319a.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod3075e105_26ba_4a1c_bfeb_079485da80da.slice/cri-containerd-fca0ff414e9df5ea56d03d2e8de03a55ddfe3a5dd8868defccda74e3eb5d1cc9.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod62902a4a_7e5d_4d72_8869_31442853606f.slice/cri-containerd-3c37748775e8b69ab1a2f5ce6ea92ad4fa1e1846c13fb6fe1cb52bb6fd6af597.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod62902a4a_7e5d_4d72_8869_31442853606f.slice/cri-containerd-420fac8569739c25bfd7ed2b1da9d598d5ddb243cb794b3e92660babbc21a129.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod9d4158e9_a304_4d23_8783_7c686e5c403a.slice/cri-containerd-a92e8b427e7604bb01f611342a1ed110b68f2799bc9a529607719c5c83ed778c.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod9d4158e9_a304_4d23_8783_7c686e5c403a.slice/cri-containerd-ae4896218b7ba7a22ff4ee6e4676c6de580206020129a126fdb64c6a27138140.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod55b34a87_b404_4c0a_9b14_e1b60bf651da.slice/cri-containerd-763075c761bf36ebc26161b06fc7c48f1b2da351636867dcdfd0f012e4a15a2d.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod55b34a87_b404_4c0a_9b14_e1b60bf651da.slice/cri-containerd-b4c903ec01dc29c4358c0fed091e49f88b317221eabf2dd26c979b7d4c1292ec.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-1e9cf8ca74d5cb2f3cba53434a523c54013d496a97f5066bcfd743b85e5fbd7f.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-23fee7dd45d0c009abb8dd72efda5fbd48db330807d5db06d18ad09bb250efb9.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-6444995ab33e71ce95ffd3d0d58909fb97b78e4c64af41ac5e27b828bf62c2fb.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-677f4465983e73b47a29c6e67c1ff3c57fc931d60f8664f965d4dd6ea13f0ec0.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-7e661bae08a4aa5377474373edebddcb8964a274cbc29d597529dd958c0aea09.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-8878770fe18023a2180b8d0d8b6581baf7238d64ed2f38696419fab7ea7acd81.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-8dc97d92ab2208f5426281dab58db8d196fcc10108002b58d06830da348e3916.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-cb6fd3528544e1c7649b2b5b76270d18c66aa8c18be606b950df653af7680971.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-dae22c19034f7807ea3776aea284af22fd39de5428252a6cd3bffd178a221013.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod103bcc6c_dcf8_4785_bcba_7e617073cec4.slice/cri-containerd-10649022016e7cc701f69e099940cdc4089e628d7b02d26dc540f819499a269b.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod1373f596_61db_4ef6_989e_4ba84d81a9a5.slice/cri-containerd-833079cf9e77b0e206f9cf3f9f8cc5ec58d96a7a145df7a6d5430fcfbac57fc6.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-0315223e6b4636fd694d19d31b748da598db1107cafad0b46b9411e3a354cf0d.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-2fe8578634a8bb9ed5039a51995c884748472f75c2bf44046b72941293107fbb.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-4ab0ddef5434837316d5e5fd9c8d7e8569de0cec3b29b7919b8692c873fcb6f7.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-6821bb9922ba08d3b1ede1e675e02499e8d0da00a1f316697b62c207f87edea1.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-742cff79822d02722eb1542c9d67d8973938cb0aec53a707926fe8e02815c0ed.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-86c5ef6e9773f3d60aac5481d2886fec1adc1e362d1ffc8d1ed9d3f1fe0d6252.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-913e7b2bafc01a6b4fc47f5b47f2988e4bfa8e1b508ddaccd12f2c686e121f6e.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-ea271e08610d3035c9d8f2c0cdfcc9ef788fc25e2cb232b5a79878d6b557fbe5.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-f36686456667790e428041c4ae66406aeda35ac1f4869fc931ddb0670e99f178.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5e92c186_cb39_4a20_8b2b_117db2aa199a.slice/cri-containerd-f20eba54f11eff7d7b8036ae5f93e69ff3dd21952adf40d7f0824adcd8699c3f.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-03d7b7d70918cf2200a20f5bbf36d5ffebbef5188410a9c7fb6c194c86fb271c.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-0572dd18dedd1821e3912d8e5a2976a65885663be7a48549f5617ec3ec064372.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-32f182af466bda260db6b17167ad369f788dabf0b4b3a8c784e89cacc35752e1.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-3d3449156658dc1109c6f56e1fb9530845f3825db17212bce894a7d4589fe436.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-44f70599573dbc3bde9e9c14afa73c3a90f5ff2933a6122f306ad7488e48c157.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-4fbe081fd676dbedecbda3c0f5c3f8bbabcd0ea8cd365aca856b05b5e27929db.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-6d69949ab36920a247c363892d6117ef88ccef1f35c24415bab92839f3efcbf7.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-a00dd1294adea9f9b30da6bdbe4e3a858e0de2c5d882738d431420befc524bce.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-b2aea498e61f0d18a272f6668c4205e82df87541097793f03eb6cfbf90058943.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-1a922cbcbd4500da384cac53f76f3d55f55aeb91d1c743aaad501049edfe6cf8.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-1b3052db56fbf5a3f84832f4a5cf583f84801c8e25fd91188cf9033aa842b120.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-2944f3c02f04490e278404d4062b9ac7aa54d394375a3a2478cb6cae60f9e7af.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-4a987eb106fe4ff6b50317183c75bf1bd8d0016fb095198b5ef0c54906813363.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-5164571125e5fa61dbd98b7275f292876d1cc5eb4bd0f59512d9439e52cae0e2.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-8b1c4f7afcd3c288886b01d62ee9525beef3d46bbf443d6d2d3e8c585827cce2.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-8ef9490ce06bc7cbbdf77f303508511c223634b94fa75eef6f48835c24ff2018.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-9acb6f4486db8de09cb5dba1d4643d5c26ee787943e39e060508145cc4823627.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-cd9e099e2815cc302943ef7852ae512b24ed39e5448145d88285c53daa0acfbb.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod602e0e67_77d9_43e8_9b16_ab62e9f4d5a0.slice/cri-containerd-07d859832a6a3d1835d29197a0c20ad942d0d646c99d1a6ff61f81c11f799cab.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod602e0e67_77d9_43e8_9b16_ab62e9f4d5a0.slice/cri-containerd-88617257842fa763c3c5222b3eabb353c2443006141fbb117126620ba9d7427a.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod76b18d34_1b00_4bbc_ad65_6086c45dc75a.slice/cri-containerd-895d428c41a476cf7296f4868efe279523eceb260cc6b42cc233d0ffd1cdbe07.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod76b18d34_1b00_4bbc_ad65_6086c45dc75a.slice/cri-containerd-a8335c717a98b4e0bfa6ad8ebacd0ace188cb727bfc95700be2317385d5054db.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b90c760_b49f_4f2a_9a7b_65bfb285ae74.slice/cri-containerd-4a29cb79fa1a3f7b36e2f9e0908c20fbb90711c71849705a1d153270ca3e90ad.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b90c760_b49f_4f2a_9a7b_65bfb285ae74.slice/cri-containerd-5d36b70d992785aa6f3bc29976df68f4dadf31eec691e4812a9332f434274ba4.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod602e0e67_77d9_43e8_9b16_ab62e9f4d5a0.slice/cri-containerd-b30a7e6114d0ad4c48dab2a72e87559256331f4ba7a90716efb96187dc9e161c.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod602e0e67_77d9_43e8_9b16_ab62e9f4d5a0.slice/cri-containerd-e10fe8fc111cfdcc0bf9539a48f80756e8e76c768bb88e875fdf48bd9e7d02dc.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod76b18d34_1b00_4bbc_ad65_6086c45dc75a.slice/cri-containerd-0ff184d14025dd92b1ca815083128d96be8452011c6ac45441358186b54ff72c.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod76b18d34_1b00_4bbc_ad65_6086c45dc75a.slice/cri-containerd-71d235f79e4122d595821d21132f1ff05180312d346f33f19468b5ebd650833b.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b90c760_b49f_4f2a_9a7b_65bfb285ae74.slice/cri-containerd-0013f7759b8bfd59f928a68b5731494ba0f5c727681d9847becfe9ee1561fb04.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b90c760_b49f_4f2a_9a7b_65bfb285ae74.slice/cri-containerd-7a515ef690523702a183e364b5d0eb822c85e033c43f6a6f6a08a12e153135f4.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-7ce27210dd786d7764d0f266fa492f83a9024176d2e236069df7fbc9bd89c48f.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod0612fb24_801e_42e7_9fe7_218926478b58.slice/cri-containerd-974c966824def1b17dc0b7141e97faaed63f6b92b2088b652c93e0f706cfa23d.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod103bcc6c_dcf8_4785_bcba_7e617073cec4.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod103bcc6c_dcf8_4785_bcba_7e617073cec4.slice/cri-containerd-b916344cfd8d8e7a72b658f84b7028619c0c562bd0667b4f11f7308b7d4e75cc.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod1373f596_61db_4ef6_989e_4ba84d81a9a5.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod1373f596_61db_4ef6_989e_4ba84d81a9a5.slice/cri-containerd-6f5793d6af1ba2c5b7473564bd727f192eb632cc63b8132e6b35a3f1038b516e.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod192424b5_fe88_4621_bf61_b4cb95434ce7.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod192424b5_fe88_4621_bf61_b4cb95434ce7.slice/cri-containerd-2e3daceb3b832e6a412a6f00138c82af65047a9481510749c6e264cabeb6f270.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod192424b5_fe88_4621_bf61_b4cb95434ce7.slice/cri-containerd-daaa5f13cf0192b7746339592ebe938d1d07ef7f1301681ab6871825ee9dd1cc.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-7b51ea0a19421b9f18169b046dd97edfa92cf29a4ec560c1335fe467dfeb1f08.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod2a97fe1c_d921_4944_b62d_0f6aeb8848cd.slice/cri-containerd-960cc12db0b24591f8bc42c443fe24ddc0a306ce4a655312d84f9157ecf66176.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod3075e105_26ba_4a1c_bfeb_079485da80da.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod3075e105_26ba_4a1c_bfeb_079485da80da.slice/cri-containerd-b308400d8bf64e9452ebb184b60047009b7e7cd3a686f47e933d5ead893e5c4f.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod3075e105_26ba_4a1c_bfeb_079485da80da.slice/cri-containerd-d8f55541db771938573eed897d9aac43a9713b852fc5b217deca765fc8b15499.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod55b34a87_b404_4c0a_9b14_e1b60bf651da.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod55b34a87_b404_4c0a_9b14_e1b60bf651da.slice/cri-containerd-751786218b7c93e8991f81236dd758b48965037f058f3ccc4394f68acf89fa75.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod55b34a87_b404_4c0a_9b14_e1b60bf651da.slice/cri-containerd-845a3b782b329ab4661048662a3b76d05ddda2ad9de572d96224c88d4921955c.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5de15cb4_7074_4810_ba1d_5a9a9e2e4030.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5de15cb4_7074_4810_ba1d_5a9a9e2e4030.slice/cri-containerd-196decbc6b71a1be0f1ad83cc5f0770204d951b3b07afa666356a398bf26d1e0.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5de15cb4_7074_4810_ba1d_5a9a9e2e4030.slice/cri-containerd-807cfe13c6c43b32c1ee7d2938c27d1c9a9c4b6ca5a6fe7a81286474ab2896cd.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5e92c186_cb39_4a20_8b2b_117db2aa199a.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod5e92c186_cb39_4a20_8b2b_117db2aa199a.slice/cri-containerd-b43f48a2d163caf05635fb4d030ae402d732527acca349747be2c8401ad9a71c.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod62902a4a_7e5d_4d72_8869_31442853606f.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod62902a4a_7e5d_4d72_8869_31442853606f.slice/cri-containerd-4cce49ec12ffd85e637f0fd141bef3e08548021fef75025584b487a8fa7bbeb0.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod62902a4a_7e5d_4d72_8869_31442853606f.slice/cri-containerd-92a0c2a5b90fd8caa4f69bd3a5d93ac67a4b08b917b6b5341ce841bbaaf8a53d.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod7155f404_2bad_4f63_a826_22e9cdf8d270.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod7155f404_2bad_4f63_a826_22e9cdf8d270.slice/cri-containerd-0635311f0b3250d02d071c28860de992bcf4ee4bd29d05571892ca52edce7c83.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod7155f404_2bad_4f63_a826_22e9cdf8d270.slice/cri-containerd-68c8dee0d2a5749e352cedfe187504194450df40f86a716ea93168b721b17519.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod73e9cc1c_930c_49ee_bf6c_701fd6115321.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod73e9cc1c_930c_49ee_bf6c_701fd6115321.slice/cri-containerd-1040534467b439b1d07ba7cc442f904fd7479afa070955dad7c49c9135496a22.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod73e9cc1c_930c_49ee_bf6c_701fd6115321.slice/cri-containerd-f29443fbe7fcb56e79f97cafd6e09e0e9cb51b377a49a573d87322bff34dec18.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-4ec6ad6340ff1db724f076357b74c4a52a1e32548dac60ecd27b443a05c7bcd1.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod86185f08_76a9_410d_ada3_549e3552cba9.slice/cri-containerd-f7415f768a1c8c1ea8084b3130cd22a93b6985e228c368513ee9b757fab01183.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod9d4158e9_a304_4d23_8783_7c686e5c403a.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod9d4158e9_a304_4d23_8783_7c686e5c403a.slice/cri-containerd-6ad09c868e496c887e31e1a8eace61bb4bd6893c0687730095349ca417684e74.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-pod9d4158e9_a304_4d23_8783_7c686e5c403a.slice/cri-containerd-8df0125bbe96a1b45b6807211691ef7d02c81aaf713120f866382c08e381ae2b.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podc8c14d4c_3889_4f93_88b6_96959ae69a1b.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podc8c14d4c_3889_4f93_88b6_96959ae69a1b.slice/cri-containerd-05be0bf440ba57cf485c4a49925a6265f39cf18a74c066ab5ab90a4c6e5dfa30.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podc8c14d4c_3889_4f93_88b6_96959ae69a1b.slice/cri-containerd-ee36199410b31311026643da6fc5f2a1d4628cf736ac2fe8ea6e94ef56b7a555.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-66ef7481a2559d36ca3bcb747702a53d94783fd1daf36ebdec1bd365f8b3788c.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd4f664ed_c62a_4beb_94c0_79cb54c8bbf8.slice/cri-containerd-a4bc03639c9c190315484a47646eece41c0e820931afb2b3ae2da97429198069.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd60b53be_d4c0_468e_928e_1aa2505cd742.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd60b53be_d4c0_468e_928e_1aa2505cd742.slice/cri-containerd-17a50d5f68b7632e23e6883faae1cccd0f80b940bd923d5ab8b6cb62f3ddb2c8.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podd60b53be_d4c0_468e_928e_1aa2505cd742.slice/cri-containerd-6a3dfa234220f14c7886a39e28357632f63be1665a2f0a560fc24e7321ae20b8.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podefa1db32_21f3_4d06_bde5_ebfddaa49997.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podefa1db32_21f3_4d06_bde5_ebfddaa49997.slice/cri-containerd-0b256ec6350544071651f2b0c68d2edb7a777ce5849e638cbc786a8ba6be5910.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podefa1db32_21f3_4d06_bde5_ebfddaa49997.slice/cri-containerd-93ba103ae4e4070e1eead58e0e5f522b279d817d24936490327ffee03c365f3c.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf9acc9aa_627c_4945_a96f_b9943d70ab6f.slice'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf9acc9aa_627c_4945_a96f_b9943d70ab6f.slice/cri-containerd-649b8a112fa948e090ad4feb5e7615e126688d2cebcac4d50a0b37b14bad12a4.scope'
+ '/kubepods.slice/kubepods-besteffort.slice/kubepods-besteffort-podf9acc9aa_627c_4945_a96f_b9943d70ab6f.slice/cri-containerd-ac41695ead3b8865207e7932f68f1c21d21f4fb9776b040bdf275202036397b7.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod41daa86675959b82b5951caecd9fea23.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod41daa86675959b82b5951caecd9fea23.slice/cri-containerd-0e7995a966791559963578757da5f48e6de793ecc510ee9962be603f55622327.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod41daa86675959b82b5951caecd9fea23.slice/cri-containerd-aecbf313c23fa7036dfbf8d4322b6b073aa12ae878b6464381394628a25efc94.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod43107209_8207_437d_a6e1_6f0166081f00.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod43107209_8207_437d_a6e1_6f0166081f00.slice/cri-containerd-f9df2c705194aa5f9b6d30bc097baf835e64667be4c18339d61487d5df8f6163.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod43107209_8207_437d_a6e1_6f0166081f00.slice/cri-containerd-fe73aee1e19d564cc3fe25618a539e1145c0b1ddf1344a57a88d33520dc8abbd.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod58346d8733102b557e5a16ca745f0b14.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod58346d8733102b557e5a16ca745f0b14.slice/cri-containerd-511e19b07137e945b6eda3f55b648410205ec4e2c1450868ea8c39cd49c2d793.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod58346d8733102b557e5a16ca745f0b14.slice/cri-containerd-b4e812278c435687b6306691cecda41092a0564189debc240708c14e343a497f.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod602e0e67_77d9_43e8_9b16_ab62e9f4d5a0.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod602e0e67_77d9_43e8_9b16_ab62e9f4d5a0.slice/cri-containerd-4cd519d091a7a7fd6b38bbb1e3ee166cda300adda6cba79714f5f46cb1c6f4d1.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod602e0e67_77d9_43e8_9b16_ab62e9f4d5a0.slice/cri-containerd-6c0ece70e6dac4ae643086bb8e31c14a955c54fa29b3bdc3d2997e27db5b727e.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod65737b8a_1b1f_4825_857e_aa637e0a0f27.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod65737b8a_1b1f_4825_857e_aa637e0a0f27.slice/cri-containerd-3765c222f0671395a941fc03240bf0f98878ac5caca0f15b2dac1dfd28d57b54.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod65737b8a_1b1f_4825_857e_aa637e0a0f27.slice/cri-containerd-6e5a2e09f8f1402f903d02ac3951c58c14401ee08007d02bc5b64a9a9a72b5d3.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod76b18d34_1b00_4bbc_ad65_6086c45dc75a.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod76b18d34_1b00_4bbc_ad65_6086c45dc75a.slice/cri-containerd-5a6f6308db4823d5a11ebc5e51e3d1cf3a387f5824c41c8d8c29dc034aa6babb.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod76b18d34_1b00_4bbc_ad65_6086c45dc75a.slice/cri-containerd-f39bf15368e72980a11ed9ff65d5894a87ef94d8d61961f33fbb3c18d4f57fb8.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b90c760_b49f_4f2a_9a7b_65bfb285ae74.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b90c760_b49f_4f2a_9a7b_65bfb285ae74.slice/cri-containerd-1eec326429291aace0940a081dbf38e7c62615f224d9d7994f76e5a97b116b71.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b90c760_b49f_4f2a_9a7b_65bfb285ae74.slice/cri-containerd-2794d941fbe82c02f3217d1f398f351bb3d69c1794b28537b517d943fe2c0e42.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod98fa8c4ac3c8360b0d88ae027d691e99.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod98fa8c4ac3c8360b0d88ae027d691e99.slice/cri-containerd-9b020db3cedf69eeaef97d9b8801dad3f20d79c3ebdd28b508adcc72895568b7.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod98fa8c4ac3c8360b0d88ae027d691e99.slice/cri-containerd-9ea8227ba936e36c6811815c0cc24ae8b4a7d5fb95a8f97499a6b52c300bb27d.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-poda4ce1eaa_d176_41f1_955d_aa6eb3c1c5b9.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-poda4ce1eaa_d176_41f1_955d_aa6eb3c1c5b9.slice/cri-containerd-71e4063964cfa6d88ec5b3d779b9055ca9b368f1e2cac8f2d37e9d352287af90.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-poda4ce1eaa_d176_41f1_955d_aa6eb3c1c5b9.slice/cri-containerd-fd225600a2bb045728ac3761889de286406708fcece73d857dbf24280c130cd4.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podd312e211aa868cb3debadd997301982e.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podd312e211aa868cb3debadd997301982e.slice/cri-containerd-5d28212a1d5a8ced911901896e9ec8e7649f8a2fbb0f674486e567c32fd0fade.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podd312e211aa868cb3debadd997301982e.slice/cri-containerd-c001bed0f607ab9d972647cd48eea85135c76f6d2052f3e14e0da49b52fed098.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podfe774154_f770_44e0_9539_0c245518b5d2.slice'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podfe774154_f770_44e0_9539_0c245518b5d2.slice/cri-containerd-9d3e917b1e7784aedfc9b98194223a46cab99e37cb4c9909743496cb1859f618.scope'
+ '/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-podfe774154_f770_44e0_9539_0c245518b5d2.slice/cri-containerd-ff335fcd6ec7859afccb70a8597656acc248711997bf74fcd4a922cc6cb6fdc8.scope']
+metric.image: ['quay.io/prometheus/alertmanager:v0.27.0'
+ 'quay.io/prometheus-operator/prometheus-config-reloader:v0.73.1'
+ 'registry.k8s.io/coredns/coredns:v1.11.1'
+ 'docker.io/kubernetesui/metrics-scraper:v1.0.8'
+ 'registry.k8s.io/etcd:3.5.12-0' 'docker.io/grafana/grafana:10.4.1'
+ 'quay.io/kiwigrid/k8s-sidecar:1.26.1'
+ 'registry.k8s.io/kube-apiserver:v1.29.4'
+ 'registry.k8s.io/kube-controller-manager:v1.29.4'
+ 'quay.io/prometheus-operator/prometheus-operator:v0.73.1'
+ 'registry.k8s.io/kube-proxy:v1.29.4'
+ 'registry.k8s.io/kube-scheduler:v1.29.4'
+ 'registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.12.0'
+ 'docker.io/kubernetesui/dashboard:v2.7.0'
+ 'registry.k8s.io/metrics-server/metrics-server:v0.7.1'
+ 'quay.io/prometheus/node-exporter:v1.7.0'
+ 'quay.io/prometheus/prometheus:v2.51.1' 'docker.io/osrf/ros:foxy-desktop'
+ 'docker.io/weaveworks/weave-kube:latest'
+ 'docker.io/weaveworks/weave-npc:latest' nan 'registry.k8s.io/pause:3.6']
+metric.instance: ['192.168.56.10:10250' '192.168.56.12:10250' '192.168.56.11:10250']
+metric.job: ['kubelet']
+metric.metrics_path: ['/metrics/cadvisor']
+metric.name: ['b17e796a466776e917b6a5b5ca1405f32a05cea42d7ff6fac304a8b36744289a'
+ 'fea0cf82961b16a82268234a6f1e6794328173e76251c2acb61ba74799f936fe'
+ '477519c2a44fb4ed08aedb00e80c70ad3b19ea7d453b31b25418a7584ab05b84'
+ '5a3a203069116e7a4d8a7b6755486f9cdda6e64cddec6b6851b41442d71dbaaa'
+ '95b11e9336631b22eafbade27f44684178369cc54aa733532d88c60f82bb7bc5'
+ 'dcfd4b95d76305a21b5891b54a69fd5029e264ad56f77b5c6107ee96a95b6006'
+ '18962077170365fc50d0dad60b4891ec98d18cf9607eacb394197c7ec4b560f6'
+ '4d8f6d911003956a23f84315b5124850f420906dd66744871ce8fedff1836941'
+ '4d093e9fdf742000e56d933e8983326e28787d9bcaa03e0b47ffee8a7465ec9d'
+ 'a144ff29ca255d143b5f13e1bc54ce74d72245e5e531fc55222e1e7480abf566'
+ '635bd1ca9735f59559e0f128482f3b06d6fe4d6ca06bddfd9186e7a1d089a4c1'
+ '698864b3df7c89902ae1d41432b14ccd95788d041172c0f0219f83ddb7d7de8e'
+ '21b9c01a84566834b81de6d7e6dad0885d9c2accb6c8197de34f7620f1477e9f'
+ '9e42be0f3927b49dedf90c87a16822961924271c02d54b0d789eece8b6c3df99'
+ '19cc33ebf145c94511df12f50f32bf9a8e8922c1262af2f864119cabe34e73ee'
+ '462f2cea4cfb954eccb7f8832dd3551e9b30230f5398928d6e922680ffcfa653'
+ '3feb57f53d239db6325103f5bb2f56cd877976927ba4b3aa41a906d8543b22b9'
+ '4a4d9ad20ffba541def7634b2927e6f6c893666b7228c0b0772fd695529821a0'
+ '2b619488bfa69377e1112a2acf3cfa90fb37846ad2bfe5589c5a0b0d144cd9a6'
+ '66dc447f3532e4921e24c462643ba5954dabe83233fa32e2124c07e01bebc5bd'
+ '63e3d788e04d69a738a6228da920679fb545df73b034712c43345f630c8116a8'
+ '89de86bde3cff9ddca58fac955996919248d53f92af686e8551dcd14cee6089a'
+ '3aeeef1e32f2eedcb4eeb6994d2b47bac7108b8f37f56f416d1a6f5e7fe669bf'
+ '6b5e5f7f8ecaa422abb450eaae147c8c0f973f68de73abe0feabe3bc4f2d99ca'
+ '300baee2533c1a5990393c32d2efb753cad18facb7db62b8f563a2f3a5aebb63'
+ '4038d1e872dcc45cb813f8cbcf0d0c592331a89111b2d5f903f939e77fcb1df9'
+ 'df509be55d05ac3797502d3785f659d3ae579ba46547da187e070244d1ff8ce0'
+ 'f66afd580afda2ef76f7ffb5927356223ec9099e36f80fbb3b3623788a80b2f1'
+ '0b2b4339a8dbfabf9fda726eca12fd358d37ea25f50ae5f9092f0011bac14b4d'
+ 'cf1af4dcd95e2157f4e06c748bded17f6961852c38b930509a0a9d0620a9fbed'
+ '2ca147db3063ba60d193ed3133afa0ee763c95946113f93fc916fc2ac9bbd82f'
+ 'f17e03a421861f0bc8021cd8a074d6c72363b01f5af3095ab39b20447f321f4d'
+ 'b51c92f5a30513c4d953a9cb8226d3f397c440d3ae5f50273696efa41514f2d3'
+ 'd7b420fcee81032657ee2ffea334703b740322a1133899c8685a72ed1ee16c30'
+ '87f797e8581e9f0dd79024789724373d05b4bf6073e9c788229453874f4e5f9b'
+ 'e6db7e4f2785d8241ffceedb62bd02a9b94192f87415b863127b970781dae5a6'
+ '0b469e45df64ff0c8ff0b3725be24537264d3af7691b2051ad4b4ea363fc6e03'
+ '9ad94e2450e35bd64e890a2fca1c6baa5be4c54c1104424a9085a56b58a123b0'
+ '78a6677a73f4dfd96922afc858cb7420136924a54b1e76824e8d5a3500cdf2f3'
+ '952d6f07fbead0feac77919c83ea5d98a3c730559af0860f7c5041edb4b6f102'
+ '4d2e0ee921473e454c1756c525c230f679b89375760f18edb7f3eb2a870e319a'
+ 'fca0ff414e9df5ea56d03d2e8de03a55ddfe3a5dd8868defccda74e3eb5d1cc9'
+ '3c37748775e8b69ab1a2f5ce6ea92ad4fa1e1846c13fb6fe1cb52bb6fd6af597'
+ '420fac8569739c25bfd7ed2b1da9d598d5ddb243cb794b3e92660babbc21a129'
+ 'a92e8b427e7604bb01f611342a1ed110b68f2799bc9a529607719c5c83ed778c'
+ 'ae4896218b7ba7a22ff4ee6e4676c6de580206020129a126fdb64c6a27138140'
+ '763075c761bf36ebc26161b06fc7c48f1b2da351636867dcdfd0f012e4a15a2d'
+ 'b4c903ec01dc29c4358c0fed091e49f88b317221eabf2dd26c979b7d4c1292ec'
+ '1e9cf8ca74d5cb2f3cba53434a523c54013d496a97f5066bcfd743b85e5fbd7f'
+ '23fee7dd45d0c009abb8dd72efda5fbd48db330807d5db06d18ad09bb250efb9'
+ '6444995ab33e71ce95ffd3d0d58909fb97b78e4c64af41ac5e27b828bf62c2fb'
+ '677f4465983e73b47a29c6e67c1ff3c57fc931d60f8664f965d4dd6ea13f0ec0'
+ '7e661bae08a4aa5377474373edebddcb8964a274cbc29d597529dd958c0aea09'
+ '8878770fe18023a2180b8d0d8b6581baf7238d64ed2f38696419fab7ea7acd81'
+ '8dc97d92ab2208f5426281dab58db8d196fcc10108002b58d06830da348e3916'
+ 'cb6fd3528544e1c7649b2b5b76270d18c66aa8c18be606b950df653af7680971'
+ 'dae22c19034f7807ea3776aea284af22fd39de5428252a6cd3bffd178a221013'
+ '10649022016e7cc701f69e099940cdc4089e628d7b02d26dc540f819499a269b'
+ '833079cf9e77b0e206f9cf3f9f8cc5ec58d96a7a145df7a6d5430fcfbac57fc6'
+ '0315223e6b4636fd694d19d31b748da598db1107cafad0b46b9411e3a354cf0d'
+ '2fe8578634a8bb9ed5039a51995c884748472f75c2bf44046b72941293107fbb'
+ '4ab0ddef5434837316d5e5fd9c8d7e8569de0cec3b29b7919b8692c873fcb6f7'
+ '6821bb9922ba08d3b1ede1e675e02499e8d0da00a1f316697b62c207f87edea1'
+ '742cff79822d02722eb1542c9d67d8973938cb0aec53a707926fe8e02815c0ed'
+ '86c5ef6e9773f3d60aac5481d2886fec1adc1e362d1ffc8d1ed9d3f1fe0d6252'
+ '913e7b2bafc01a6b4fc47f5b47f2988e4bfa8e1b508ddaccd12f2c686e121f6e'
+ 'ea271e08610d3035c9d8f2c0cdfcc9ef788fc25e2cb232b5a79878d6b557fbe5'
+ 'f36686456667790e428041c4ae66406aeda35ac1f4869fc931ddb0670e99f178'
+ 'f20eba54f11eff7d7b8036ae5f93e69ff3dd21952adf40d7f0824adcd8699c3f'
+ '03d7b7d70918cf2200a20f5bbf36d5ffebbef5188410a9c7fb6c194c86fb271c'
+ '0572dd18dedd1821e3912d8e5a2976a65885663be7a48549f5617ec3ec064372'
+ '32f182af466bda260db6b17167ad369f788dabf0b4b3a8c784e89cacc35752e1'
+ '3d3449156658dc1109c6f56e1fb9530845f3825db17212bce894a7d4589fe436'
+ '44f70599573dbc3bde9e9c14afa73c3a90f5ff2933a6122f306ad7488e48c157'
+ '4fbe081fd676dbedecbda3c0f5c3f8bbabcd0ea8cd365aca856b05b5e27929db'
+ '6d69949ab36920a247c363892d6117ef88ccef1f35c24415bab92839f3efcbf7'
+ 'a00dd1294adea9f9b30da6bdbe4e3a858e0de2c5d882738d431420befc524bce'
+ 'b2aea498e61f0d18a272f6668c4205e82df87541097793f03eb6cfbf90058943'
+ '1a922cbcbd4500da384cac53f76f3d55f55aeb91d1c743aaad501049edfe6cf8'
+ '1b3052db56fbf5a3f84832f4a5cf583f84801c8e25fd91188cf9033aa842b120'
+ '2944f3c02f04490e278404d4062b9ac7aa54d394375a3a2478cb6cae60f9e7af'
+ '4a987eb106fe4ff6b50317183c75bf1bd8d0016fb095198b5ef0c54906813363'
+ '5164571125e5fa61dbd98b7275f292876d1cc5eb4bd0f59512d9439e52cae0e2'
+ '8b1c4f7afcd3c288886b01d62ee9525beef3d46bbf443d6d2d3e8c585827cce2'
+ '8ef9490ce06bc7cbbdf77f303508511c223634b94fa75eef6f48835c24ff2018'
+ '9acb6f4486db8de09cb5dba1d4643d5c26ee787943e39e060508145cc4823627'
+ 'cd9e099e2815cc302943ef7852ae512b24ed39e5448145d88285c53daa0acfbb'
+ '07d859832a6a3d1835d29197a0c20ad942d0d646c99d1a6ff61f81c11f799cab'
+ '88617257842fa763c3c5222b3eabb353c2443006141fbb117126620ba9d7427a'
+ '895d428c41a476cf7296f4868efe279523eceb260cc6b42cc233d0ffd1cdbe07'
+ 'a8335c717a98b4e0bfa6ad8ebacd0ace188cb727bfc95700be2317385d5054db'
+ '4a29cb79fa1a3f7b36e2f9e0908c20fbb90711c71849705a1d153270ca3e90ad'
+ '5d36b70d992785aa6f3bc29976df68f4dadf31eec691e4812a9332f434274ba4'
+ 'b30a7e6114d0ad4c48dab2a72e87559256331f4ba7a90716efb96187dc9e161c'
+ 'e10fe8fc111cfdcc0bf9539a48f80756e8e76c768bb88e875fdf48bd9e7d02dc'
+ '0ff184d14025dd92b1ca815083128d96be8452011c6ac45441358186b54ff72c'
+ '71d235f79e4122d595821d21132f1ff05180312d346f33f19468b5ebd650833b'
+ '0013f7759b8bfd59f928a68b5731494ba0f5c727681d9847becfe9ee1561fb04'
+ '7a515ef690523702a183e364b5d0eb822c85e033c43f6a6f6a08a12e153135f4' nan
+ '7ce27210dd786d7764d0f266fa492f83a9024176d2e236069df7fbc9bd89c48f'
+ '974c966824def1b17dc0b7141e97faaed63f6b92b2088b652c93e0f706cfa23d'
+ 'b916344cfd8d8e7a72b658f84b7028619c0c562bd0667b4f11f7308b7d4e75cc'
+ '6f5793d6af1ba2c5b7473564bd727f192eb632cc63b8132e6b35a3f1038b516e'
+ '2e3daceb3b832e6a412a6f00138c82af65047a9481510749c6e264cabeb6f270'
+ 'daaa5f13cf0192b7746339592ebe938d1d07ef7f1301681ab6871825ee9dd1cc'
+ '7b51ea0a19421b9f18169b046dd97edfa92cf29a4ec560c1335fe467dfeb1f08'
+ '960cc12db0b24591f8bc42c443fe24ddc0a306ce4a655312d84f9157ecf66176'
+ 'b308400d8bf64e9452ebb184b60047009b7e7cd3a686f47e933d5ead893e5c4f'
+ 'd8f55541db771938573eed897d9aac43a9713b852fc5b217deca765fc8b15499'
+ '751786218b7c93e8991f81236dd758b48965037f058f3ccc4394f68acf89fa75'
+ '845a3b782b329ab4661048662a3b76d05ddda2ad9de572d96224c88d4921955c'
+ '196decbc6b71a1be0f1ad83cc5f0770204d951b3b07afa666356a398bf26d1e0'
+ '807cfe13c6c43b32c1ee7d2938c27d1c9a9c4b6ca5a6fe7a81286474ab2896cd'
+ 'b43f48a2d163caf05635fb4d030ae402d732527acca349747be2c8401ad9a71c'
+ '4cce49ec12ffd85e637f0fd141bef3e08548021fef75025584b487a8fa7bbeb0'
+ '92a0c2a5b90fd8caa4f69bd3a5d93ac67a4b08b917b6b5341ce841bbaaf8a53d'
+ '0635311f0b3250d02d071c28860de992bcf4ee4bd29d05571892ca52edce7c83'
+ '68c8dee0d2a5749e352cedfe187504194450df40f86a716ea93168b721b17519'
+ '1040534467b439b1d07ba7cc442f904fd7479afa070955dad7c49c9135496a22'
+ 'f29443fbe7fcb56e79f97cafd6e09e0e9cb51b377a49a573d87322bff34dec18'
+ '4ec6ad6340ff1db724f076357b74c4a52a1e32548dac60ecd27b443a05c7bcd1'
+ 'f7415f768a1c8c1ea8084b3130cd22a93b6985e228c368513ee9b757fab01183'
+ '6ad09c868e496c887e31e1a8eace61bb4bd6893c0687730095349ca417684e74'
+ '8df0125bbe96a1b45b6807211691ef7d02c81aaf713120f866382c08e381ae2b'
+ '05be0bf440ba57cf485c4a49925a6265f39cf18a74c066ab5ab90a4c6e5dfa30'
+ 'ee36199410b31311026643da6fc5f2a1d4628cf736ac2fe8ea6e94ef56b7a555'
+ '66ef7481a2559d36ca3bcb747702a53d94783fd1daf36ebdec1bd365f8b3788c'
+ 'a4bc03639c9c190315484a47646eece41c0e820931afb2b3ae2da97429198069'
+ '17a50d5f68b7632e23e6883faae1cccd0f80b940bd923d5ab8b6cb62f3ddb2c8'
+ '6a3dfa234220f14c7886a39e28357632f63be1665a2f0a560fc24e7321ae20b8'
+ '0b256ec6350544071651f2b0c68d2edb7a777ce5849e638cbc786a8ba6be5910'
+ '93ba103ae4e4070e1eead58e0e5f522b279d817d24936490327ffee03c365f3c'
+ '649b8a112fa948e090ad4feb5e7615e126688d2cebcac4d50a0b37b14bad12a4'
+ 'ac41695ead3b8865207e7932f68f1c21d21f4fb9776b040bdf275202036397b7'
+ '0e7995a966791559963578757da5f48e6de793ecc510ee9962be603f55622327'
+ 'aecbf313c23fa7036dfbf8d4322b6b073aa12ae878b6464381394628a25efc94'
+ 'f9df2c705194aa5f9b6d30bc097baf835e64667be4c18339d61487d5df8f6163'
+ 'fe73aee1e19d564cc3fe25618a539e1145c0b1ddf1344a57a88d33520dc8abbd'
+ '511e19b07137e945b6eda3f55b648410205ec4e2c1450868ea8c39cd49c2d793'
+ 'b4e812278c435687b6306691cecda41092a0564189debc240708c14e343a497f'
+ '4cd519d091a7a7fd6b38bbb1e3ee166cda300adda6cba79714f5f46cb1c6f4d1'
+ '6c0ece70e6dac4ae643086bb8e31c14a955c54fa29b3bdc3d2997e27db5b727e'
+ '3765c222f0671395a941fc03240bf0f98878ac5caca0f15b2dac1dfd28d57b54'
+ '6e5a2e09f8f1402f903d02ac3951c58c14401ee08007d02bc5b64a9a9a72b5d3'
+ '5a6f6308db4823d5a11ebc5e51e3d1cf3a387f5824c41c8d8c29dc034aa6babb'
+ 'f39bf15368e72980a11ed9ff65d5894a87ef94d8d61961f33fbb3c18d4f57fb8'
+ '1eec326429291aace0940a081dbf38e7c62615f224d9d7994f76e5a97b116b71'
+ '2794d941fbe82c02f3217d1f398f351bb3d69c1794b28537b517d943fe2c0e42'
+ '9b020db3cedf69eeaef97d9b8801dad3f20d79c3ebdd28b508adcc72895568b7'
+ '9ea8227ba936e36c6811815c0cc24ae8b4a7d5fb95a8f97499a6b52c300bb27d'
+ '71e4063964cfa6d88ec5b3d779b9055ca9b368f1e2cac8f2d37e9d352287af90'
+ 'fd225600a2bb045728ac3761889de286406708fcece73d857dbf24280c130cd4'
+ '5d28212a1d5a8ced911901896e9ec8e7649f8a2fbb0f674486e567c32fd0fade'
+ 'c001bed0f607ab9d972647cd48eea85135c76f6d2052f3e14e0da49b52fed098'
+ '9d3e917b1e7784aedfc9b98194223a46cab99e37cb4c9909743496cb1859f618'
+ 'ff335fcd6ec7859afccb70a8597656acc248711997bf74fcd4a922cc6cb6fdc8']
+metric.namespace: ['prometheus' 'kube-system' 'kubernetes-dashboard' 'ros' 'default']
+metric.node: ['controlplane' 'worker2' 'worker1']
+metric.pod: ['alertmanager-prometheus-kube-prometheus-alertmanager-0'
+ 'prometheus-prometheus-kube-prometheus-prometheus-0'
+ 'coredns-76f75df574-2ptm6' 'coredns-76f75df574-l6wj7'
+ 'dashboard-metrics-scraper-5657497c4c-7c475' 'etcd-controlplane'
+ 'prometheus-grafana-0' 'kube-apiserver-controlplane'
+ 'kube-controller-manager-controlplane'
+ 'prometheus-kube-prometheus-operator-db64fb7cd-wxpv8' 'kube-proxy-fw582'
+ 'kube-proxy-t925l' 'kube-proxy-dq9gl' 'kube-scheduler-controlplane'
+ 'prometheus-kube-state-metrics-c8f945cbb-d96cb'
+ 'kubernetes-dashboard-78f87ddfc-tk2pd' 'metrics-server-6d94bc8694-t5lll'
+ 'prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-5z4z9'
+ 'prometheus-prometheus-node-exporter-4mkg9' 'ros-5b5657bd98-knggl'
+ 'ros-5b5657bd98-mkn49' 'ros-5b5657bd98-fx2vq' 'ros-5b5657bd98-866bf'
+ 'ros-5b5657bd98-kmztg' 'ros-5b5657bd98-m6d94' 'ros-5b5657bd98-tds5p'
+ 'weave-net-g64n2' 'weave-net-jxsx9' 'weave-net-clpnr']
+metric.service: ['prometheus-kube-prometheus-kubelet']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+node_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/node_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'cpu', 'endpoint', 'instance', 'job', 'mode', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['node_cpu_seconds_total']
+metric.container: ['node-exporter']
+metric.cpu: ['0' '1' '10' '11' '12' '13' '2' '3' '4' '5' '6' '7' '8' '9']
+metric.endpoint: ['http-metrics']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+metric.job: ['node-exporter']
+metric.mode: ['idle' 'iowait' 'irq' 'nice' 'softirq' 'steal' 'system' 'user']
+metric.namespace: ['prometheus']
+metric.pod: ['prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9']
+metric.service: ['prometheus-prometheus-node-exporter']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+instance:node_num_cpu:sum.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/instance:node_num_cpu:sum.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'endpoint', 'instance', 'job', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['instance:node_num_cpu:sum']
+metric.container: ['node-exporter']
+metric.endpoint: ['http-metrics']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+metric.job: ['node-exporter']
+metric.namespace: ['prometheus']
+metric.pod: ['prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9']
+metric.service: ['prometheus-prometheus-node-exporter']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+cluster:node_cpu:sum_rate5m.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/cluster:node_cpu:sum_rate5m.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['cluster:node_cpu:sum_rate5m']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_gc_total_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_gc_total_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_gc_total_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+instance:node_load1_per_cpu:ratio.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/instance:node_load1_per_cpu:ratio.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'container', 'endpoint', 'instance', 'job', 'namespace', 'pod', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['instance:node_load1_per_cpu:ratio']
+metric.container: ['node-exporter']
+metric.endpoint: ['http-metrics']
+metric.instance: ['192.168.56.10:9100' '192.168.56.11:9100' '192.168.56.12:9100']
+metric.job: ['node-exporter']
+metric.namespace: ['prometheus']
+metric.pod: ['prometheus-prometheus-node-exporter-5t6b5'
+ 'prometheus-prometheus-node-exporter-4mkg9'
+ 'prometheus-prometheus-node-exporter-5z4z9']
+metric.service: ['prometheus-prometheus-node-exporter']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_scavenge_background_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_scavenge_background_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_scavenge_background_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+kubelet_cpu_manager_pinning_requests_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/kubelet_cpu_manager_pinning_requests_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'metrics_path', 'namespace', 'node', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['kubelet_cpu_manager_pinning_requests_total']
+metric.endpoint: ['https-metrics']
+metric.instance: ['192.168.56.10:10250' '192.168.56.11:10250' '192.168.56.12:10250']
+metric.job: ['kubelet']
+metric.metrics_path: ['/metrics']
+metric.namespace: ['kube-system']
+metric.node: ['controlplane' 'worker1' 'worker2']
+metric.service: ['prometheus-kube-prometheus-kubelet']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_scavenge_assist_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_scavenge_assist_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_scavenge_assist_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+machine_cpu_cores.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/machine_cpu_cores.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'boot_id', 'endpoint', 'instance', 'job', 'machine_id', 'metrics_path', 'namespace', 'node', 'service', 'system_uuid'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['machine_cpu_cores']
+metric.boot_id: ['5214c690-7f2a-470e-8b9b-5c09c27239b8'
+ '55266312-6e6a-408f-9e44-8eae64effe49'
+ '5ba4e34a-1935-4516-95a8-5f6dad976db2'
+ '6bb47ecc-5eb1-4f22-b023-a08949f9bc15'
+ 'a0d63b71-2f06-4e5a-a87f-7ae579f13808'
+ 'd64076f3-0614-41c0-8948-e6ca7a8c3f2d']
+metric.endpoint: ['https-metrics']
+metric.instance: ['192.168.56.11:10250' '192.168.56.12:10250' '192.168.56.10:10250']
+metric.job: ['kubelet']
+metric.machine_id: ['f4cc8717efb94800b24836294764680f' '589cd681adbc4d7aa95025b9c5c3cfda'
+ '0043a0e58fb24a29a24708e5ad6ec40d']
+metric.metrics_path: ['/metrics/cadvisor']
+metric.namespace: ['kube-system']
+metric.node: ['worker1' 'worker2' 'controlplane']
+metric.service: ['prometheus-kube-prometheus-kubelet']
+metric.system_uuid: ['c45e03a4-b81a-b145-8784-88f527b6a5ad'
+ 'a2022650-e178-ff49-b168-80f2e13f5a2f'
+ '5ceaff9c-0db5-3742-bb28-722191cda936']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
+go_cpu_classes_total_cpu_seconds_total.json
+File: <_io.TextIOWrapper name='../data_json/20240420/json/go_cpu_classes_total_cpu_seconds_total.json' mode='rt' encoding='utf-8'>
+
+--- keys ------------------------------------------------------------
+dict_keys(['metric', 'values'])
+--- Metric Keys -----------------------------------------------------
+dict_keys(['__name__', 'endpoint', 'instance', 'job', 'namespace', 'service'])
+
+Unique values in each column except values columns: ------------------
+metric.__name__: ['go_cpu_classes_total_cpu_seconds_total']
+metric.endpoint: ['https' 'https-metrics']
+metric.instance: ['192.168.56.10:6443' '192.168.56.10:10250' '192.168.56.11:10250'
+ '192.168.56.12:10250']
+metric.job: ['apiserver' 'kubelet']
+metric.namespace: ['default' 'kube-system']
+metric.service: ['kubernetes' 'prometheus-kube-prometheus-kubelet']
+metric.metrics_path: [nan '/metrics']
+metric.node: [nan 'controlplane' 'worker1' 'worker2']
+=-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-==-=
+
+
