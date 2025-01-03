@@ -3291,6 +3291,15 @@ prometheus:
   ## ref: https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/api.md#prometheusspec
   ##
   prometheusSpec:
+
+
+
+    # # Mohsen added new crapeConfigs section for anomaly detection
+    # scrape_configs:
+    #   - job_name: 'mohsen-app'
+    #     static_configs:
+    #       - targets: ['192.168.56.10:8744']
+
     ## If true, pass --storage.tsdb.max-block-duration=2h to prometheus. This is already done if using Thanos
     ##
     disableCompaction: false
@@ -3704,7 +3713,12 @@ prometheus:
     ## The scrape configuration example below will find master nodes, provided they have the name .*mst.*, relabel the
     ## port to 2379 and allow etcd scraping provided it is running on all Kubernetes master nodes
     ##
-    additionalScrapeConfigs: []
+# Mohsen added new crapeConfigs section for anomaly detection
+    # additionalScrapeConfigs: []
+    additionalScrapeConfigs: |
+      - job_name: 'mohsen-app'
+        static_configs:
+          - targets: ['192.168.56.10:8744']
     # - job_name: kube-etcd
     #   kubernetes_sd_configs:
     #     - role: node
