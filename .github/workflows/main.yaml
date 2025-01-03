@@ -30,7 +30,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile # Path to your Dockerfile
+          file: ./ROS2/Dockerfile # Path to your Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ros-foxy-with-stress-ng:latest
 
