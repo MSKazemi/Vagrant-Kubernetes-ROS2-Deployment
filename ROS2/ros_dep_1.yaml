@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ros
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ros
+  name: ros
+  namespace: ros
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ros
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ros
+    spec:
+      containers:
+        # - image: docker.io/osrf/ros:foxy-desktop
+        - image: docker.io/kazemi/ros-foxy-with-stress-ng
+          name: ros
+          command:
+            - /bin/bash
+            - '-c'
+          args:
+            # - source /opt/ros/foxy/setup.bash && sleep 3600
+            - stress-ng --cpu 1 --cpu-load 80 --timeout 3600s
+          resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 200Mi
+status: {}
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ros-hpa
+  namespace: ros  # Namespace where your deployment resides
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ros  # The deployment name to be scaled
+  minReplicas: 1  # Minimum number of replicas
+  maxReplicas: 10000  # Maximum number of replicas
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu  # Scaling based on CPU utilization
+      target:
+        type: Utilization
+        averageUtilization: 70  # Target average CPU utilization percentage
+  behavior:  # Optional, defines scaling behavior
+    scaleUp:
+      stabilizationWindowSeconds: 0  # No delay for scaling up
+      policies:
+      - type: Percent
+        value: 100  # Allows scaling up by 100% (doubling replicas)
+        periodSeconds: 30  # Check every 15 seconds
+    scaleDown:
+      stabilizationWindowSeconds: 0  # 60 seconds delay for scaling down
+      policies:
+      - type: Percent
+        value: 50  # Scale down by 50% at most. Maximum percentage of replicas that can be removed (scaled down) in a single step during scaling down.
+        periodSeconds: 30  # Check every 60 seconds
