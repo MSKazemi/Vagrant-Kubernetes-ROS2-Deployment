@@ -41,8 +41,16 @@ spec:
                 stress-ng --cpu 5 --cpu-load 70 --vm 1 --vm-bytes 5120M --timeout 240s &&
                 stress-ng --cpu 6 --cpu-load 70 --vm 1 --vm-bytes 6144M --timeout 240s &&
                 sleep 120
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 1000m
+              memory: 1000Mi
       nodeSelector:
         kubernetes.io/hostname: controlplane
+        
 status: {}
 # stress-ng --cpu 2 --cpu-load 200 --vm 1 --vm-bytes 2G --timeout 180s
 ---
@@ -65,11 +73,11 @@ spec:
       - "cpu"
       - "memory"
       minAllowed:
-        cpu: "50m"       # Minimum CPU request: 0.1 cores
-        memory: "50Mi"   # Minimum memory request: 128 MiB
+        cpu: "100m"       # Minimum CPU request: 0.1 cores
+        memory: "100Mi"   # Minimum memory request: 128 MiB
       maxAllowed:
-        cpu: "6000m"      # Maximum CPU request: 2 cores
-        memory: "4Gi"     # Maximum memory request: 4 GiB
+        cpu: "9000m"      # Maximum CPU request: 2 cores
+        memory: "9Gi"     # Maximum memory request: 4 GiB
 
 
                 # sleep 120 &&
