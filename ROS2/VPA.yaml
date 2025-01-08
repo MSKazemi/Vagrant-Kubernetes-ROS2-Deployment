@@ -1,0 +1,90 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ros
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: ros
+  name: ros
+  namespace: ros
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ros
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: ros
+    spec:
+      containers:
+        # - image: docker.io/osrf/ros:foxy-desktop
+        - image: docker.io/kazemi/ros-foxy-with-stress-ng
+          name: ros
+          command:
+            - /bin/bash
+            - '-c'
+          args:
+              - >
+                sleep 120 &&
+                stress-ng --cpu 1 --cpu-load 70                         --timeout 240s &&
+                stress-ng --cpu 1 --cpu-load 70 --vm 1 --vm-bytes 1024M --timeout 240s &&
+                stress-ng --cpu 2 --cpu-load 70 --vm 1 --vm-bytes 2048M --timeout 240s &&
+                stress-ng --cpu 3 --cpu-load 70 --vm 1 --vm-bytes 3072M --timeout 240s &&
+                stress-ng --cpu 4 --cpu-load 70 --vm 1 --vm-bytes 4096M --timeout 240s &&
+                stress-ng --cpu 5 --cpu-load 70 --vm 1 --vm-bytes 5120M --timeout 240s &&
+                stress-ng --cpu 6 --cpu-load 70 --vm 1 --vm-bytes 6144M --timeout 240s &&
+                sleep 120
+      nodeSelector:
+        kubernetes.io/hostname: controlplane
+status: {}
+# stress-ng --cpu 2 --cpu-load 200 --vm 1 --vm-bytes 2G --timeout 180s
+---
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: ros-vpa
+  namespace: ros
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: ros
+  updatePolicy:
+    updateMode: "Auto" # Options: Auto, Initial, Off
+  resourcePolicy:
+    containerPolicies:
+    - containerName: "*" # Apply to all containers in the pods
+      controlledResources:
+      - "cpu"
+      - "memory"
+      minAllowed:
+        cpu: "50m"       # Minimum CPU request: 0.1 cores
+        memory: "50Mi"   # Minimum memory request: 128 MiB
+      maxAllowed:
+        cpu: "6000m"      # Maximum CPU request: 2 cores
+        memory: "4Gi"     # Maximum memory request: 4 GiB
+
+
+                # sleep 120 &&
+                # stress-ng --cpu 1 --cpu-load 1  --vm 1 --vm-bytes 64M --timeout 180s &&
+                # sleep 120 &&
+                # stress-ng --cpu 1 --cpu-load 25 --vm 1 --vm-bytes 128M --timeout 180s &&
+                # sleep 120 &&
+                # stress-ng --cpu 1 --cpu-load 50 --vm 1 --vm-bytes 256M --timeout 180s &&
+                # sleep 120 &&
+                # stress-ng --cpu 1 --cpu-load 90 --vm 1 --vm-bytes 512M --timeout 180s &&
+                # sleep 120 &&
+                # stress-ng --cpu 2 --cpu-load 50 --vm 1 --vm-bytes 1024M --timeout 180s &&
+                # sleep 120 &&
+                # stress-ng --cpu 2 --cpu-load 90 --vm 1 --vm-bytes 2048M --timeout 180s &&
+                # sleep 120 &&
+                # stress-ng --cpu 3 --cpu-load 90 --vm 1 --vm-bytes 4096M --timeout 180s &&
+                # sleep 120 &&
+                # stress-ng --cpu 4 --cpu-load 90 --vm 1 --vm-bytes 5120M --timeout 180s
