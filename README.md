@@ -17,6 +17,7 @@ Welcome to the Vagrant-Kubernetes-ROS2 Deployment repository, an integrated envi
     - [Monitoring System](#monitoring-system)
     - [ROS2 Deployment](#ros2-deployment)
     - [Data Analysis Tools](#data-analysis-tools)
+      - [Version of Components Used](#version-of-components-used)
   - [Citation](#citation)
     - [License](#license)
   - [Contributing](#contributing)
@@ -118,6 +119,28 @@ Python and Jupyter Notebook setups for analyzing data collected from the environ
 
 - [Data Extraction From Prometheus TSDB Databases](./DataAnalysis/README.md)
 - [Using Python and Jupyter for Data Analysis](./DataAnalysis/README.md)
+
+
+
+#### Version of Components Used
+
+| Software             | Version      |
+|----------------------|-------------|
+| Ubuntu               | 22.04.4 LTS |
+| Vagrant              | 2.4.1       |
+| VirtualBox           | 7.0.14      |
+| Kubernetes           | v1.29.4     |
+| Kubeadm              | v1.29.4     |
+| Kubectl              | v1.29.4     |
+| kubelet              | v1.29.4     |
+| Prometheus           | v2.51.1     |
+| Grafana              | v10.4.1     |
+| Dashboard            | v2.7.0      |
+| Metrics Server       | v0.7.1      |
+| Helm                 | v3.14.2     |
+| Visual Studio Code   | v1.89.0     |
+
+
 
 ## Citation
 If you use this project or its components in your research or in developing software, we kindly request that you cite it. Here's a suggested citation format:

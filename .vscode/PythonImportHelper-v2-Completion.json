@@ -1,11 +1,77 @@
 [
     {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
         "label": "json",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timedelta",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "timezone",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -32,22 +98,6 @@
         "description": "prometheus_api_client",
         "isExtraImport": true,
         "detail": "prometheus_api_client",
-        "documentation": {}
-    },
-    {
-        "label": "datetime",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
-        "documentation": {}
-    },
-    {
-        "label": "timedelta",
-        "importPath": "datetime",
-        "description": "datetime",
-        "isExtraImport": true,
-        "detail": "datetime",
         "documentation": {}
     },
     {
@@ -82,6 +132,33 @@
         "importPath": "ast",
         "description": "ast",
         "detail": "ast",
+        "documentation": {}
+    },
+    {
+        "label": "get_k8s_events",
+        "kind": 2,
+        "importPath": "DataAnalysis.RH",
+        "description": "DataAnalysis.RH",
+        "peekOfCode": "def get_k8s_events(namespace):\n    \"\"\"\n    Fetch Kubernetes events for a namespace and return them as JSON.\n    \"\"\"\n    result = subprocess.run(\n        [\"kubectl\", \"get\", \"events\", \"-n\", namespace, \"-o\", \"json\"],\n        capture_output=True, text=True\n    )\n    return json.loads(result.stdout)\ndef find_rehealing_timestamps(events, new_pod_name):",
+        "detail": "DataAnalysis.RH",
+        "documentation": {}
+    },
+    {
+        "label": "find_rehealing_timestamps",
+        "kind": 2,
+        "importPath": "DataAnalysis.RH",
+        "description": "DataAnalysis.RH",
+        "peekOfCode": "def find_rehealing_timestamps(events, new_pod_name):\n    \"\"\"\n    Find timestamps for new pod lifecycle events by matching the new pod name.\n    \"\"\"\n    running_time = None\n    for event in events['items']:\n        involved_object = event['involvedObject']\n        if involved_object['name'] == new_pod_name:  # Match exact new pod name\n            if event['reason'] == \"Started\":\n                running_time = event['lastTimestamp']",
+        "detail": "DataAnalysis.RH",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_time_difference",
+        "kind": 2,
+        "importPath": "DataAnalysis.RH",
+        "description": "DataAnalysis.RH",
+        "peekOfCode": "def calculate_time_difference(start, end):\n    \"\"\"\n    Calculate time difference between two ISO timestamps.\n    \"\"\"\n    start_dt = datetime.fromisoformat(start.replace(\"Z\", \"+00:00\")).replace(tzinfo=timezone.utc)\n    end_dt = datetime.fromisoformat(end.replace(\"Z\", \"+00:00\")).replace(tzinfo=timezone.utc)\n    return (end_dt - start_dt).total_seconds()\nif __name__ == \"__main__\":\n    namespace = \"ros\"  # Replace with your namespace\n    pod_prefix = \"ros-\"  # Replace with your pod's name prefix",
+        "detail": "DataAnalysis.RH",
         "documentation": {}
     },
     {
@@ -190,6 +267,33 @@
         "description": "DataAnalysis.helper",
         "peekOfCode": "def unique_values(data):\n    unique_values = {col: data[col].unique() for col in data.columns}\n    for column, values in unique_values.items():\n        print(f\"Unique values for {column}: {values}\")\n    return unique_values",
         "detail": "DataAnalysis.helper",
+        "documentation": {}
+    },
+    {
+        "label": "get_k8s_events",
+        "kind": 2,
+        "importPath": "DataAnalysis.rehealing",
+        "description": "DataAnalysis.rehealing",
+        "peekOfCode": "def get_k8s_events(namespace):\n    \"\"\"\n    Fetch Kubernetes events for a namespace and return them as JSON.\n    \"\"\"\n    result = subprocess.run(\n        [\"kubectl\", \"get\", \"events\", \"-n\", namespace, \"-o\", \"json\"],\n        capture_output=True, text=True\n    )\n    return json.loads(result.stdout)\ndef find_event_timestamps(events, pod_name):",
+        "detail": "DataAnalysis.rehealing",
+        "documentation": {}
+    },
+    {
+        "label": "find_event_timestamps",
+        "kind": 2,
+        "importPath": "DataAnalysis.rehealing",
+        "description": "DataAnalysis.rehealing",
+        "peekOfCode": "def find_event_timestamps(events, pod_name):\n    \"\"\"\n    Find timestamps for pod lifecycle events by matching pod name exactly.\n    \"\"\"\n    killing_time = None\n    running_time = None\n    for event in events['items']:\n        involved_object = event['involvedObject']\n        if involved_object['name'] == pod_name:  # Match by exact pod name\n            if event['reason'] == \"Killing\":",
+        "detail": "DataAnalysis.rehealing",
+        "documentation": {}
+    },
+    {
+        "label": "calculate_time_difference",
+        "kind": 2,
+        "importPath": "DataAnalysis.rehealing",
+        "description": "DataAnalysis.rehealing",
+        "peekOfCode": "def calculate_time_difference(start, end):\n    \"\"\"\n    Calculate time difference between two ISO timestamps.\n    \"\"\"\n    start_dt = datetime.fromisoformat(start.replace(\"Z\", \"+00:00\")).replace(tzinfo=timezone.utc)\n    end_dt = datetime.fromisoformat(end.replace(\"Z\", \"+00:00\")).replace(tzinfo=timezone.utc)\n    return (end_dt - start_dt).total_seconds()\nif __name__ == \"__main__\":\n    namespace = \"ros\"  # Replace with your namespace\n    pod_prefix = \"ros-\"  # Replace with your pod's name prefix",
+        "detail": "DataAnalysis.rehealing",
         "documentation": {}
     }
 ]
