@@ -1,16 +1,33 @@
 # Vagrant-Kubernetes-ROS2 Deployment
 
-Welcome to the Vagrant-Kubernetes-ROS2 Deployment repository, an integrated environment designed for robust Kubernetes cluster management, ROS2 applications, and advanced monitoring systems using Vagrant and VirtualBox. This setup provides a comprehensive toolkit for developing, monitoring, and analyzing robotic systems and data.
+![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.29.4-326CE5?logo=kubernetes&logoColor=white)
+![ROS2](https://img.shields.io/badge/ROS2-Foxy-22314E?logo=ros&logoColor=white)
+![Vagrant](https://img.shields.io/badge/Vagrant-2.4.1-1868F2?logo=vagrant&logoColor=white)
+![VirtualBox](https://img.shields.io/badge/VirtualBox-7.0.14-183A61?logo=virtualbox&logoColor=white)
+![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
+
+**Vagrant-Kubernetes-ROS2 Deployment is an open-source, reproducible lab that deploys ROS2 (Robot Operating System 2) Talker and Listener nodes on a multi-node Kubernetes cluster.** The whole cluster — one control plane plus two worker nodes — is provisioned automatically from a single `vagrant up`, using Vagrant and VirtualBox virtual machines, Weave Net for pod networking, and a full Prometheus/Grafana monitoring stack.
+
+Use this project when you want to run and study **containerized robotics middleware (ROS2) on Kubernetes** locally, without cloud costs, and analyze the cluster's resource behavior with Jupyter notebooks.
+
+- **What it is:** an infrastructure-as-code template + step-by-step guide for a local ROS2-on-Kubernetes cluster.
+- **Who it is for:** robotics and cloud-native engineers, students, and researchers learning ROS2, Kubernetes, and container orchestration.
+- **What it solves:** it removes the manual, error-prone setup of a Kubernetes cluster capable of running ROS2's DDS-based publish/subscribe communication, and adds monitoring and data analysis out of the box.
+- **Different from a bare `kubeadm` tutorial:** it ships the networking (Weave Net with multicast for DDS), the monitoring stack (Prometheus, Grafana, Dashboard, Metrics Server), and a working ROS2 Talker/Listener example — end to end.
+- **When NOT to use it:** it is a local development/education lab, not a production or edge-robot deployment; it needs a fairly powerful host (see [Prerequisites](#prerequisites)).
 
 ## Table of Contents
 
 - [Vagrant-Kubernetes-ROS2 Deployment](#vagrant-kubernetes-ros2-deployment)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
+  - [Features](#features)
+  - [Architecture](#architecture)
   - [Installation and Usage](#installation-and-usage)
     - [Prerequisites](#prerequisites)
       - [Installation of VirtualBox](#installation-of-virtualbox)
       - [Installation of Vagrant](#installation-of-vagrant)
+  - [Quickstart](#quickstart)
   - [Project Structure](#project-structure)
     - [Kubernetes Cluster Setup](#kubernetes-cluster-setup)
     - [Network Configuration](#network-configuration)
@@ -18,6 +35,8 @@ Welcome to the Vagrant-Kubernetes-ROS2 Deployment repository, an integrated envi
     - [ROS2 Deployment](#ros2-deployment)
     - [Data Analysis Tools](#data-analysis-tools)
       - [Version of Components Used](#version-of-components-used)
+  - [Use Cases](#use-cases)
+  - [FAQ](#faq)
   - [Citation](#citation)
     - [License](#license)
   - [Contributing](#contributing)
@@ -27,11 +46,35 @@ Welcome to the Vagrant-Kubernetes-ROS2 Deployment repository, an integrated envi
 
 This project leverages Vagrant to automate the deployment of a Kubernetes cluster, configuring VirtualBox virtual machines, and setting up an extensive monitoring system. It is tailored for both development and educational purposes, particularly in robotic systems where ROS2 applications are prevalent.
 
+ROS2 nodes communicate through DDS (Data Distribution Service), which relies on multicast. The cluster uses **Weave Net** as its Container Network Interface (CNI) plugin because it supports the multicast traffic that ROS2's publish/subscribe model needs across Kubernetes pods and nodes.
+
+## Features
+
+- **One-command cluster:** `vagrant up` builds three Ubuntu 22.04 VMs (1 control plane + 2 workers) and bootstraps Kubernetes with `kubeadm`.
+- **ROS2 on Kubernetes:** deploy and scale ROS2 Foxy Talker/Listener nodes (`demo_nodes_cpp`) and verify inter-pod DDS communication.
+- **DDS-ready networking:** Weave Net CNI configured for multicast so ROS2 discovery works across nodes.
+- **Full monitoring stack:** Prometheus, Grafana, Kubernetes Dashboard, and Metrics Server installed via Helm and `kubectl`, exposed over NodePort with persistent volumes.
+- **Autoscaling & resource study:** Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) manifests plus a load-testing image (`stress-ng` on top of `osrf/ros:foxy-desktop`).
+- **Data analysis:** Python + Jupyter notebooks that pull metrics from the Prometheus TSDB (`prometheus-api-client`) and analyze CPU/memory/network usage with pandas and matplotlib.
+- **Reproducible:** pinned component versions (see [table](#version-of-components-used)) and scripted provisioning for repeatable results.
+
+## Architecture
+
+The `Vagrantfile` defines a three-node cluster on a private VirtualBox network:
+
+| Node | Role | IP | vCPUs | Memory |
+|------|------|----|-------|--------|
+| `controlplane` | Kubernetes control plane | 192.168.56.10 | 14 | ~18 GB |
+| `worker1` | Worker node | 192.168.56.11 | 2 | ~6 GB |
+| `worker2` | Worker node | 192.168.56.12 | 2 | ~6 GB |
+
+The control plane is initialized with `kubeadm init --apiserver-advertise-address=192.168.56.10 --pod-network-cidr=10.244.0.0/16`; workers join automatically using a generated `kubeadm` join token. Resource sizing is defined in the `Vagrantfile` and can be adjusted to fit your host.
+
 ## Installation and Usage
 
 ### Prerequisites
 
-Before beginning, ensure you have VirtualBox and Vagrant installed on your machine.
+Before beginning, ensure you have VirtualBox and Vagrant installed on your machine. Because the default cluster requests roughly **30 GB of RAM and 18 vCPUs** across the three VMs, a host with ample resources is recommended; reduce the `vb.memory` / `vb.cpus` values in the `Vagrantfile` for smaller machines.
 
 #### Installation of VirtualBox
 
@@ -63,6 +106,8 @@ Verify the installation:
 vagrant --version
 ```
 
+## Quickstart
+
 To create the VMs and set up the Kubernetes cluster, clone the repository and execute the following:
 
 ```bash
@@ -70,6 +115,17 @@ git clone git@github.com:MSKazemi/Vagrant-Kubernetes-ROS2-Deployment.git
 cd Vagrant-Kubernetes-ROS2-Deployment
 vagrant up | tee vagrant.log
 ```
+
+`vagrant up` reads the `Vagrantfile`, creates the VMs, runs all provisioning scripts (Kubernetes install, cluster init, Weave Net, monitoring), and joins the workers — no further commands are required. The `tee vagrant.log` captures the setup output, including the token used to log into the Kubernetes Dashboard.
+
+Deploy the ROS2 Talker/Listener workload:
+
+```bash
+kubectl apply -f ./ROS2/ros_dep_1.yaml
+kubectl scale deployment ros --replicas=3
+```
+
+Then attach to two pods and run `ros2 run demo_nodes_cpp talker` in one and `ros2 run demo_nodes_cpp listener` in another (after `source /opt/ros/foxy/setup.bash`) to see DDS messages flow between them. Full details are in [ROS2/README.md](./ROS2/README.md).
 
 Follow the specific details provided in each subcomponent's README for detailed setup and usage guidelines.
 
@@ -140,7 +196,27 @@ Python and Jupyter Notebook setups for analyzing data collected from the environ
 | Helm                 | v3.14.2     |
 | Visual Studio Code   | v1.89.0     |
 
+## Use Cases
 
+- **Learn ROS2 on Kubernetes** without cloud costs, on a laptop or workstation.
+- **Prototype and test** containerized robotics middleware and DDS communication patterns.
+- **Study Kubernetes autoscaling** (HPA/VPA) and self-healing behavior under load with `stress-ng`.
+- **Teach** cloud-native and robotics concepts with a reproducible, scripted environment.
+- **Collect and analyze** cluster resource metrics (CPU, memory, network) from Prometheus using Python/Jupyter.
+
+## FAQ
+
+**Which ROS2 distribution does this use?** ROS2 Foxy, based on the `osrf/ros:foxy-desktop` image, running the `demo_nodes_cpp` Talker and Listener examples.
+
+**Why Weave Net instead of another CNI?** ROS2 uses DDS, which depends on multicast for node discovery. Weave Net supports multicast across the cluster, which is required for ROS2 pods on different Kubernetes nodes to communicate.
+
+**How many nodes are created?** Three VMs: one control plane and two workers, all Ubuntu 22.04 (`ubuntu/jammy64`).
+
+**Do I need a cloud account?** No. Everything runs locally in VirtualBox VMs managed by Vagrant.
+
+**What are the default access URLs?** Kubernetes Dashboard at `https://192.168.56.10:30664`, Prometheus at `http://192.168.56.10:31334`, and Grafana at `http://192.168.56.10:30400` (see [MonitoringSystem/README.md](./MonitoringSystem/README.md) for credentials).
+
+**Can I run it on a smaller machine?** Yes — lower the `vb.memory` and `vb.cpus` values in the `Vagrantfile`, though very small allocations may not run the full monitoring stack comfortably.
 
 ## Citation
 If you use this project or its components in your research or in developing software, we kindly request that you cite it. Here's a suggested citation format:
@@ -157,12 +233,10 @@ If you use this project or its components in your research or in developing soft
 
 ### License
 
-Distributed under the MIT License. See LICENSE for more information.
+Distributed under the Apache License 2.0. See [LICENSE](./LICENSE) for more information.
 
 ## Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
-
-Please refer to the `CONTRIBUTING.md` for more information.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. Please open an issue or pull request to propose changes.
 
 ## Acknowledgments
 - Kubernetes
