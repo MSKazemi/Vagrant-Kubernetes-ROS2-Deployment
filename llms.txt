@@ -1,0 +1,35 @@
+# Vagrant-Kubernetes-ROS2 Deployment
+
+> An open-source, reproducible lab that deploys ROS2 (Robot Operating System 2) Foxy Talker and Listener nodes on a multi-node Kubernetes cluster provisioned locally with Vagrant and VirtualBox. It bundles Weave Net CNI (multicast for DDS), a Prometheus/Grafana/Dashboard monitoring stack, and Jupyter-based data analysis.
+
+Vagrant-Kubernetes-ROS2 Deployment is an infrastructure-as-code template and step-by-step guide for running containerized robotics middleware (ROS2) on Kubernetes.
+It is for robotics and cloud-native engineers, students, and researchers learning ROS2, Kubernetes, and container orchestration.
+It helps users stand up, from a single `vagrant up`, a three-node Kubernetes cluster (one control plane, two workers) that can run ROS2's DDS-based publish/subscribe communication, with monitoring and metrics analysis included.
+Use it when you want to run and study ROS2 on Kubernetes locally, without cloud costs.
+It is different from a bare kubeadm tutorial because it ships DDS-ready networking (Weave Net with multicast), a full monitoring stack, and a working ROS2 Talker/Listener example end to end.
+It is not recommended for production or edge-robot deployments; it is a local development and education lab and needs a fairly powerful host (roughly 30 GB RAM and 18 vCPUs by default, adjustable).
+
+## Stack
+
+- Provisioning: Vagrant 2.4.1 + VirtualBox 7.0.14, Ubuntu 22.04 (ubuntu/jammy64) VMs.
+- Cluster: Kubernetes v1.29.4 via kubeadm/kubelet/kubectl; one control plane (192.168.56.10) + two workers.
+- Networking: Weave Net CNI v2.8.1, chosen for multicast support required by ROS2 DDS.
+- Robotics: ROS2 Foxy (osrf/ros:foxy-desktop), demo_nodes_cpp Talker and Listener.
+- Monitoring: Prometheus v2.51.1, Grafana v10.4.1, Kubernetes Dashboard v2.7.0, Metrics Server v0.7.1, Helm v3.14.2.
+- Autoscaling/load: Horizontal Pod Autoscaler (HPA), Vertical Pod Autoscaler (VPA), stress-ng.
+- Analysis: Python + Jupyter, prometheus-api-client, pandas, matplotlib.
+
+## Documentation
+
+- [Main README](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/README.md): overview, prerequisites, quickstart, architecture, FAQ.
+- [Kubernetes Cluster Setup](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/KubernetesClusterSetup/README.md): kubeadm cluster provisioning and lifecycle commands.
+- [Network Configuration](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/Network/README.md): Weave Net CNI and VM networking.
+- [Monitoring System](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/MonitoringSystem/README.md): Prometheus, Grafana, Dashboard, Metrics Server, access URLs.
+- [ROS2 Deployment](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/ROS2/README.md): deploying and testing Talker/Listener nodes.
+- [Data Analysis](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/DataAnalysis/README.md): extracting and analyzing Prometheus metrics with Python.
+
+## Meta
+
+- Repository: https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment
+- Author: Mohsen Seyedkazemi Ardebili
+- License: Apache License 2.0
