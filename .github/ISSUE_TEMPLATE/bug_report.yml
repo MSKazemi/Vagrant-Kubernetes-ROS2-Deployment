@@ -1,0 +1,78 @@
+name: Bug report
+description: Report a reproducible problem with provisioning, ROS 2 communication, monitoring or documentation.
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. This repository currently contains a legacy ROS 2 Foxy stack; please state the versions you actually used. **Do not post passwords, login tokens, kubeconfigs or unredacted credentials.**
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Vagrant and Kubernetes provisioning
+        - ROS 2 workload or DDS discovery
+        - Networking / CNI
+        - Monitoring and dashboard
+        - Data analysis and notebooks
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened?
+      description: Describe the actual failure and error message.
+      placeholder: Explain the behavior, including the command that failed.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include exact commands and relevant paths (remove secrets).
+      placeholder: |
+        1. Run ...
+        2. Observe ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and software versions
+      description: Host OS/architecture, Vagrant/VirtualBox, Kubernetes, ROS distro, RMW, CNI and available RAM/CPU if relevant.
+      placeholder: |
+        Host:
+        Kubernetes:
+        ROS 2:
+        RMW:
+        Installation method:
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs or screenshots
+      description: Include only the relevant excerpt. Redact tokens, secrets, private data and credentials.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched open issues for a duplicate.
+          required: true
+        - label: I removed any credentials, secrets and private data from logs or screenshots.
+          required: true
