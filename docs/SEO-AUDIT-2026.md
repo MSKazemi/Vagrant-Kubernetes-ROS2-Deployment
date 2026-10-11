@@ -93,8 +93,8 @@ Retain a clear Foxy/legacy signal until a modern tested release exists. Do **not
 | P0 | Correct overclaims about end-to-end DDS, modern support, installation reproducibility | In this PR |
 | P0 | Add a linked, useful DDS troubleshooting guide anchored in actual files | In this PR |
 | P1 | Align `llms.txt` with current status and primary source links | In this PR; no assumed SEO ranking benefit |
-| P1 | Update GitHub About/description/topics/website | **Manual repository metadata action required**; tracked separately |
-| P1 | Upload custom GitHub social preview image | **Manual repository settings action required** |
+| P1 | Update GitHub About/description/topics/website | **Manual repository metadata action required**; tracked in [#32](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/32) |
+| P1 | Upload custom GitHub social preview image | **Manual repository settings action required**; [#32](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/32) |
 | P1 | Publish a project docs website with stable canonicals, sitemap and unique pages | Planned in [#19](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/19); not yet live |
 | P1 | Create a real verified release and corrected CI once ROS modernization completes | [#20](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/20) |
 | P2 | Publish reproducible technical articles and get genuine citations/backlinks | [#21](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/21) |
