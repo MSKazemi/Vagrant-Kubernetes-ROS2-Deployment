@@ -151,7 +151,7 @@ Historical Weave Net setup and ROS 2 discovery guidance: [Network configuration]
 - [VMs/Nodes Network Configuration](./Network/README.md)
 - [Kubernetes Network Plugin - CNI Plugin Configuration](./Network/README.md)
 
-### Monitoring System 
+### Monitoring System
 
 Configuration files and scripts for setting up Prometheus, Grafana, and Kubernetes monitoring tools. [More Details](./MonitoringSystem/README.md)
 
