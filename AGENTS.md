@@ -32,7 +32,7 @@ Useful low-cost checks:
 git diff --check
 git status --short
 # Bash provisioning scripts (GNU/Linux):
-git ls-files -z '*.sh' | xargs -0 -r -n1 bash -n
+bash scripts/check-shell.sh
 # Only if Ruby is available and the Vagrantfile changed:
 ruby -c Vagrantfile
 ```
