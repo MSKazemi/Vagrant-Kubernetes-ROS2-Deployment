@@ -16,6 +16,8 @@ Use this project when you want to run and study **containerized robotics middlew
 - **Different from a bare `kubeadm` tutorial:** it ships the networking (Weave Net with multicast for DDS), the monitoring stack (Prometheus, Grafana, Dashboard, Metrics Server), and a working ROS2 Talker/Listener example — end to end.
 - **When NOT to use it:** it is a local development/education lab, not a production or edge-robot deployment; it needs a fairly powerful host (see [Prerequisites](#prerequisites)).
 
+> **New contributors welcome!** Choose a small [good first issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/good%20first%20issue) or a [help-wanted task](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/help%20wanted). Start with [CONTRIBUTING.md](./CONTRIBUTING.md), or follow the beginner-friendly [**Claude Code / Codex contribution tutorial**](./docs/AI_ASSISTED_CONTRIBUTING.md) and [ready-to-copy agent prompts](./docs/AGENT_PROMPTS.md). Using AI is optional; many starter tasks require only Markdown, Python, or GitHub Actions—not a 30 GB Vagrant setup.
+
 ## Table of Contents
 
 - [Vagrant-Kubernetes-ROS2 Deployment](#vagrant-kubernetes-ros2-deployment)
@@ -236,7 +238,7 @@ If you use this project or its components in your research or in developing soft
 Distributed under the Apache License 2.0. See [LICENSE](./LICENSE) for more information.
 
 ## Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. Please open an issue or pull request to propose changes.
+We welcome first-time contributors, educators, ROS 2 users and Kubernetes engineers. The easiest place to start is a labeled [good first issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/good%20first%20issue), or a scoped [help wanted issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/help%20wanted). Read the [contribution guide](./CONTRIBUTING.md) or the [Claude Code/Codex step-by-step guide](./docs/AI_ASSISTED_CONTRIBUTING.md) before claiming a task or opening a PR. Documentation and simple static-check contributions do not require VirtualBox or a running Kubernetes cluster.
 
 ## Acknowledgments
 - Kubernetes
