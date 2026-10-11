@@ -68,6 +68,12 @@ For Markdown changes, check each modified relative link against a committed file
 
 For sample data changes, provide a small local command or script to verify that the checked-in files parse correctly. Do not change historical measurements to make results look better.
 
+### GitHub Actions workflow scope
+
+The lightweight [shell syntax workflow](.github/workflows/validate-shell.yml) checks tracked Bash scripts on pull requests and `main` pushes without cloud or Docker Hub credentials.
+
+The separate, historical [Docker build/publish workflow](.github/workflows/main.yaml) is **not** a pull-request test. It publishes a ROS 2 Foxy image to Docker Hub **only when `ROS2/Dockerfile` changes on `main`**, or when an authorized maintainer starts the workflow manually. README, tutorial, issue-template and agent-instruction changes must not cause needless image publishing. A Docker publish also does **not** prove Kubernetes or DDS communication is working.
+
 ### Environment and scope limitations
 
 The existing three-VM `Vagrantfile` allocates roughly **30 GB RAM and 18 vCPUs** by default. Do not run it on under-provisioned hosts merely to satisfy a documentation PR. If you are not able to run it, explicitly say `Not run: Vagrant/VirtualBox cluster (hardware unavailable)` in your PR.

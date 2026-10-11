@@ -1,9 +1,17 @@
 name: Build and Push Docker Image
 
+# Publishing is expensive and requires Docker Hub credentials. Do not
+# republish the same image for README, docs, CI, or contributor-only changes.
 on:
   push:
     branches:
-      - main # Change this to your default branch if different
+      - main
+    paths:
+      - ROS2/Dockerfile
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build-and-push:
