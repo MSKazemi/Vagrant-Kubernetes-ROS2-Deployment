@@ -54,13 +54,15 @@ The repository uses one concise [AGENTS.md](./AGENTS.md) instruction set for Cod
 
 ### Checks you can run without a cluster
 
-For Bash shell scripts:
+For Bash shell scripts, from the repository root:
 
 ```sh
-git ls-files -z '*.sh' | xargs -0 -r -n1 bash -n
+bash scripts/check-shell.sh
+# To inspect one file without running it:
+bash scripts/check-shell.sh KubernetesClusterSetup/create_cluster.sh
 ```
 
-This only checks shell *syntax* and does not verify that Kubernetes provisioning works. Use tools such as ShellCheck if available, but the existing repository does not yet enforce them in CI.
+The [shell validation workflow](.github/workflows/validate-shell.yml) runs the same checker on every pull request and push to `main`, with no VirtualBox, cluster or Docker Hub credentials. It reports a failure when a tracked `.sh` file contains a Bash **syntax** error; it does **not** verify Kubernetes provisioning, script behavior, shell lint best practices, or ROS 2 DDS messaging. ShellCheck can provide additional lint feedback but is not part of this check.
 
 For Markdown changes, check each modified relative link against a committed file and verify that commands match filenames, namespaces, images and paths in the repository. Do not add images that reveal credentials. There is not yet a full documentation validation workflow.
 

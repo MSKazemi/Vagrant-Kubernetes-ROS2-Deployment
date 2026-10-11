@@ -109,7 +109,7 @@ git diff
 Inspect every file and check it really satisfies the issue. For Bash syntax changes, on a GNU/Linux host:
 
 ```bash
-git ls-files -z '*.sh' | xargs -0 -r -n1 bash -n
+bash scripts/check-shell.sh
 ```
 
 For a modified Vagrantfile (and if Ruby is installed), `ruby -c Vagrantfile` is a useful **syntax-only** check. For Markdown issues, verify paths exist and the commands match the files, namespaces and container arguments **actually present**. For CI changes, review event triggers, permissions, credentials and the behavior on a deliberately malformed test input; do not claim an unrun GitHub workflow passed.
