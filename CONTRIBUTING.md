@@ -23,6 +23,20 @@ Welcome! Contributions from robotics engineers, Kubernetes users, students, rese
 
 These are examples, not a separate issue backlog; please use the linked labeled GitHub issues for the up-to-date list.
 
+## Optional: contribute with Claude Code or Codex
+
+Coding agents are welcome as **assistants**, not substitutes for reviewing and testing your work. You do **not** have to use an AI tool to contribute. If you want help understanding this codebase, writing a bounded patch, or reviewing your diff:
+
+1. Pick one open issue and comment that you would like to work on it.
+2. Fork/clone and create a feature branch **before** starting Claude Code (`claude`) or OpenAI Codex (`codex`) inside the repository.
+3. Ask the agent to follow [AGENTS.md](./AGENTS.md) and read the issue. If it cannot access GitHub, paste the issue description. Ask for a small plan **before** editing.
+4. Review every change and run relevant checks yourself; never report unrun integration tests as passed.
+5. Document the agent assistance, testing evidence, and limitations in the PR.
+
+**Step-by-step beginner tutorial:** [AI-assisted contributions with Claude Code or Codex](./docs/AI_ASSISTED_CONTRIBUTING.md). **Copyable issue-specific prompts:** [Agent prompts](./docs/AGENT_PROMPTS.md).
+
+The repository uses one concise [AGENTS.md](./AGENTS.md) instruction set for Codex and [CLAUDE.md](./CLAUDE.md) for Claude Code (which imports the shared rules). Neither file authorizes an agent to push to `main`, publish images, use secrets, or merge PRs autonomously.
+
 ## Make a small pull request
 
 1. Fork this repository (if needed), or clone it:
