@@ -1,35 +1,57 @@
-# Vagrant-Kubernetes-ROS2 Deployment
+# ROS 2 on Kubernetes — Multi-Node Robotics Lab (Vagrant and VirtualBox)
 
-> An open-source, reproducible lab that deploys ROS2 (Robot Operating System 2) Foxy Talker and Listener nodes on a multi-node Kubernetes cluster provisioned locally with Vagrant and VirtualBox. It bundles Weave Net CNI (multicast for DDS), a Prometheus/Grafana/Dashboard monitoring stack, and Jupyter-based data analysis.
+> Vagrant-Kubernetes-ROS2-Deployment is an open-source educational ROS 2 on Kubernetes laboratory. It uses Vagrant and VirtualBox to define three local Kubernetes virtual machines, with historical ROS 2 DDS communication examples, monitoring configurations, autoscaling stress tests, and sample Prometheus/Jupyter analysis data.
 
-Vagrant-Kubernetes-ROS2 Deployment is an infrastructure-as-code template and step-by-step guide for running containerized robotics middleware (ROS2) on Kubernetes.
-It is for robotics and cloud-native engineers, students, and researchers learning ROS2, Kubernetes, and container orchestration.
-It helps users stand up, from a single `vagrant up`, a three-node Kubernetes cluster (one control plane, two workers) that can run ROS2's DDS-based publish/subscribe communication, with monitoring and metrics analysis included.
-Use it when you want to run and study ROS2 on Kubernetes locally, without cloud costs.
-It is different from a bare kubeadm tutorial because it ships DDS-ready networking (Weave Net with multicast), a full monitoring stack, and a working ROS2 Talker/Listener example end to end.
-It is not recommended for production or edge-robot deployments; it is a local development and education lab and needs a fairly powerful host (roughly 30 GB RAM and 18 vCPUs by default, adjustable).
+## What this repository is
 
-## Stack
+- **Category:** local robotics/cloud-native teaching and experimentation lab, not a production robot operator or hard-real-time platform.
+- **Audience:** ROS 2 developers, robotics students, Kubernetes practitioners and researchers.
+- **Problem addressed:** bring Kubernetes provisioning, ROS 2 container examples, network settings, historical monitoring configurations, and metric-analysis samples into one inspectable source repository.
+- **Use it for:** studying a three-node kubeadm cluster, ROS 2 middleware concepts, resource load experiments, Prometheus/Grafana examples and Jupyter notebooks.
+- **Difference from simple kubeadm tutorials:** it combines Vagrant cluster scripts with ROS 2 example images/manifests, CNI networking context, monitoring resources and historical measurement data.
+- **Do not use it for:** production or safety-critical robotics, current-version guarantees, an automatically verified cross-worker DDS demonstration, or low-resource laptop claims.
 
-- Provisioning: Vagrant 2.4.1 + VirtualBox 7.0.14, Ubuntu 22.04 (ubuntu/jammy64) VMs.
-- Cluster: Kubernetes v1.29.4 via kubeadm/kubelet/kubectl; one control plane (192.168.56.10) + two workers.
-- Networking: Weave Net CNI v2.8.1, chosen for multicast support required by ROS2 DDS.
-- Robotics: ROS2 Foxy (osrf/ros:foxy-desktop), demo_nodes_cpp Talker and Listener.
-- Monitoring: Prometheus v2.51.1, Grafana v10.4.1, Kubernetes Dashboard v2.7.0, Metrics Server v0.7.1, Helm v3.14.2.
-- Autoscaling/load: Horizontal Pod Autoscaler (HPA), Vertical Pod Autoscaler (VPA), stress-ng.
-- Analysis: Python + Jupyter, prometheus-api-client, pandas, matplotlib.
+## Compatibility and verification warnings
 
-## Documentation
+The code in the default branch documents a historical stack, **not a current tested release**:
 
-- [Main README](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/README.md): overview, prerequisites, quickstart, architecture, FAQ.
-- [Kubernetes Cluster Setup](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/KubernetesClusterSetup/README.md): kubeadm cluster provisioning and lifecycle commands.
-- [Network Configuration](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/Network/README.md): Weave Net CNI and VM networking.
-- [Monitoring System](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/MonitoringSystem/README.md): Prometheus, Grafana, Dashboard, Metrics Server, access URLs.
-- [ROS2 Deployment](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/ROS2/README.md): deploying and testing Talker/Listener nodes.
-- [Data Analysis](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/DataAnalysis/README.md): extracting and analyzing Prometheus metrics with Python.
+- ROS 2 Foxy (end of life June 2023), image `osrf/ros:foxy-desktop`.
+- Kubernetes 1.29 with kubeadm/kubelet/kubectl.
+- Weave Net 2.8.1 CNI (archived upstream).
+- Ubuntu 22.04 Vagrant/VirtualBox VMs; combined defaults ~30 GB VM memory and 18 virtual CPUs.
+- Prometheus/Grafana, old Kubernetes Dashboard, Metrics Server, HPA/VPA manifests and `stress-ng` experiments.
+- Python/Jupyter and historical JSON metrics examples.
 
-## Meta
+**Accuracy note:** Applying `ROS2/ros_dep_1.yaml` starts a `stress-ng` workload, not ROS 2 talker/listener applications. The ROS 2 tutorial involves interactive talker/listener commands and has known errors under correction. Cross-node DDS communication and modern software compatibility were not freshly validated during this SEO review. A successful Docker build is not proof of working ROS 2 communication.
 
-- Repository: https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment
-- Author: Mohsen Seyedkazemi Ardebili
-- License: Apache License 2.0
+ROS 2 DDS discovery behavior depends on RMW configuration, network transport and mode; multicast is **not universally required**. Fast DDS Discovery Server is an explicit-discovery alternative, but it is **not** a verified deployment mode in this checkout.
+
+## Documentation and use cases
+
+- [Main README — what it does, requirements, old-stack quickstart and FAQ](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/README.md)
+- [ROS 2 on Kubernetes DDS discovery and troubleshooting](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/docs/ROS2-KUBERNETES-DDS-GUIDE.md)
+- [Kubernetes cluster provisioning via Vagrant](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/KubernetesClusterSetup/README.md)
+- [Networking and CNI configuration](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/Network/README.md)
+- [ROS 2 manual talker/listener walkthrough](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/ROS2/README.md)
+- [Prometheus/Grafana and dashboard examples](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/MonitoringSystem/README.md)
+- [Monitoring metrics, notebooks and data analysis](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/DataAnalysis/README.md)
+- [Evidence-based SEO/discoverability review](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/docs/SEO-AUDIT-2026.md)
+
+## Roadmap and changes not yet available
+
+- [90-day modernization and growth proposal — PR #23](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/pull/23)
+- [Upgrade ROS 2 image and supported versions — issue #7](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/7)
+- [Verify ROS 2 cross-worker talker/listener communication — issue #14](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/14)
+- [Move to maintained Kubernetes CNI and DDS discovery — issue #15](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/15)
+- [Lightweight kind/k3d profile — issue #16](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/16)
+
+## Repository identity
+
+- **Canonical repository:** https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment
+- **Proposed future name (not yet adopted):** ROS 2 Kubernetes Lab / `ros2-kubernetes-lab`.
+- **Author:** Mohsen Seyedkazemi Ardebili.
+- **License:** Apache-2.0 — see `LICENSE`.
+- **Citation:** `CITATION.cff`.
+- **Latest verified status:** this document describes repository files inspected on 11 October 2026, not a newly executed full VM integration test.
+
+This `llms.txt` is an informational navigation aid, not a claim of special indexing or AI-search ranking treatment.

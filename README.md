@@ -1,26 +1,25 @@
-# Vagrant-Kubernetes-ROS2 Deployment
+# ROS 2 on Kubernetes — Multi-Node Robotics Lab with Vagrant
 
-![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.29.4-326CE5?logo=kubernetes&logoColor=white)
-![ROS2](https://img.shields.io/badge/ROS2-Foxy-22314E?logo=ros&logoColor=white)
+![Kubernetes (historical version)](https://img.shields.io/badge/Kubernetes-1.29%20%28legacy%29-326CE5?logo=kubernetes&logoColor=white)
+![ROS 2 (historical distribution)](https://img.shields.io/badge/ROS%202-Foxy%20%28EOL%29-22314E?logo=ros&logoColor=white)
 ![Vagrant](https://img.shields.io/badge/Vagrant-2.4.1-1868F2?logo=vagrant&logoColor=white)
-![VirtualBox](https://img.shields.io/badge/VirtualBox-7.0.14-183A61?logo=virtualbox&logoColor=white)
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
-**Vagrant-Kubernetes-ROS2 Deployment is an open-source, reproducible lab that deploys ROS2 (Robot Operating System 2) Talker and Listener nodes on a multi-node Kubernetes cluster.** The whole cluster — one control plane plus two worker nodes — is provisioned automatically from a single `vagrant up`, using Vagrant and VirtualBox virtual machines, Weave Net for pod networking, and a full Prometheus/Grafana monitoring stack.
+**Vagrant-Kubernetes-ROS2-Deployment** is an open-source **ROS 2 on Kubernetes** educational lab. It uses **Vagrant and VirtualBox** to provision a local three-node Kubernetes cluster, with examples for ROS 2 DDS communication, workload scaling, Prometheus/Grafana monitoring, and Python/Jupyter metrics analysis.
 
-Use this project when you want to run and study **containerized robotics middleware (ROS2) on Kubernetes** locally, without cloud costs, and analyze the cluster's resource behavior with Jupyter notebooks.
+**Who it is for:** ROS 2 and robotics developers, cloud-native engineers, students, and researchers exploring containerized robotics without a paid cloud account. **Why use it:** infrastructure scripts, ROS 2 container examples, monitoring configuration, and historical sample metrics are in one repository.
 
-- **What it is:** an infrastructure-as-code template + step-by-step guide for a local ROS2-on-Kubernetes cluster.
-- **Who it is for:** robotics and cloud-native engineers, students, and researchers learning ROS2, Kubernetes, and container orchestration.
-- **What it solves:** it removes the manual, error-prone setup of a Kubernetes cluster capable of running ROS2's DDS-based publish/subscribe communication, and adds monitoring and data analysis out of the box.
-- **Different from a bare `kubeadm` tutorial:** it ships the networking (Weave Net with multicast for DDS), the monitoring stack (Prometheus, Grafana, Dashboard, Metrics Server), and a working ROS2 Talker/Listener example — end to end.
-- **When NOT to use it:** it is a local development/education lab, not a production or edge-robot deployment; it needs a fairly powerful host (see [Prerequisites](#prerequisites)).
+> **Compatibility and test status:** This is a **historical ROS 2 Foxy / Kubernetes 1.29 / Weave Net lab**, **not a validated current-version or production deployment**. ROS 2 Foxy reached end of life in June 2023. The included Kubernetes workload manifests start `stress-ng`; the ROS 2 talker/listener example requires separate interactive commands and is **not** automatically launched by `vagrant up`. Work toward a maintained, tested release is tracked in the [modernization roadmap](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/pull/23) and [end-to-end demo issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/14).
+
+**Explore:** [Requirements](#prerequisites) · [Vagrant setup](#quickstart) · [ROS 2 tutorial](./ROS2/README.md) · [DDS networking guide](./docs/ROS2-KUBERNETES-DDS-GUIDE.md) · [Monitoring](./MonitoringSystem/README.md) · [Metrics analysis](./DataAnalysis/README.md) · [Good first issues](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/good%20first%20issue)
+
+![Historical terminal screenshot from the ROS 2 lab](./images/cmd.png)
 
 > **New contributors welcome!** Choose a small [good first issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/good%20first%20issue) or a [help-wanted task](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/help%20wanted). Start with [CONTRIBUTING.md](./CONTRIBUTING.md), or follow the beginner-friendly [**Claude Code / Codex contribution tutorial**](./docs/AI_ASSISTED_CONTRIBUTING.md) and [ready-to-copy agent prompts](./docs/AGENT_PROMPTS.md). Using AI is optional; many starter tasks require only Markdown, Python, or GitHub Actions—not a 30 GB Vagrant setup.
 
 ## Table of Contents
 
-- [Vagrant-Kubernetes-ROS2 Deployment](#vagrant-kubernetes-ros2-deployment)
+- [ROS 2 on Kubernetes: Multi-Node Robotics Lab](#ros-2-on-kubernetes--multi-node-robotics-lab-with-vagrant)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Features](#features)
@@ -36,7 +35,7 @@ Use this project when you want to run and study **containerized robotics middlew
     - [Monitoring System](#monitoring-system)
     - [ROS2 Deployment](#ros2-deployment)
     - [Data Analysis Tools](#data-analysis-tools)
-      - [Version of Components Used](#version-of-components-used)
+      - [Historical component versions](#historical-component-versions-not-current-support-targets)
   - [Use Cases](#use-cases)
   - [FAQ](#faq)
   - [Citation](#citation)
@@ -45,20 +44,18 @@ Use this project when you want to run and study **containerized robotics middlew
   - [Acknowledgments](#acknowledgments)
 
 ## Overview
+The [Vagrantfile](./Vagrantfile) defines one Kubernetes control-plane VM and two worker VMs. Shell scripts configure a kubeadm-based Kubernetes cluster, deploy the historical Weave Net Container Network Interface (CNI), and install monitoring components. The [ROS 2 examples](./ROS2/) contain container images and manifests for learning how robotics software and Kubernetes scheduling interact.
 
-This project leverages Vagrant to automate the deployment of a Kubernetes cluster, configuring VirtualBox virtual machines, and setting up an extensive monitoring system. It is tailored for both development and educational purposes, particularly in robotic systems where ROS2 applications are prevalent.
-
-ROS2 nodes communicate through DDS (Data Distribution Service), which relies on multicast. The cluster uses **Weave Net** as its Container Network Interface (CNI) plugin because it supports the multicast traffic that ROS2's publish/subscribe model needs across Kubernetes pods and nodes.
+**ROS 2 networking:** DDS (Data Distribution Service) provides publish/subscribe communication. How ROS 2 participants discover one another depends on the middleware implementation (RMW) and network configuration. The original lab chose Weave Net for multicast. **Multicast is not universally required by ROS 2:** [Fast DDS Discovery Server](https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/discovery_server/ros2_discovery_server.html) supports explicit, server-based discovery. The current setup has not been revalidated on modern Kubernetes; see the [DDS and Kubernetes troubleshooting guide](./docs/ROS2-KUBERNETES-DDS-GUIDE.md) and [networking upgrade issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/15).
 
 ## Features
-
-- **One-command cluster:** `vagrant up` builds three Ubuntu 22.04 VMs (1 control plane + 2 workers) and bootstraps Kubernetes with `kubeadm`.
-- **ROS2 on Kubernetes:** deploy and scale ROS2 Foxy Talker/Listener nodes (`demo_nodes_cpp`) and verify inter-pod DDS communication.
-- **DDS-ready networking:** Weave Net CNI configured for multicast so ROS2 discovery works across nodes.
-- **Full monitoring stack:** Prometheus, Grafana, Kubernetes Dashboard, and Metrics Server installed via Helm and `kubectl`, exposed over NodePort with persistent volumes.
-- **Autoscaling & resource study:** Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) manifests plus a load-testing image (`stress-ng` on top of `osrf/ros:foxy-desktop`).
-- **Data analysis:** Python + Jupyter notebooks that pull metrics from the Prometheus TSDB (`prometheus-api-client`) and analyze CPU/memory/network usage with pandas and matplotlib.
-- **Reproducible:** pinned component versions (see [table](#version-of-components-used)) and scripted provisioning for repeatable results.
+- **Three-node local Kubernetes cluster:** `vagrant up` defines three Ubuntu 22.04 VMs (one control plane plus two workers) with `kubeadm`.
+- **ROS 2 experiments:** a historical Foxy image containing `demo_nodes_cpp` talker/listener binaries, alongside separate `stress-ng` Deployment examples. The current manifests do **not** automatically start a talker/listener.
+- **DDS discovery study:** Weave Net networking configuration and a [guide to ROS 2 discovery across Kubernetes pods](./docs/ROS2-KUBERNETES-DDS-GUIDE.md). Cross-node communication must be verified for each environment.
+- **Monitoring configuration:** Prometheus, Grafana, Kubernetes Dashboard, and Metrics Server scripts and persistent-storage examples from the original experiment.
+- **Autoscaling and resource study:** HPA/VPA manifests and CPU/memory stress workloads (not a validated real-time robotics benchmark).
+- **Historical datasets:** Prometheus sample metrics, Python analysis scripts, Jupyter notebooks, and plots.
+- **Infrastructure as code:** Vagrant provisioning and shell scripts with historical version references. Some downloads are mutable/unpinned, so a fresh installation is **not guaranteed** to be reproducible.
 
 ## Architecture
 
@@ -109,46 +106,54 @@ vagrant --version
 ```
 
 ## Quickstart
+**Historical installation example — not a verified modern quickstart.** This Vagrant configuration requests approximately **30 GB of VM RAM and 18 virtual CPUs**. Its older dependencies may require maintenance.
 
-To create the VMs and set up the Kubernetes cluster, clone the repository and execute the following:
+On your **host**:
 
 ```bash
-git clone git@github.com:MSKazemi/Vagrant-Kubernetes-ROS2-Deployment.git
+git clone https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment.git
 cd Vagrant-Kubernetes-ROS2-Deployment
-vagrant up | tee vagrant.log
+vagrant up
+vagrant ssh controlplane
 ```
 
-`vagrant up` reads the `Vagrantfile`, creates the VMs, runs all provisioning scripts (Kubernetes install, cluster init, Weave Net, monitoring), and joins the workers — no further commands are required. The `tee vagrant.log` captures the setup output, including the token used to log into the Kubernetes Dashboard.
-
-Deploy the ROS2 Talker/Listener workload:
+Then, inside the **control-plane VM**, where `kubectl` is configured:
 
 ```bash
-kubectl apply -f ./ROS2/ros_dep_1.yaml
-kubectl scale deployment ros --replicas=3
+kubectl get nodes -o wide
+kubectl get pods -A
 ```
 
-Then attach to two pods and run `ros2 run demo_nodes_cpp talker` in one and `ros2 run demo_nodes_cpp listener` in another (after `source /opt/ros/foxy/setup.bash`) to see DDS messages flow between them. Full details are in [ROS2/README.md](./ROS2/README.md).
+For the existing **CPU stress/HPA experiment** (not an automatically started ROS 2 talker/listener):
 
-Follow the specific details provided in each subcomponent's README for detailed setup and usage guidelines.
+```bash
+kubectl apply -f /home/vagrant/codes/ROS2/ros_dep_1.yaml
+kubectl -n ros get pods -o wide
+kubectl -n ros scale deployment ros --replicas=3
+```
+
+To run a **manual ROS 2 talker/listener** demonstration, use the separate [ROS2/README.md](./ROS2/README.md) guide. Its outdated filename/namespace examples are being addressed in [issue #24](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/24). Scaling the stress workload alone does not demonstrate DDS message delivery.
+
+> **Do not share provisioning logs or kubeconfig files.** The original monitoring scripts may include privileged Kubernetes Dashboard tokens in terminal output. Credential/RBAC hardening is tracked in [issue #6](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/6).
 
 ## Project Structure
 
 ### Kubernetes Cluster Setup
 Scripts and configurations to initialize a Kubernetes cluster. [More Details](./KubernetesClusterSetup/README.md)
 
-- [Deploying a Kubernetes Cluster Using Vagrant and VirtualBox](./KubernetesClusterSetup/README.md#introduction)
-- [Pre-requisites and Dependencies](./KubernetesClusterSetup/README.md#pre-requisites)
+- [Deploying a Kubernetes Cluster Using Vagrant and VirtualBox](./KubernetesClusterSetup/README.md#overview)
+- [Pre-requisites and Dependencies](./KubernetesClusterSetup/README.md#prerequisites)
 - [Cluster VM's Lifecycle Commands](./KubernetesClusterSetup/README.md)
 - [Technical Details (Vagrantfile, Kubeadm, Kubectl, Kubelet, Container Network Interface Plugin)](./KubernetesClusterSetup/README.md)
 
 ### Network Configuration
 
-Scripts to configure the network using CNI plugins like Weave Net. [More Details](./Network/README.md)
+Historical Weave Net setup and ROS 2 discovery guidance: [Network configuration](./Network/README.md) · [DDS across Kubernetes pods](./docs/ROS2-KUBERNETES-DDS-GUIDE.md)
 
 - [VMs/Nodes Network Configuration](./Network/README.md)
 - [Kubernetes Network Plugin - CNI Plugin Configuration](./Network/README.md)
 
-### Monitoring System 
+### Monitoring System
 
 Configuration files and scripts for setting up Prometheus, Grafana, and Kubernetes monitoring tools. [More Details](./MonitoringSystem/README.md)
 
@@ -180,7 +185,7 @@ Python and Jupyter Notebook setups for analyzing data collected from the environ
 
 
 
-#### Version of Components Used
+#### Historical component versions (not current support targets)
 
 | Software             | Version      |
 |----------------------|-------------|
@@ -200,25 +205,46 @@ Python and Jupyter Notebook setups for analyzing data collected from the environ
 
 ## Use Cases
 
-- **Learn ROS2 on Kubernetes** without cloud costs, on a laptop or workstation.
+- **Study ROS 2 on Kubernetes locally** without cloud costs, on a sufficiently resourced workstation.
 - **Prototype and test** containerized robotics middleware and DDS communication patterns.
 - **Study Kubernetes autoscaling** (HPA/VPA) and self-healing behavior under load with `stress-ng`.
 - **Teach** cloud-native and robotics concepts with a reproducible, scripted environment.
 - **Collect and analyze** cluster resource metrics (CPU, memory, network) from Prometheus using Python/Jupyter.
 
 ## FAQ
+### Can you run ROS 2 on Kubernetes?
 
-**Which ROS2 distribution does this use?** ROS2 Foxy, based on the `osrf/ros:foxy-desktop` image, running the `demo_nodes_cpp` Talker and Listener examples.
+Yes, ROS 2 processes can run inside containers managed as Kubernetes pods. ROS 2 application nodes are different from Kubernetes worker nodes. This repository provides a historical, local environment to learn their interaction; it is **not** a production-ready ROS 2 orchestration platform.
 
-**Why Weave Net instead of another CNI?** ROS2 uses DDS, which depends on multicast for node discovery. Weave Net supports multicast across the cluster, which is required for ROS2 pods on different Kubernetes nodes to communicate.
+### How do I deploy ROS 2 on Kubernetes locally using Vagrant?
 
-**How many nodes are created?** Three VMs: one control plane and two workers, all Ubuntu 22.04 (`ubuntu/jammy64`).
+Use the [historical Vagrant quickstart](#quickstart) to provision the local cluster, then follow the [ROS 2 tutorial](./ROS2/README.md). The default setup requires a powerful host, and a modern, lower-resource kind/k3d route is only [planned](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/16).
 
-**Do I need a cloud account?** No. Everything runs locally in VirtualBox VMs managed by Vagrant.
+### How does ROS 2 DDS discovery work between Kubernetes pods?
 
-**What are the default access URLs?** Kubernetes Dashboard at `https://192.168.56.10:30664`, Prometheus at `http://192.168.56.10:31334`, and Grafana at `http://192.168.56.10:30400` (see [MonitoringSystem/README.md](./MonitoringSystem/README.md) for credentials).
+DDS discovery depends on RMW, discovery mode, networking, and participant configuration. Default multicast discovery is not assured by every Kubernetes CNI, while explicit discovery options such as Fast DDS Discovery Server can avoid multicast discovery. See [ROS 2 DDS across Kubernetes pods](./docs/ROS2-KUBERNETES-DDS-GUIDE.md). **This checkout does not include a validated modern cross-worker discovery test.**
 
-**Can I run it on a smaller machine?** Yes — lower the `vb.memory` and `vb.cpus` values in the `Vagrantfile`, though very small allocations may not run the full monitoring stack comfortably.
+### Does this project already work with ROS 2 Jazzy or a current Kubernetes release?
+
+No modern-version support is claimed. The checked-in image uses **ROS 2 Foxy (EOL June 2023)**, the provisioning scripts use **Kubernetes 1.29**, and the CNI uses historical Weave Net. See [modernization issue #7](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/7).
+
+### Does `ros_dep_1.yaml` run ROS 2 talker and listener automatically?
+
+No. The manifest runs `stress-ng` as a CPU workload with an HPA. Running talker/listener requires separate manual commands (and verification), as explained in the [ROS 2 walkthrough](./ROS2/README.md). A tested automatic cross-worker demonstration is tracked in [issue #14](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/14).
+
+### Can I use Prometheus and Grafana to study Kubernetes autoscaling?
+
+The repository contains monitoring manifests, historical scripts, Jupyter notebooks, and sample CPU/memory/network data. These are useful as educational examples, but the datasets are **not** proof of a new benchmark run or current-cluster compatibility. Start with [MonitoringSystem](./MonitoringSystem/README.md) and [DataAnalysis](./DataAnalysis/README.md).
+
+### Is it free, open source, or intended for production robots?
+
+The repository is open source under [Apache-2.0](./LICENSE) and uses local virtual machines, so it does not require a cloud subscription. It **is not intended for production robotics, safety-critical control, or real-time guarantees**. Version maintenance, safe permissions, and end-to-end validation remain outstanding.
+
+## Related ROS 2 / Kubernetes resources
+
+- [ROS 2 official documentation](https://docs.ros.org/en/rolling/) — middleware, packages and supported distributions.
+- [ROS/Kubernetes and KubeEdge examples (fujitatomoya/ros_k8s)](https://github.com/fujitatomoya/ros_k8s) — broader set of ROS 2 cluster deployment tutorials.
+- [RobotKube (RWTH Aachen)](https://github.com/ika-rwth-aachen/robotkube) — research on orchestration of cooperative multi-robot systems.
 
 ## Citation
 If you use this project or its components in your research or in developing software, we kindly request that you cite it. Here's a suggested citation format:
