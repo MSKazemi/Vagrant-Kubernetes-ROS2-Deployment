@@ -2,7 +2,7 @@
 
 <!-- Explain the change in 2-5 sentences and link a single primary issue if possible. -->
 
-Closes #
+<!-- For a complete fix: Fixes #123. For partial work: Related to #123. -->
 
 ## Why this change helps users
 
