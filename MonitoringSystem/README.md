@@ -132,10 +132,10 @@ http://192.168.56.10:31334
 Username: admin
 Password: prom-operator
 
-Below are screenshots of the Prometheus monitoring interface.
+Below are screenshots of the Prometheus graph and rules pages from the original lab run.
 
-![Prometheus main dashboard showing cluster metric overview](../images/p1.png)
-![Prometheus query interface displaying metric query results](../images/p2.png)
+![Prometheus graph of the node:node_cpu_utilization:ratio_rate5m query over 15 minutes, with node CPU utilization rising to about 0.02](../images/p1.png)
+![Prometheus Rules page listing the Alertmanager alerting rules, each in the OK state](../images/p2.png)
 
 #### Grafana
 
@@ -143,16 +143,16 @@ Grafana is used for visualization and analytics of metrics gathered from Prometh
 
 http://192.168.56.10:30400
 
-The Grafana dashboards below visualize the collected cluster metrics.
+The Grafana screenshots below show node metrics, per-pod network traffic, and Kubernetes API server health from the original lab run.
 
-![Grafana dashboard displaying Kubernetes pod CPU usage metrics](../images/g1.png)
-![Grafana time-series graph of memory consumption across nodes](../images/g2.png)
-![Grafana panel showing network traffic statistics](../images/g3.png)
-![Grafana visualization of disk I/O metrics for cluster nodes](../images/g4.png)
-![Grafana dashboard with container resource utilization charts](../images/g5.png)
-![Grafana alerting and status overview for monitored services](../images/g6.png)
-![Grafana detailed metrics breakdown for individual pods](../images/g7.png)
-![Grafana cluster health summary dashboard](../images/g8.png)
+![Grafana Node Exporter / Nodes dashboard for instance 192.168.56.10:9100 with CPU, load average, memory, disk and network panels](../images/g1.png)
+![Grafana Kubernetes / Networking / Pod dashboard for the ros pod ending 9wdkl, showing receive and transmit bandwidth](../images/g2.png)
+![Grafana Kubernetes / Networking / Pod dashboard for the ros pod ending vd8rs, showing receive and transmit bandwidth](../images/g3.png)
+![Grafana Kubernetes / Networking / Pod dashboard for the ros pod ending x4hcb, showing receive and transmit bandwidth](../images/g4.png)
+![Grafana Kubernetes / Networking / Pod dashboard for the weave-net pod, showing receive and transmit bandwidth](../images/g5.png)
+![Grafana Kubernetes / Networking / Pod dashboard for the etcd-controlplane pod, showing receive and transmit bandwidth](../images/g6.png)
+![Grafana Kubernetes / Networking / Pod dashboard for the ros pod ending vd8rs with the Bandwidth, Packets and Errors sections expanded](../images/g7.png)
+![Grafana Kubernetes / API server dashboard with availability, request, work queue, memory, CPU and goroutine panels](../images/g8.png)
 
 ## Access URLs and Credentials
 
