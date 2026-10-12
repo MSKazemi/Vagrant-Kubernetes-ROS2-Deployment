@@ -1,11 +1,11 @@
 name: Verify ROS 2 Jazzy container
 
+# Expensive Docker builds run only for changes that affect the image/test itself.
+# YAML-manifest validation belongs to the separate Kubernetes CI issue #29.
 on:
   pull_request:
     paths:
       - ROS2/Dockerfile
-      - ROS2/jazzy/**
-      - ROS2/legacy/foxy/Dockerfile
       - scripts/test-ros2-image.sh
       - .github/workflows/ros2-image-ci.yml
   workflow_dispatch:
