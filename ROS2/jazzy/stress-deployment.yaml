@@ -1,0 +1,39 @@
+# ROS 2 Jazzy / Ubuntu Noble stress-only example. Does NOT run ROS talker/listener.
+# This is NOT a Vagrant/kubeadm integration-tested workload.
+# Load a locally built image named ros-jazzy-lab:local on each target worker,
+# or replace the image and pull policy with a published, pinned digest.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ros
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ros-jazzy-stress
+  namespace: ros
+  labels:
+    app: ros-jazzy-stress
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ros-jazzy-stress
+  template:
+    metadata:
+      labels:
+        app: ros-jazzy-stress
+    spec:
+      containers:
+        - name: stress
+          image: ros-jazzy-lab:local
+          imagePullPolicy: Never
+          command: ["stress-ng"]
+          args: ["--cpu", "1", "--cpu-load", "75", "--timeout", "3600s"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
