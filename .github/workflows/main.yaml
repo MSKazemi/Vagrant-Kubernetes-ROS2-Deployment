@@ -1,39 +1,68 @@
-name: Build and Push Docker Image
+name: Verify and publish ROS 2 Jazzy image
 
+# This workflow never runs on pull_request. PRs run the no-secrets image
+# smoke test in ros2-image-ci.yml. Publishing is allowed from main only.
 on:
   push:
     branches:
-      - main # Change this to your default branch if different
+      - main
+    paths:
+      - ROS2/Dockerfile
+      - scripts/test-ros2-image.sh
+      - .github/workflows/main.yaml
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
-
+  verify:
+    name: Verify Jazzy image before publishing
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
     steps:
-      # Step 1: Checkout the code
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Build the ROS 2 Jazzy amd64 image
+        run: docker build --platform linux/amd64 --pull --file ROS2/Dockerfile --tag ros-jazzy-lab:local .
+      - name: Check distro, demo nodes, stress-ng and local message delivery
+        run: docker run --rm -i --platform linux/amd64 ros-jazzy-lab:local bash -s < scripts/test-ros2-image.sh
 
-      # Step 2: Log in to Docker Hub
+  publish:
+    name: Publish source-SHA-tagged image to Docker Hub
+    if: github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - name: Log in to Docker Hub
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-      # Step 3: Set up Docker Buildx
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      # Step 4: Build and Push Docker Image
-      - name: Build and Push Docker Image
-        uses: docker/build-push-action@v4
+        uses: docker/setup-buildx-action@v3
+      - name: Build and publish image (amd64)
+        id: publish_image
+        uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./ROS2/Dockerfile # Path to your Dockerfile
+          file: ./ROS2/Dockerfile
+          platforms: linux/amd64
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/ros-foxy-with-stress-ng:latest
-
-      # Step 5: Confirm completion
-      - name: Notify Success
-        run: echo "Docker image built and pushed successfully!"
+          provenance: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/ros-jazzy-with-stress-ng:sha-${{ github.sha }}
+      - name: Record immutable published digest
+        env:
+          DIGEST: ${{ steps.publish_image.outputs.digest }}
+          IMAGE_REPOSITORY: ${{ secrets.DOCKER_USERNAME }}/ros-jazzy-with-stress-ng
+        shell: bash
+        run: |
+          if [[ "$DIGEST" != sha256:* ]]; then
+            echo "Docker build-push-action did not return an image digest." >&2
+            exit 1
+          fi
+          echo "Published image digest: ${IMAGE_REPOSITORY}@${DIGEST}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Source revision: ${GITHUB_SHA}" >> "$GITHUB_STEP_SUMMARY"

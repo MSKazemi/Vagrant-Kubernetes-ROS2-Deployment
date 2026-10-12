@@ -1,3 +1,7 @@
+# LEGACY FOXy EXAMPLE (ROS 2 Foxy is end-of-life).
+# Uses the historical Foxy stress-ng image and older Kubernetes lab.
+# NOT a ROS 2 Jazzy deployment or a verified cross-node DDS demonstration.
+# For the independent Jazzy container image, see ROS2/jazzy/README.md.
 apiVersion: v1
 kind: Namespace
 metadata:

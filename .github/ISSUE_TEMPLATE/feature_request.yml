@@ -1,0 +1,55 @@
+name: Feature request or improvement
+description: Suggest a concrete enhancement, tutorial, example, or performance experiment.
+title: "[Enhancement] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This project is an educational and research lab, not a production-robot control platform. Please explain the **use case** and how to validate the improvement. For a beginner-sized change, identify a small standalone first step.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Primary area
+      options:
+        - ROS 2 examples and DDS
+        - Kubernetes and Vagrant setup
+        - Lightweight local cluster
+        - Monitoring or experiments
+        - CI and reproducibility
+        - Documentation and contributor experience
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: need
+    attributes:
+      label: Who needs this and why?
+      description: Describe the practical problem instead of only naming a technology.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Suggested change
+      description: Include file paths if known, and distinguish a proposed capability from a verified one.
+    validations:
+      required: true
+  - type: textarea
+    id: verify
+    attributes:
+      label: How could we verify it works?
+      description: Suggest a clear, reproducible acceptance test or documentation check.
+    validations:
+      required: true
+  - type: dropdown
+    id: help
+    attributes:
+      label: Can you contribute a pull request?
+      options:
+        - Yes, I would like to implement it
+        - I can help test or review
+        - Not right now
+    validations:
+      required: true

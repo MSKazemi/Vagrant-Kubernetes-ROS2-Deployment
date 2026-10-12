@@ -120,6 +120,8 @@ vagrant up
 vagrant destroy -f
 ```
 
+> **Warning:** `vagrant destroy -f` permanently deletes all three VirtualBox VMs and everything stored inside them, without asking for confirmation. Use `vagrant status` first to see what exists, and `vagrant halt` if you only want to stop the cluster.
+
 ## Some Technical Details
 
 ### Vagrantfile
