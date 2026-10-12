@@ -65,8 +65,6 @@ kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboar
 ```
 Open the site in your browser: https://192.168.56.10:30664/#/login
 
-![Architecture Diagram](../images/k8s1.png)
-
 ### Prometheus and Grafana
 
 #### Helm Installation
@@ -134,8 +132,10 @@ http://192.168.56.10:31334
 Username: admin
 Password: prom-operator
 
-![Architecture Diagram](../images/p1.png)
-![Architecture Diagram](../images/p2.png)
+Below are screenshots of the Prometheus monitoring interface.
+
+![Prometheus main dashboard showing cluster metric overview](../images/p1.png)
+![Prometheus query interface displaying metric query results](../images/p2.png)
 
 #### Grafana
 
@@ -143,14 +143,16 @@ Grafana is used for visualization and analytics of metrics gathered from Prometh
 
 http://192.168.56.10:30400
 
-![Architecture Diagram](../images/g1.png)
-![Architecture Diagram](../images/g2.png)
-![Architecture Diagram](../images/g3.png)
-![Architecture Diagram](../images/g4.png)
-![Architecture Diagram](../images/g5.png)
-![Architecture Diagram](../images/g6.png)
-![Architecture Diagram](../images/g7.png)
-![Architecture Diagram](../images/g8.png)
+The Grafana dashboards below visualize the collected cluster metrics.
+
+![Grafana dashboard displaying Kubernetes pod CPU usage metrics](../images/g1.png)
+![Grafana time-series graph of memory consumption across nodes](../images/g2.png)
+![Grafana panel showing network traffic statistics](../images/g3.png)
+![Grafana visualization of disk I/O metrics for cluster nodes](../images/g4.png)
+![Grafana dashboard with container resource utilization charts](../images/g5.png)
+![Grafana alerting and status overview for monitored services](../images/g6.png)
+![Grafana detailed metrics breakdown for individual pods](../images/g7.png)
+![Grafana cluster health summary dashboard](../images/g8.png)
 
 ## Access URLs and Credentials
 
