@@ -74,7 +74,9 @@ The control plane is initialized with `kubeadm init --apiserver-advertise-addres
 
 ### Prerequisites
 
-Before beginning, ensure you have VirtualBox and Vagrant installed on your machine. Because the default cluster requests roughly **30 GB of RAM and 18 vCPUs** across the three VMs, a host with ample resources is recommended; reduce the `vb.memory` / `vb.cpus` values in the `Vagrantfile` for smaller machines.
+Before beginning, ensure you have VirtualBox and Vagrant installed on your machine. 
+
+**Hardware Warning:** The default cluster configuration aggressively allocates roughly **30 GB of RAM and 18 vCPUs** across the three VMs. Do not expect this to run successfully on standard laptops without these resources. You can reduce the `vb.memory` and `vb.cpus` values in the `Vagrantfile` for smaller machines, but success is not guaranteed on unsupported hardware.
 
 #### Installation of VirtualBox
 
@@ -108,26 +110,22 @@ vagrant --version
 
 ## Quickstart
 
-To create the VMs and set up the Kubernetes cluster, clone the repository and execute the following:
+To create the VMs and set up the Kubernetes cluster, clone the repository using HTTPS (no SSH key required) and execute the following commands on your **host machine**:
 
 ```bash
-git clone git@github.com:MSKazemi/Vagrant-Kubernetes-ROS2-Deployment.git
+git clone https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment.git
 cd Vagrant-Kubernetes-ROS2-Deployment
 vagrant up | tee vagrant.log
 ```
 
 `vagrant up` reads the `Vagrantfile`, creates the VMs, runs all provisioning scripts (Kubernetes install, cluster init, Weave Net, monitoring), and joins the workers — no further commands are required. The `tee vagrant.log` captures the setup output, including the token used to log into the Kubernetes Dashboard.
 
-Deploy the ROS2 Talker/Listener workload:
+### Running Cluster Commands
+
+Because the cluster is provisioned inside the virtual machines, you cannot use a local `kubectl` installation by default. You must SSH into the control plane from your **host machine**:
 
 ```bash
-kubectl apply -f ./ROS2/ros_dep_1.yaml
-kubectl scale deployment ros --replicas=3
-```
-
-Then attach to two pods and run `ros2 run demo_nodes_cpp talker` in one and `ros2 run demo_nodes_cpp listener` in another (after `source /opt/ros/foxy/setup.bash`) to see DDS messages flow between them. Full details are in [ROS2/README.md](./ROS2/README.md).
-
-Follow the specific details provided in each subcomponent's README for detailed setup and usage guidelines.
+vagrant ssh controlplane
 
 ## Project Structure
 
