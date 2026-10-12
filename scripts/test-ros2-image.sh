@@ -24,7 +24,9 @@ executables="$(ros2 pkg executables demo_nodes_cpp)"
 grep -Eq '^demo_nodes_cpp[[:space:]]+talker$' <<< "$executables" || fail "C++ talker is missing"
 grep -Eq '^demo_nodes_cpp[[:space:]]+listener$' <<< "$executables" || fail "C++ listener is missing"
 stress-ng --version
-printf 'PASS: ROS 2 Jazzy, Ubuntu 24.04, demo_nodes_cpp and stress-ng are present.\n'
+# Bounded CPU exercise confirms stress-ng can execute, not just print its version.
+stress-ng --cpu 1 --cpu-load 25 --timeout 2s --quiet
+printf 'PASS: ROS 2 Jazzy, Ubuntu 24.04, demo_nodes_cpp and stress-ng are runnable.\n'
 
 export ROS_DOMAIN_ID="${ROS_DOMAIN_ID:-42}"
 export RCUTILS_LOGGING_BUFFERED_STREAM=0
