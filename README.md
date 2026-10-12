@@ -9,9 +9,9 @@
 
 **Who it is for:** ROS 2 and robotics developers, cloud-native engineers, students, and researchers exploring containerized robotics without a paid cloud account. **Why use it:** infrastructure scripts, ROS 2 container examples, monitoring configuration, and historical sample metrics are in one repository.
 
-> **Compatibility and test status:** This is a **historical ROS 2 Foxy / Kubernetes 1.29 / Weave Net lab**, **not a validated current-version or production deployment**. ROS 2 Foxy reached end of life in June 2023. The included Kubernetes workload manifests start `stress-ng`; the ROS 2 talker/listener example requires separate interactive commands and is **not** automatically launched by `vagrant up`. Work toward a maintained, tested release is tracked in the [modernization roadmap](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/pull/23) and [end-to-end demo issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/14).
+> **Compatibility and test status:** The **Vagrant/Kubernetes configuration and original root-level ROS manifests remain a historical ROS 2 Foxy / Kubernetes 1.29 / Weave Net lab**, **not a validated current-version or production deployment**. Foxy reached end of life in June 2023. The original Kubernetes workload manifests start `stress-ng`; the ROS 2 talker/listener example requires separate interactive commands and is **not** automatically launched by `vagrant up`. A **separate ROS 2 Jazzy / Ubuntu 24.04 container build and local message smoke test** now exist in [the Jazzy image guide](./ROS2/jazzy/README.md). This does **not** establish multi-node Kubernetes or DDS compatibility. Cross-worker integration remains tracked in [issue #14](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/14).
 
-**Explore:** [Requirements](#prerequisites) · [Vagrant setup](#quickstart) · [ROS 2 tutorial](./ROS2/README.md) · [DDS networking guide](./docs/ROS2-KUBERNETES-DDS-GUIDE.md) · [Monitoring](./MonitoringSystem/README.md) · [Metrics analysis](./DataAnalysis/README.md) · [Good first issues](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/good%20first%20issue)
+**Explore:** [Jazzy image build and test](./ROS2/jazzy/README.md) · [Requirements](#prerequisites) · [Legacy Vagrant setup](#quickstart) · [Legacy ROS 2 tutorial](./ROS2/README.md) · [DDS networking guide](./docs/ROS2-KUBERNETES-DDS-GUIDE.md) · [Monitoring](./MonitoringSystem/README.md) · [Metrics analysis](./DataAnalysis/README.md) · [Good first issues](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/good%20first%20issue)
 
 ![Historical terminal screenshot from the ROS 2 lab](./images/cmd.png)
 
@@ -50,7 +50,7 @@ The [Vagrantfile](./Vagrantfile) defines one Kubernetes control-plane VM and two
 
 ## Features
 - **Three-node local Kubernetes cluster:** `vagrant up` defines three Ubuntu 22.04 VMs (one control plane plus two workers) with `kubeadm`.
-- **ROS 2 experiments:** a historical Foxy image containing `demo_nodes_cpp` talker/listener binaries, alongside separate `stress-ng` Deployment examples. The current manifests do **not** automatically start a talker/listener.
+- **ROS 2 images and experiments:** `ROS2/Dockerfile` now builds a digest-pinned **Jazzy/Ubuntu 24.04 container** with `demo_nodes_cpp` and `stress-ng`, with an automated **same-container** ROS message smoke test. The original Kubernetes manifests remain **legacy Foxy stress workloads** and do **not** automatically start a talker/listener.
 - **DDS discovery study:** Weave Net networking configuration and a [guide to ROS 2 discovery across Kubernetes pods](./docs/ROS2-KUBERNETES-DDS-GUIDE.md). Cross-node communication must be verified for each environment.
 - **Monitoring configuration:** Prometheus, Grafana, Kubernetes Dashboard, and Metrics Server scripts and persistent-storage examples from the original experiment.
 - **Autoscaling and resource study:** HPA/VPA manifests and CPU/memory stress workloads (not a validated real-time robotics benchmark).
@@ -226,7 +226,7 @@ DDS discovery depends on RMW, discovery mode, networking, and participant config
 
 ### Does this project already work with ROS 2 Jazzy or a current Kubernetes release?
 
-No modern-version support is claimed. The checked-in image uses **ROS 2 Foxy (EOL June 2023)**, the provisioning scripts use **Kubernetes 1.29**, and the CNI uses historical Weave Net. See [modernization issue #7](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/7).
+A **Jazzy/Ubuntu 24.04 container image recipe** is now available and checked by an image-local test (see [Jazzy guide](./ROS2/jazzy/README.md)). This is **not** proof of a modern Kubernetes lab: the Vagrant scripts still use **Kubernetes 1.29**, archived Weave Net, and old Foxy Kubernetes manifest references. See [modernization issue #7](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/7).
 
 ### Does `ros_dep_1.yaml` run ROS 2 talker and listener automatically?
 
