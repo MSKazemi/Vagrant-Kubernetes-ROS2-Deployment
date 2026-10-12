@@ -48,6 +48,8 @@ The [Vagrantfile](./Vagrantfile) defines one Kubernetes control-plane VM and two
 
 **ROS 2 networking:** DDS (Data Distribution Service) provides publish/subscribe communication. How ROS 2 participants discover one another depends on the middleware implementation (RMW) and network configuration. The original lab chose Weave Net for multicast. **Multicast is not universally required by ROS 2:** [Fast DDS Discovery Server](https://fast-dds.docs.eprosima.com/en/latest/fastdds/ros2/discovery_server/ros2_discovery_server.html) supports explicit, server-based discovery. The current setup has not been revalidated on modern Kubernetes; see the [DDS and Kubernetes troubleshooting guide](./docs/ROS2-KUBERNETES-DDS-GUIDE.md) and [networking upgrade issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/15).
 
+**New to Kubernetes or ROS 2?** Check out our [Beginner Glossary](docs/GLOSSARY.md) to clarify the terminology used in this lab.
+
 ## Features
 - **Three-node local Kubernetes cluster:** `vagrant up` defines three Ubuntu 22.04 VMs (one control plane plus two workers) with `kubeadm`.
 - **ROS 2 images and experiments:** `ROS2/Dockerfile` now builds a digest-pinned **Jazzy/Ubuntu 24.04 container** with `demo_nodes_cpp` and `stress-ng`, with an automated **same-container** ROS message smoke test. The original Kubernetes manifests remain **legacy Foxy stress workloads** and do **not** automatically start a talker/listener.
