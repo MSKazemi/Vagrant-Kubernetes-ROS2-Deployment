@@ -48,6 +48,8 @@ This project leverages Vagrant to automate the deployment of a Kubernetes cluste
 
 ROS2 nodes communicate through DDS (Data Distribution Service), which relies on multicast. The cluster uses **Weave Net** as its Container Network Interface (CNI) plugin because it supports the multicast traffic that ROS2's publish/subscribe model needs across Kubernetes pods and nodes.
 
+**New to Kubernetes or ROS 2?** Check out our [Beginner Glossary](docs/GLOSSARY.md) to clarify the terminology used in this lab.
+
 ## Features
 
 - **One-command cluster:** `vagrant up` builds three Ubuntu 22.04 VMs (1 control plane + 2 workers) and bootstraps Kubernetes with `kubeadm`.
