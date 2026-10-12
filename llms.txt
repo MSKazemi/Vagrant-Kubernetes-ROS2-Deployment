@@ -13,9 +13,10 @@
 
 ## Compatibility and verification warnings
 
-The code in the default branch documents a historical stack, **not a current tested release**:
+The **Vagrant cluster and root-level Kubernetes manifest examples** are historical. There is a separate **ROS 2 Jazzy/Ubuntu 24.04 image recipe and same-container smoke test** in `ROS2/Dockerfile` and `scripts/test-ros2-image.sh`; it is **not a validated current Kubernetes release**:
 
-- ROS 2 Foxy (end of life June 2023), image `osrf/ros:foxy-desktop`.
+- Legacy Kubernetes manifests: ROS 2 Foxy (end of life June 2023), image `osrf/ros:foxy-desktop` (recipe preserved under `ROS2/legacy/foxy/Dockerfile`).
+- Modern container-only baseline: ROS 2 Jazzy on Ubuntu 24.04, official ROS base pinned to an OCI digest in `ROS2/Dockerfile`; ROS C++ demos and stress-ng, without cross-worker validation.
 - Kubernetes 1.29 with kubeadm/kubelet/kubectl.
 - Weave Net 2.8.1 CNI (archived upstream).
 - Ubuntu 22.04 Vagrant/VirtualBox VMs; combined defaults ~30 GB VM memory and 18 virtual CPUs.
@@ -32,6 +33,7 @@ ROS 2 DDS discovery behavior depends on RMW configuration, network transport and
 - [ROS 2 on Kubernetes DDS discovery and troubleshooting](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/docs/ROS2-KUBERNETES-DDS-GUIDE.md)
 - [Kubernetes cluster provisioning via Vagrant](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/KubernetesClusterSetup/README.md)
 - [Networking and CNI configuration](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/Network/README.md)
+- [Jazzy image build, local smoke test, compatibility and release caveats](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/ROS2/jazzy/README.md)
 - [ROS 2 manual talker/listener walkthrough](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/ROS2/README.md)
 - [Prometheus/Grafana and dashboard examples](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/MonitoringSystem/README.md)
 - [Monitoring metrics, notebooks and data analysis](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/blob/main/DataAnalysis/README.md)
@@ -40,7 +42,7 @@ ROS 2 DDS discovery behavior depends on RMW configuration, network transport and
 ## Roadmap and changes not yet available
 
 - [90-day modernization and growth proposal — PR #23](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/pull/23)
-- [Upgrade ROS 2 image and supported versions — issue #7](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/7)
+- [Container image modernized in part; full supported Kubernetes migration remains — issue #7](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/7)
 - [Verify ROS 2 cross-worker talker/listener communication — issue #14](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/14)
 - [Move to maintained Kubernetes CNI and DDS discovery — issue #15](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/15)
 - [Lightweight kind/k3d profile — issue #16](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/16)
