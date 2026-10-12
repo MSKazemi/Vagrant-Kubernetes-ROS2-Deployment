@@ -281,6 +281,8 @@ Distributed under the Apache License 2.0. See [LICENSE](./LICENSE) for more info
 ## Contributing
 We welcome first-time contributors, educators, ROS 2 users and Kubernetes engineers. The easiest place to start is a labeled [good first issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/good%20first%20issue), or a scoped [help wanted issue](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/labels/help%20wanted). Read the [contribution guide](./CONTRIBUTING.md) or the [Claude Code/Codex step-by-step guide](./docs/AI_ASSISTED_CONTRIBUTING.md) before claiming a task or opening a PR. Documentation and simple static-check contributions do not require VirtualBox or a running Kubernetes cluster.
 
+Everyone taking part is expected to follow the [Code of Conduct](./CODE_OF_CONDUCT.md). Contributors are thanked in [CONTRIBUTORS.md](./CONTRIBUTORS.md), and security problems should be reported privately as described in [SECURITY.md](./SECURITY.md).
+
 ## Acknowledgments
 - Kubernetes
 - Vagrant

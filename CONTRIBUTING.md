@@ -82,9 +82,20 @@ The existing three-VM `Vagrantfile` allocates roughly **30 GB RAM and 18 vCPUs**
 
 A successful Docker build or Bash syntax check does not establish end-to-end ROS 2 messaging. If a feature needs live verification, keep the task open or document the missing validation clearly.
 
+## What happens after you open a pull request
+
+- **Checks.** For a first contribution, GitHub holds workflow runs until a maintainer approves them, so checks can show as "waiting" for a while. That is expected and is not a problem with your pull request.
+- **Review.** A maintainer reads the diff and checks documentation against the files in the repository. Comments are about the change, not about you.
+- **Small fixes may be made for you.** A broken link, a stale command or a missing newline may be fixed by a maintainer directly on your branch (GitHub's "Allow edits from maintainers" option, on by default for fork pull requests). Your commits stay intact and the maintainer says in the thread what changed and why.
+- **Merging and credit.** Pull requests are normally squash-merged, you remain the commit author, and you are added to [CONTRIBUTORS.md](./CONTRIBUTORS.md).
+- **If you get busy.** Say so in the pull request. A maintainer may be able to finish it with your credit kept, so your work is not lost.
+- **Questions.** Ask in the linked issue or in [Discussions](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/discussions). Beginner questions are welcome.
+
+Everyone taking part is expected to follow the [Code of Conduct](./CODE_OF_CONDUCT.md). To report a security problem privately, see [SECURITY.md](./SECURITY.md) instead of opening a public issue.
+
 ## Quality, security and collaboration
 
-- Be respectful; ask focused questions in the relevant GitHub issue.
+- Be respectful and follow the [Code of Conduct](./CODE_OF_CONDUCT.md); ask focused questions in the relevant GitHub issue.
 - Keep PRs scoped and explain design choices in simple terms.
 - Prefer primary technical sources and original explanatory text; include appropriate attribution for external figures or code.
 - Never commit passwords, access tokens, kubeconfigs, private host addresses, personal data or sensitive logs. Inspect screenshots and notebooks for such material before submitting.

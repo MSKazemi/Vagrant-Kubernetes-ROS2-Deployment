@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Ask a question or share an idea
+    url: https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/discussions
+    about: New to ROS 2 or Kubernetes? Questions and ideas are welcome in Discussions.
+  - name: Report a security vulnerability privately
+    url: https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/security/advisories/new
+    about: Please do not open a public issue for vulnerabilities or paste credentials. See SECURITY.md.
