@@ -1,5 +1,7 @@
 # Deploying ROS2 Talker and Listener Nodes on a Kubernetes Cluster
 
+> **Historical Foxy/Kubernetes tutorial:** This document describes the original ROS 2 Foxy experiment and contains known stale commands (including a nonexistent `ros_dep.yaml` filename) being corrected in [issue #24](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/24). The original `ROS2/ros_dep_*.yaml` manifests run **stress-ng**, not automatically started talker/listener processes. For the **new Jazzy/Ubuntu 24.04 container image and local ROS message smoke test**, use [`jazzy/README.md`](./jazzy/README.md). It does not upgrade or validate this legacy Kubernetes cluster.
+
 ## Table of Contents
 
 - [Deploying ROS2 Talker and Listener Nodes on a Kubernetes Cluster](#deploying-ros2-talker-and-listener-nodes-on-a-kubernetes-cluster)
