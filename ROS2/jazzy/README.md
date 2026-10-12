@@ -59,7 +59,7 @@ No working Kubernetes setup is provided by this container-only migration. The fi
 | Base image | `docker.io/library/ros:jazzy-ros-base-noble` with fixed `sha256` index in Dockerfile | Digest recorded in source, image pull/build verified by CI when green |
 | Repository-built image | `ros-jazzy-with-stress-ng:sha-<commit>` in the Docker Hub namespace configured by the maintainer | Publication depends on `DOCKER_USERNAME` / `DOCKER_PASSWORD`; **not guaranteed** until workflow succeeds |
 | Architectures | `linux/amd64` | CI-covered when green; arm64 not validated |
-| Additional apt packages | `ros-jazzy-demo-nodes-cpp`, `stress-ng` | Installed by apt during build; **package versions are not yet locked** |
+| Additional apt packages | `ros-jazzy-demo-nodes-cpp=0.33.11-1noble.20260920.235420`, `stress-ng=0.17.06-1build1` | Direct package versions pinned from the successful 2026-10-12 CI installation; **transitive dependency versions are not locked** |
 | Full Kubernetes environment | Legacy Kubernetes 1.29 / Weave Net | **Not modernized or tested** in this PR |
 | Lyrical profile | Ubuntu 26.04 platform | Deferred; no claim of support |
 
