@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Run inside the built ROS 2 Jazzy container; no Kubernetes cluster needed.
 # Usage: docker run --rm -i ros-jazzy-lab:local bash -s < scripts/test-ros2-image.sh
-set -euo pipefail
+# ROS setup scripts rely on optional environment variables. Source before nounset.
+set -eo pipefail
 
 fail() {
   printf 'ERROR: %s\n' "$*" >&2
@@ -11,6 +12,7 @@ fail() {
 [[ "${ROS_DISTRO:-}" == "jazzy" ]] || fail "ROS_DISTRO must be jazzy (got ${ROS_DISTRO:-unset})"
 # shellcheck disable=SC1091
 source /opt/ros/jazzy/setup.bash
+set -u
 # The image must remain based on the tested Ubuntu 24.04 platform.
 # shellcheck disable=SC1091
 source /etc/os-release
