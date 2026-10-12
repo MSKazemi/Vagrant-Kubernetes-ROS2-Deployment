@@ -138,6 +138,19 @@ To run a **manual ROS 2 talker/listener** demonstration, use the separate [ROS2/
 
 > **Do not share provisioning logs or kubeconfig files.** The original monitoring scripts may include privileged Kubernetes Dashboard tokens in terminal output. Credential/RBAC hardening is tracked in [issue #6](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/6).
 
+### Check status, stop, and remove the VMs
+
+Run these on your **host**, from the repository directory:
+
+```bash
+vagrant status       # show the state of the three VMs (controlplane, worker1, worker2)
+vagrant halt         # shut the VMs down and keep their disks
+vagrant up           # start them again
+vagrant destroy -f   # delete the VMs without asking for confirmation
+```
+
+> **Warning:** `vagrant destroy -f` permanently deletes the three VirtualBox VMs and everything stored inside them, including the Kubernetes cluster state and any Prometheus/Grafana data. It does not delete this repository folder, and the next `vagrant up` provisions the cluster from scratch.
+
 ## Project Structure
 
 ### Kubernetes Cluster Setup
