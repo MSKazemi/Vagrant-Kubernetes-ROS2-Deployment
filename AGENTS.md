@@ -5,7 +5,7 @@ This file is shared guidance for Codex, Claude Code, and other repository-aware 
 ## Project reality (do not overclaim)
 
 - This is an educational/research **ROS 2 on Kubernetes** lab, not a production or safety-critical robot platform.
-- The checked-in stack is historical: ROS 2 **Foxy** (end of life), Kubernetes **1.29**, Ubuntu 22.04 VMs, and Weave Net. The modernization plan is **proposed**, not delivered.
+- The **Vagrant cluster** and original Kubernetes YAML remain historical: ROS 2 **Foxy** (end of life), Kubernetes **1.29**, Ubuntu 22.04 VMs, and Weave Net. Separately, `ROS2/Dockerfile` now targets Jazzy/Ubuntu 24.04 and `scripts/test-ros2-image.sh` checks local ROS communication **inside a single image**. This does **not** establish a modern Kubernetes/DDS deployment or cross-worker delivery.
 - `ROS2/ros_dep_1.yaml` (also `ros_dep_2.yaml` and `ros_dep_3.yaml`) starts **stress-ng**, not a self-starting ROS 2 talker/listener. `ROS2/README.md` has known filename/namespace inaccuracies under correction in issue #24.
 - Do not assert an installation, DDS cross-node link, or benchmark worked unless you actually ran the necessary test and observed its output.
 
@@ -21,7 +21,7 @@ This file is shared guidance for Codex, Claude Code, and other repository-aware 
 
 - `Vagrantfile`, `KubernetesClusterSetup/` — VM sizing, provisioning, Kubernetes setup.
 - `Network/` — historical Weave Net CNI.
-- `ROS2/` — Dockerfile and ROS workload/HPA/VPA YAML.
+- `ROS2/` — modern Jazzy Dockerfile and container-only test (`ROS2/jazzy/`); old Foxy manifests remain legacy examples (old recipe under `ROS2/legacy/foxy/`).
 - `MonitoringSystem/` — Prometheus/Grafana/Dashboard configuration; permissions require scrutiny.
 - `DataAnalysis/` — historical measurements, Python scripts and notebooks; do not invent performance results.
 - `README.md` and component READMEs — user-facing instructions.

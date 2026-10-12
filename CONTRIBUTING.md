@@ -72,7 +72,7 @@ For sample data changes, provide a small local command or script to verify that 
 
 The lightweight [shell syntax workflow](.github/workflows/validate-shell.yml) checks tracked Bash scripts on pull requests and `main` pushes without cloud or Docker Hub credentials.
 
-The separate, historical [Docker build/publish workflow](.github/workflows/main.yaml) is **not** a pull-request test. It publishes a ROS 2 Foxy image to Docker Hub **only when `ROS2/Dockerfile` changes on `main`**, or when an authorized maintainer starts the workflow manually. README, tutorial, issue-template and agent-instruction changes must not cause needless image publishing. A Docker publish also does **not** prove Kubernetes or DDS communication is working.
+The separate [Jazzy image verification workflow](.github/workflows/ros2-image-ci.yml) builds an **amd64 ROS 2 Jazzy container** and tests local talker/listener communication **in one container**, without Docker Hub credentials. The [Docker build/publish workflow](.github/workflows/main.yaml) verifies first, then publishes the **Jazzy image** to Docker Hub using a source-commit tag **only on relevant image/test/workflow changes on `main`** (or authorized manual dispatch). The old Foxy image recipe is retained under `ROS2/legacy/foxy/Dockerfile`, but no longer published by the default workflow. README, tutorial, issue-template and agent-instruction changes must not cause needless image publishing. A successful image build or same-container smoke test **does not prove cross-worker Kubernetes/DDS communication**. This remains an explicit release gate.
 
 ### Environment and scope limitations
 
