@@ -6,7 +6,7 @@
 
 **Direction:** Evolve the existing educational Vagrant/Kubernetes/ROS 2 experiment into a **reproducible distributed ROS 2 Kubernetes lab for education and research**. Prove cross-worker ROS messaging before expanding into advanced edge robotics or promoting it as modern supported infrastructure.
 
-**Proposed brand**: ROS 2 Kubernetes Lab (`ros2-kubernetes-lab`), pending [#22](../issues/22) and a safe rename; repo name currently unchanged. Avoid production, hard real-time and safety-critical guarantees.
+**Proposed brand**: ROS 2 Kubernetes Lab (`ros2-kubernetes-lab`), pending [#22](https://github.com/MSKazemi/Vagrant-Kubernetes-ROS2-Deployment/issues/22) and a safe rename; repo name currently unchanged. Avoid production, hard real-time and safety-critical guarantees.
 
 ## Evidence snapshot
 
