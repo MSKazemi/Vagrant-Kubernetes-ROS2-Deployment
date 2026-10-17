@@ -302,3 +302,9 @@ The materials in this repository are made available without warranties to the ex
 
 Before connecting accounts, running automation, relying on consequential outputs, or using production systems, review [project-specific safety risks and pre-deployment checks](SAFETY.md). The checklist describes precautions to **verify**, not a certification that the software currently enforces every safeguard.
 <!-- risk-guidance: end -->
+
+<!-- security-reporting: start -->
+### Security reporting
+
+Please follow the [security policy](SECURITY.md) to report suspected vulnerabilities privately. Avoid disclosing credentials or exploitable details in public issues.
+<!-- security-reporting: end -->
